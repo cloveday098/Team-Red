@@ -25,7 +25,11 @@ public class Helper {
             System.out.println("Nice try.");
             msg += "Annual interest rate must be > 0!\n";
         }
-
+        
+        if (amt > 999999999 || annInterestRate > 999999999) {
+            msg += "Amount too large!\n";
+        }
+        
         if (!msg.equals("")) {
             System.out.println(msg);
             return -1;
