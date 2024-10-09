@@ -3,7 +3,7 @@ Project contributions from Charlotte Dickson, Miguel Estrada-Martinez, Gabby Koo
 
 
 ## Purpose
-
+To create an application that implements different financial calculators.
 
 # Table of Contents
 
