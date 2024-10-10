@@ -2,6 +2,9 @@
 Project contributions from Charlotte Dickson, Miguel Estrada-Martinez, Gabby Kooima, and Chance Loveday
 
 
+## Purpose
+To create an application that implements different financial calculators.
+
 ## Meeting Times
 Mondays @ 1-1:30 in Scots Learning Commons
 
