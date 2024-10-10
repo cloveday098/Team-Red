@@ -103,7 +103,7 @@ public class HelperTest {
         double expResult = -1;
         double result = Helper.monthlyPayment(amt, annInterestRate, yrs);
         assertEquals(expResult, result, 0);
-    }
+    }git stat
     
     // Float Overflow for annInterestRate
     @Test
