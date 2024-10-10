@@ -36,6 +36,9 @@ public class Helper {
             System.out.println("Nice try.");
             msg += "Annual interest rate must be > 0!\n";
         }
+        if (amt < 0) {
+            msg += "Amount must be > 0!\n";
+        }
         
         if (amt > 999999999 || annInterestRate > 999999999) {
             msg += "Amount too large!\n";
@@ -51,8 +54,8 @@ public class Helper {
         double result = (amt * annInterestRate/1200) / (1 - 1 / (exp));
         
         // Trying to round to two decimal places
-        BigDecimal bd = new BigDecimal(result).setScale(2, RoundingMode.HALF_UP);  
-        result = bd.doubleValue();
+        //BigDecimal bd = new BigDecimal(result).setScale(2, RoundingMode.HALF_UP);  
+        //result = bd.doubleValue();
         
         System.out.println(result);
         return result;
