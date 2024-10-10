@@ -3,7 +3,7 @@ Project contributions from Charlotte Dickson, Miguel Estrada-Martinez, Gabby Koo
 
 
 ## Meeting Times
-Mondays @ 1-1:30 in Scots Learning Commons
+Mondays @ 1:05-1:35 in Scots Learning Commons
 
 # Table of Contents
 1. [Meeting Log](#meeting-log)
