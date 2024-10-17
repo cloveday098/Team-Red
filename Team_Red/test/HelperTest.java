@@ -26,7 +26,7 @@ public class HelperTest {
         int n = 0;
         Helper instance = new Helper();
         boolean expResult = false;
-        boolean result = instance.isPos(n);
+        boolean result = instance.isPos(String.valueOf(n));
         assertEquals(expResult, result);
     }
 
@@ -103,7 +103,7 @@ public class HelperTest {
         double expResult = -1;
         double result = Helper.monthlyPayment(amt, annInterestRate, yrs);
         assertEquals(expResult, result, 0);
-    }git stat
+    }
     
     // Float Overflow for annInterestRate
     @Test

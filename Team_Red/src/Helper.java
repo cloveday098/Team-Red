@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.Map;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -23,16 +24,36 @@ import org.jsoup.select.Elements;
 // monthlyPayment funct
 // Unit tests for both
 public class Helper {
-    public static boolean isPos(double n) {
-        return n>0;
+    public static boolean isValidNumber(String test) 
+    {
+        try {
+            float num = Float.parseFloat(test);
+        }
+        catch (NumberFormatException e) {
+            System.out.println(test + " caused " + e);
+            return false;
+        }
+        return true;
+    }
+    
+    public static boolean isPos(String num) 
+    {
+        if (isValidNumber(num)) {
+            if (Float.parseFloat(num) > 0) {
+                return true;
+            }
+            //System.out.println("You cannot have a height or weight <= 0!");
+        }
+        //System.out.println(num + " is not a number.");
+        return false;
     }
 
     public static double monthlyPayment(double amt, double annInterestRate, int yrs) {
         String msg = "";
-        if (!isPos(yrs)) {
+        if (!isPos(String.valueOf(yrs))) {
             msg += "Years must be > 0!\n";
         }
-        if (!isPos(annInterestRate)) {
+        if (!isPos(String.valueOf(annInterestRate))) {
             System.out.println("Nice try.");
             msg += "Annual interest rate must be > 0!\n";
         }
@@ -61,13 +82,17 @@ public class Helper {
         return result;
     }
     
-    public static Dictionary<String, Double> webScraper() {
+    public static Map<String, Double> webScraper() {
         String s = "success";
         String url = "http://www.x-rates.com/table/?from=USD&amount=1";
-        Dictionary<String, Double> rateDict = new Hashtable<>();
+        Map<String, Double> rateDict = new Hashtable();
         try {
             Document doc = Jsoup.connect(url).get();
             Elements rows = doc.select("table.ratesTable > tbody > tr");
+            
+            // Blank to avoid default currency selection
+            rateDict.put("", 0.0);
+            
             for (Element row : rows) {
                 Elements tds = row.select("td");
                 String currency = tds.get(0).text();
@@ -80,7 +105,7 @@ public class Helper {
         catch (IOException ex) {
             s = "fail";
         }
-        System.out.printf("%s", rateDict);
+        //System.out.printf("%s", rateDict);
         return rateDict;
     }
 }
