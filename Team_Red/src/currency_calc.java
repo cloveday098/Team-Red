@@ -16,9 +16,12 @@ import javax.swing.DefaultComboBoxModel;
 
 // TODOS:
 /*
-    Use rates from ConversionTable to convert between the textbox and label
     Validate inputs for nonzero doubles only
-    Event Handlers that convert after both dropdowns and the textbox are filled
+    Add USD to currencies
+    Commas and decimals
+    Dict of currency symbols
+    Option for top 10 most popular currencies
+    Fixed horizontal length and line wrapping for text boxes
 */
 
 
@@ -88,6 +91,7 @@ public class currency_calc extends javax.swing.JFrame {
         });
 
         errLabel.setForeground(new java.awt.Color(255, 51, 51));
+        errLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errLabel.setText("N/A");
         errLabel.setAlignmentX(0.5F);
 
@@ -106,8 +110,8 @@ public class currency_calc extends javax.swing.JFrame {
                     .addComponent(newCurrDrop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(73, 73, 73))
             .addGroup(layout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addComponent(errLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(129, 129, 129)
+                .addComponent(errLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,8 +126,8 @@ public class currency_calc extends javax.swing.JFrame {
                     .addComponent(newCurrAmt)
                     .addComponent(oldCurrAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(errLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addComponent(errLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,7 +153,7 @@ public class currency_calc extends javax.swing.JFrame {
         // oldCurr to USD
         Double newCurr = Double.valueOf(oldCurrAmt.getText()) / conversionTable.get(String.valueOf(oldCurrDrop.getSelectedItem()));
         // USD to newCurr
-        System.out.println(String.valueOf(newCurr));
+        //System.out.println(String.valueOf(newCurr));
         newCurr *= conversionTable.get(String.valueOf(newCurrDrop.getSelectedItem()));
         return newCurr;
     }
@@ -164,11 +168,14 @@ public class currency_calc extends javax.swing.JFrame {
                     newCurr = Double.valueOf(oldCurrAmt.getText());
                 }
 
-                else if (Helper.isPos(oldCurrAmt.getText())) {
+                else if (Helper.isValidNumber(oldCurrAmt.getText())) {
                     System.out.println("Good to go!");
                     newCurr = convert();   
                 }
-                newCurrAmt.setText(String.valueOf(newCurr));
+                else {
+                    throw new NumberFormatException("Not a Valid Number");
+                }
+                newCurrAmt.setText(String.valueOf(String.format("%.2f", newCurr)));
                 errLabel.setText("");
             }
             catch (NumberFormatException e) {
@@ -181,6 +188,7 @@ public class currency_calc extends javax.swing.JFrame {
         
         if (errLabel.getText() != "") {
             errLabel.setVisible(true);
+            newCurrAmt.setText("");
         }
         else {
             errLabel.setVisible(false);

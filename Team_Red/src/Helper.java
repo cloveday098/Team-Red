@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.TreeMap;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -47,7 +48,7 @@ public class Helper {
         //System.out.println(num + " is not a number.");
         return false;
     }
-
+    
     public static double monthlyPayment(double amt, double annInterestRate, int yrs) {
         String msg = "";
         if (!isPos(String.valueOf(yrs))) {
@@ -92,20 +93,22 @@ public class Helper {
             
             // Blank to avoid default currency selection
             rateDict.put("", 0.0);
+            System.out.println(rateDict.get(""));
             
             for (Element row : rows) {
                 Elements tds = row.select("td");
                 String currency = tds.get(0).text();
                 Double rate1 = Double.valueOf(tds.get(1).text());
                 Double rate2 = Double.valueOf(tds.get(2).text());
-                System.out.printf("Currency: %s, rate1: %s, rate2: %s%n", currency, rate1, rate2);
+                //System.out.printf("Currency: %s, rate1: %s, rate2: %s%n", currency, rate1, rate2);
                 rateDict.put(currency, rate1);
             }
+            rateDict = new TreeMap<String, Double>(rateDict);
         }
         catch (IOException ex) {
             s = "fail";
         }
-        //System.out.printf("%s", rateDict);
+        System.out.printf("%s", rateDict);
         return rateDict;
     }
 }
