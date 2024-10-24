@@ -2,8 +2,11 @@
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.Locale;
+import java.util.Currency;
 import java.util.Map;
 import java.util.TreeMap;
 import org.jsoup.Jsoup;
@@ -93,6 +96,7 @@ public class Helper {
             
             // Blank to avoid default currency selection
             rateDict.put("", 0.0);
+            rateDict.put("US Dollar", 1.0);
             System.out.println(rateDict.get(""));
             
             for (Element row : rows) {
@@ -111,4 +115,51 @@ public class Helper {
         System.out.printf("%s", rateDict);
         return rateDict;
     }
+    
+    // Format the amount using deciamls/commas and currency symbols
+    public static String getSymbol(Object currency, Double newAmt) {
+        // Arial Unicode MS for symbol font
+        double d = 123456.789;
+        // Checking locale function;
+        //String currencyName = NumberFormat.getCurrencyInstance(getLocaleFromCurrency(String.valueOf(currency))).getCurrency().getDisplayName();
+        NumberFormat nf
+            = NumberFormat.getCurrencyInstance(getLocaleFromCurrency(String.valueOf(currency)));
+        //System.out.println("\n" + nf.getCurrency().getDisplayName() + " vs. " + currencyName);
+        System.out.println("\n" + currency + " representation of " + d
+                           + " : " + nf.format(d));
+        return nf.format(d);
+    }
+    
+    // Mapping 
+    public static Locale getLocaleFromCurrency(String currencyName) {
+        String currencyCode = switch (currencyName) {
+            case "Argentine Peso" -> "ARS";
+            case "Australian Dollar" -> "AUD";
+            case "Bahraini Dinar" -> "BHD";
+            case "Botswanan Pula" -> "BWP";
+            case "Brazilian Real" -> "BRL";
+            case "British Pound" -> "GBP";
+            case "Brunei Dollar" -> "BND";
+            case "Bulgarian Lev" -> "BGN";
+            case "Canadian Dollar" -> "CAD";
+                
+            case "US Dollar" -> "USD";
+            case "Euro" -> "EUR";
+            default -> null;
+        };
+        for (Locale locale : Locale.getAvailableLocales()) {
+            try {
+                Currency currency = Currency.getInstance(locale);
+                //System.out.println("case " + "\"" + NumberFormat.getCurrencyInstance(locale).getCurrency().getDisplayName()+ "\" -> \"" + currency + "\";");
+                //System.out.println(currency.getCurrencyCode().equals(currencyCode));
+                if (currency != null && currency.getCurrencyCode().equals(currencyCode)) {
+                    return locale;
+                }
+            } catch (Exception e) {
+            }
+        }
+        System.out.println("Couldn't find " + currencyName);
+        return null;
+    }
+
 }

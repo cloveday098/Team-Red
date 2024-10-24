@@ -16,8 +16,8 @@ import javax.swing.DefaultComboBoxModel;
 
 // TODOS:
 /*
-    Validate inputs for nonzero doubles only
     Add USD to currencies
+    Check values with online version
     Commas and decimals
     Dict of currency symbols
     Option for top 10 most popular currencies
@@ -82,8 +82,10 @@ public class currency_calc extends javax.swing.JFrame {
         });
 
         newCurrAmt.setBackground(new java.awt.Color(255, 255, 255));
+        newCurrAmt.setFont(new java.awt.Font("Arial Unicode MS", 0, 12)); // NOI18N
         newCurrAmt.setText("0");
 
+        oldCurrAmt.setFont(new java.awt.Font("Arial Unicode MS", 0, 12)); // NOI18N
         oldCurrAmt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 oldCurrAmtActionPerformed(evt);
@@ -134,15 +136,15 @@ public class currency_calc extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void oldCurrDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldCurrDropActionPerformed
-        currencyValidate();
+        currencyValidate(oldCurrDrop.getSelectedItem(), newCurrDrop.getSelectedItem(), oldCurrAmt.getText());
     }//GEN-LAST:event_oldCurrDropActionPerformed
 
     private void newCurrDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCurrDropActionPerformed
-        currencyValidate();
+        currencyValidate(oldCurrDrop.getSelectedItem(), newCurrDrop.getSelectedItem(), oldCurrAmt.getText());
     }//GEN-LAST:event_newCurrDropActionPerformed
 
     private void oldCurrAmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldCurrAmtActionPerformed
-        currencyValidate();
+        currencyValidate(oldCurrDrop.getSelectedItem(), newCurrDrop.getSelectedItem(), oldCurrAmt.getText());
     }//GEN-LAST:event_oldCurrAmtActionPerformed
 
     /**
@@ -158,24 +160,27 @@ public class currency_calc extends javax.swing.JFrame {
         return newCurr;
     }
     
-    public void currencyValidate() {
-        if (oldCurrDrop.getSelectedItem() != "" && newCurrDrop.getSelectedItem() != "") {
-            System.out.println(oldCurrDrop.getSelectedItem());
-            Double newCurr = 0.0;
+    public void currencyValidate(Object oldCurr, Object newCurr, String oldAmt) {
+        if (oldCurr != "" && newCurr != "") {
+            Double newAmt = 0.0;
             
             try {
-                if (oldCurrDrop.getSelectedItem() == newCurrDrop.getSelectedItem()) {
-                    newCurr = Double.valueOf(oldCurrAmt.getText());
+                // Converting to same currency
+                if (oldCurr == newCurr) {
+                    newAmt = Double.valueOf(oldAmt);
                 }
-
-                else if (Helper.isValidNumber(oldCurrAmt.getText())) {
+                // Converting to different currency with number validation
+                else if (Helper.isValidNumber(oldAmt)) {
                     System.out.println("Good to go!");
-                    newCurr = convert();   
+                    newAmt = convert();   
                 }
                 else {
                     throw new NumberFormatException("Not a Valid Number");
                 }
-                newCurrAmt.setText(String.valueOf(String.format("%.2f", newCurr)));
+                // Formatting to 5 decimal places like seen on the online calculator
+                
+                String result = Helper.getSymbol(newCurr, newAmt);
+                newCurrAmt.setText(result);
                 errLabel.setText("");
             }
             catch (NumberFormatException e) {
