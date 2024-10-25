@@ -132,19 +132,61 @@ public class Helper {
     
     // Mapping 
     public static Locale getLocaleFromCurrency(String currencyName) {
-        String currencyCode = switch (currencyName) {
+        String currencyCode = switch (currencyName) {   // Symbols not displaying
             case "Argentine Peso" -> "ARS";
             case "Australian Dollar" -> "AUD";
             case "Bahraini Dinar" -> "BHD";
-            case "Botswanan Pula" -> "BWP";
+            case "Botswana Pula" -> "BWP";     // **Not Working**
             case "Brazilian Real" -> "BRL";
             case "British Pound" -> "GBP";
-            case "Brunei Dollar" -> "BND";
+            case "Bruneian Dollar" -> "BND";      // **Not Working**
             case "Bulgarian Lev" -> "BGN";
             case "Canadian Dollar" -> "CAD";
-                
-            case "US Dollar" -> "USD";
+            case "Chilean Peso" -> "CLP";
+            case "Chinese Yuan Renminbi" -> "CNY";
+            case "Colombian Peso" -> "COP";
+            case "Czech Koruna" -> "CZK";
+            case "Danish Krone" -> "DKK";
+            case "Emirati Dirham" -> "AED";
             case "Euro" -> "EUR";
+            case "Hong Kong Dollar" -> "HKD";
+            case "Hungarian Forint" -> "HUF";
+            case "Icelandic Krona" -> "ISK";
+            case "Indian Rupee" -> "INR";
+            case "Indonesian Rupiah" -> "IDR";
+            case "Iranian Rial" -> "IRR";
+            case "Israeli Shekel" -> "ILS";
+            case "Japanese Yen" -> "JPY";
+            case "Kazakhstani Tenge" -> "KZT";
+            case "Kuwaiti Dinar" -> "KWD";
+            case "Libyan Dinar" -> "LYD";
+            case "Malaysian Ringgit" -> "MYR";
+            case "Mauritian Rupee" -> "MUR";
+            case "Mexican Peso" -> "MXN";
+            case "Nepalese Rupee" -> "NPR";
+            case "New Zealand Dollar" -> "NZD";
+            case "Norwegian Krone" -> "NOK";
+            case "Omani Rial" -> "OMR";
+            case "Pakistani Rupee" -> "PKR";
+            case "Philippine Peso" -> "PHP";
+            case "Polish Zloty" -> "PLN";
+            case "Qatari Riyal" -> "QAR";
+            case "Romanian New Leu" -> "RON";
+            case "Russian Ruble" -> "RUB";
+            case "Saudi Arabian Riyal" -> "SAR";
+            case "Singapore Dollar" -> "SGD";
+            case "South African Rand" -> "ZAR";
+            case "South Korean Won" -> "KRW";
+            case "Sri Lankan Rupee" -> "LKR";
+            case "Swedish Krona" -> "SEK";
+            case "Swiss Franc" -> "CHF";
+            case "Taiwan New Dollar" -> "TWD";
+            case "Thai Baht" -> "THB";
+            case "Trinidadian Dollar" -> "TTD";   // **Not Working; different name**
+            case "Turkish Lira" -> "TRY";
+            case "US Dollar" -> "USD";
+            case "Venezuelan Bolivar" -> "VES";
+            
             default -> null;
         };
         for (Locale locale : Locale.getAvailableLocales()) {

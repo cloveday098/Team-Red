@@ -63,6 +63,7 @@ public class currency_calc extends javax.swing.JFrame {
         newCurrAmt = new javax.swing.JLabel();
         oldCurrAmt = new javax.swing.JTextField();
         errLabel = new javax.swing.JLabel();
+        flip = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,24 +98,34 @@ public class currency_calc extends javax.swing.JFrame {
         errLabel.setText("N/A");
         errLabel.setAlignmentX(0.5F);
 
+        flip.setBackground(new java.awt.Color(0, 102, 255));
+        flip.setForeground(new java.awt.Color(255, 255, 255));
+        flip.setText("<-->");
+        flip.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                flipMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(oldCurrDrop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(oldCurrAmt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(oldCurrDrop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(oldCurrAmt))
+                        .addGap(28, 28, 28)
+                        .addComponent(flip))
+                    .addComponent(errLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(newCurrAmt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(newCurrDrop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(73, 73, 73))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(errLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,8 +133,9 @@ public class currency_calc extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(oldCurrDrop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newCurrDrop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(newCurrDrop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(flip))
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newCurrAmt)
                     .addComponent(oldCurrAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -146,6 +158,13 @@ public class currency_calc extends javax.swing.JFrame {
     private void oldCurrAmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldCurrAmtActionPerformed
         currencyValidate(oldCurrDrop.getSelectedItem(), newCurrDrop.getSelectedItem(), oldCurrAmt.getText());
     }//GEN-LAST:event_oldCurrAmtActionPerformed
+
+    private void flipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flipMouseClicked
+        Object oldCurr = oldCurrDrop.getSelectedItem();
+        Object newCurr = newCurrDrop.getSelectedItem();
+        oldCurrDrop.setSelectedItem(newCurr);
+        newCurrDrop.setSelectedItem(oldCurr);
+    }//GEN-LAST:event_flipMouseClicked
 
     /**
      * @param args the command line arguments
@@ -235,6 +254,7 @@ public class currency_calc extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel errLabel;
+    private javax.swing.JButton flip;
     private javax.swing.JLabel newCurrAmt;
     private javax.swing.JComboBox<String> newCurrDrop;
     private javax.swing.JTextField oldCurrAmt;
