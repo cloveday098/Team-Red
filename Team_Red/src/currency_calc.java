@@ -4,10 +4,14 @@
  */
 
 
+import java.awt.Image;
 import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -31,8 +35,32 @@ public class currency_calc extends javax.swing.JFrame {
      * Creates new form currency_calc
      */
     Map<String, Double> conversionTable = Helper.webScraper();
+    Map<String, String> images = new HashMap<>();
+    
     public currency_calc() {
         initComponents();
+        // Populate images dict
+        images.put("Argentine Peso", "Argetina.gif");
+        images.put("Australian Dollar", "Australia.gif");
+        images.put("Brazilian Real", "Brazil.gif");
+        images.put("Canadian Dollar", "Canada.gif");
+        images.put("Chilean Pes", "Chile.gif");
+        images.put("Hong Kong Dollar", "Hong Kong.gif");
+        images.put("Hungarian Forint", "Hungary.gif");
+        
+        images.put("Mexican Peso", "Mexcio.gif");
+        images.put("New Zealand Dollar", "New Zealand.gif");
+        images.put("Norwegian Krone", "Norway.gif");
+        images.put("Russian Ruble", "Russia.gif");
+        images.put("Saudi Arabian Riyal", "Saudi Arabia .gif");
+        images.put("\"Singapore Dollar\"", "Singapore.gif");
+        images.put("South African Randt", "South Africa gif");
+        images.put("Swedish Krona", "Sweden.gif");
+        images.put("Swiss Franc", "Switzerland.gif");
+        
+        
+        images.put("US Dollar", "America.gif");
+        
         errLabel.setVisible(false);
         
         // Making a dictionary to hold the webscraped currencies and their exchange rates
@@ -60,12 +88,16 @@ public class currency_calc extends javax.swing.JFrame {
 
         oldCurrDrop = new javax.swing.JComboBox<>();
         newCurrDrop = new javax.swing.JComboBox<>();
-        newCurrAmt = new javax.swing.JLabel();
         oldCurrAmt = new javax.swing.JTextField();
         errLabel = new javax.swing.JLabel();
         flip = new javax.swing.JButton();
+        newCurrAmt = new javax.swing.JTextField();
+        fromFlag = new javax.swing.JLabel();
+        toFlag = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(550, 375));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         oldCurrDrop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         oldCurrDrop.setName(""); // NOI18N
@@ -74,6 +106,7 @@ public class currency_calc extends javax.swing.JFrame {
                 oldCurrDropActionPerformed(evt);
             }
         });
+        getContentPane().add(oldCurrDrop, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 130, -1));
 
         newCurrDrop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         newCurrDrop.addActionListener(new java.awt.event.ActionListener() {
@@ -81,10 +114,7 @@ public class currency_calc extends javax.swing.JFrame {
                 newCurrDropActionPerformed(evt);
             }
         });
-
-        newCurrAmt.setBackground(new java.awt.Color(255, 255, 255));
-        newCurrAmt.setFont(new java.awt.Font("Arial Unicode MS", 0, 12)); // NOI18N
-        newCurrAmt.setText("0");
+        getContentPane().add(newCurrDrop, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 130, -1));
 
         oldCurrAmt.setFont(new java.awt.Font("Arial Unicode MS", 0, 12)); // NOI18N
         oldCurrAmt.addActionListener(new java.awt.event.ActionListener() {
@@ -92,11 +122,14 @@ public class currency_calc extends javax.swing.JFrame {
                 oldCurrAmtActionPerformed(evt);
             }
         });
+        getContentPane().add(oldCurrAmt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 120, 49));
 
+        errLabel.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         errLabel.setForeground(new java.awt.Color(255, 51, 51));
         errLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errLabel.setText("N/A");
         errLabel.setAlignmentX(0.5F);
+        getContentPane().add(errLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 180, 140, 40));
 
         flip.setBackground(new java.awt.Color(0, 102, 255));
         flip.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,43 +139,13 @@ public class currency_calc extends javax.swing.JFrame {
                 flipMouseClicked(evt);
             }
         });
+        getContentPane().add(flip, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(oldCurrDrop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(oldCurrAmt))
-                        .addGap(28, 28, 28)
-                        .addComponent(flip))
-                    .addComponent(errLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(newCurrAmt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(newCurrDrop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(73, 73, 73))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(oldCurrDrop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newCurrDrop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(flip))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newCurrAmt)
-                    .addComponent(oldCurrAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(errLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
-        );
+        newCurrAmt.setEditable(false);
+        newCurrAmt.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(newCurrAmt, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 130, 49));
+        getContentPane().add(fromFlag, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 120, 70));
+        getContentPane().add(toFlag, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 120, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -191,6 +194,8 @@ public class currency_calc extends javax.swing.JFrame {
                 // Converting to different currency with number validation
                 else if (Helper.isValidNumber(oldAmt)) {
                     System.out.println("Good to go!");
+                    //fromFlag.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/" + images.get(String.valueOf(oldCurr)))).getImage().getScaledInstance(120,70, Image.SCALE_SMOOTH)));
+                    //toFlag.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/" + images.get(String.valueOf(newCurr)))).getImage().getScaledInstance(120,70, Image.SCALE_SMOOTH)));
                     newAmt = convert();   
                 }
                 else {
@@ -255,9 +260,11 @@ public class currency_calc extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel errLabel;
     private javax.swing.JButton flip;
-    private javax.swing.JLabel newCurrAmt;
+    private javax.swing.JLabel fromFlag;
+    private javax.swing.JTextField newCurrAmt;
     private javax.swing.JComboBox<String> newCurrDrop;
     private javax.swing.JTextField oldCurrAmt;
     private javax.swing.JComboBox<String> oldCurrDrop;
+    private javax.swing.JLabel toFlag;
     // End of variables declaration//GEN-END:variables
 }
