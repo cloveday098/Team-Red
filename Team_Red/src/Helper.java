@@ -119,7 +119,7 @@ public class Helper {
     // Format the amount using deciamls/commas and currency symbols
     public static String getSymbol(Object currency, Double newAmt) {
         // Arial Unicode MS for symbol font
-        double d = 123456.789;
+        double d = newAmt;
         // Checking locale function;
         //String currencyName = NumberFormat.getCurrencyInstance(getLocaleFromCurrency(String.valueOf(currency))).getCurrency().getDisplayName();
         NumberFormat nf
