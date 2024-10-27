@@ -39,6 +39,9 @@ public class currency_calc extends javax.swing.JFrame {
     
     public currency_calc() {
         initComponents();
+        curr1.setText("");
+        curr2.setText("");
+        
         // Populate images dict
         images.put("Argentine Peso", "Argetina.gif");
         images.put("Australian Dollar", "Australia.gif");
@@ -94,6 +97,10 @@ public class currency_calc extends javax.swing.JFrame {
         newCurrAmt = new javax.swing.JTextField();
         fromFlag = new javax.swing.JLabel();
         toFlag = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        curr1 = new javax.swing.JLabel();
+        curr2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(550, 375));
@@ -147,6 +154,20 @@ public class currency_calc extends javax.swing.JFrame {
         getContentPane().add(fromFlag, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 120, 70));
         getContentPane().add(toFlag, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 120, 70));
 
+        jLabel1.setText("From");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
+
+        jLabel2.setText("To");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
+
+        curr1.setFont(new java.awt.Font("Arial Unicode MS", 1, 14)); // NOI18N
+        curr1.setText("Currency1");
+        getContentPane().add(curr1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
+
+        curr2.setFont(new java.awt.Font("Arial Unicode MS", 1, 14)); // NOI18N
+        curr2.setText("Currency2");
+        getContentPane().add(curr2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,6 +210,8 @@ public class currency_calc extends javax.swing.JFrame {
     public void currencyValidate(Object oldCurr, Object newCurr, String oldAmt) {
         if (oldCurr != "" && newCurr != "") {
             Double newAmt = 0.0;
+            curr1.setText(String.valueOf(oldCurr));
+            curr2.setText(String.valueOf(newCurr));
             
             try {
                 // Converting to same currency
@@ -262,9 +285,13 @@ public class currency_calc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel curr1;
+    private javax.swing.JLabel curr2;
     private javax.swing.JLabel errLabel;
     private javax.swing.JButton flip;
     private javax.swing.JLabel fromFlag;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField newCurrAmt;
     private javax.swing.JComboBox<String> newCurrDrop;
     private javax.swing.JTextField oldCurrAmt;
