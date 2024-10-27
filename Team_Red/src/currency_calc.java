@@ -170,16 +170,20 @@ public class currency_calc extends javax.swing.JFrame {
     }//GEN-LAST:event_flipMouseClicked
 
     /**
+     * @param oldCurr
+     * @param newCurr
+     * @param oldAmt
      * @param args the command line arguments
+     * @return 
      */
     
-    public Double convert(){
+    public Double convert(Object oldCurr, Object newCurr, String oldAmt){
         // oldCurr to USD
-        Double newCurr = Double.valueOf(oldCurrAmt.getText()) / conversionTable.get(String.valueOf(oldCurrDrop.getSelectedItem()));
+        Double newAmt = Double.valueOf(oldAmt) / conversionTable.get(String.valueOf(oldCurr));
         // USD to newCurr
         //System.out.println(String.valueOf(newCurr));
-        newCurr *= conversionTable.get(String.valueOf(newCurrDrop.getSelectedItem()));
-        return newCurr;
+        newAmt *= conversionTable.get(String.valueOf(newCurr));
+        return newAmt;
     }
     
     public void currencyValidate(Object oldCurr, Object newCurr, String oldAmt) {
@@ -196,7 +200,7 @@ public class currency_calc extends javax.swing.JFrame {
                     System.out.println("Good to go!");
                     //fromFlag.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/" + images.get(String.valueOf(oldCurr)))).getImage().getScaledInstance(120,70, Image.SCALE_SMOOTH)));
                     //toFlag.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/" + images.get(String.valueOf(newCurr)))).getImage().getScaledInstance(120,70, Image.SCALE_SMOOTH)));
-                    newAmt = convert();   
+                    newAmt = convert(oldCurr, newCurr, oldAmt);   
                 }
                 else {
                     throw new NumberFormatException("Not a Valid Number");

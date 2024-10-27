@@ -136,10 +136,10 @@ public class Helper {
             case "Argentine Peso" -> "ARS";
             case "Australian Dollar" -> "AUD";
             case "Bahraini Dinar" -> "BHD";
-            case "Botswana Pula" -> "BWP";     // **Not Working**
+            case "Botswana Pula" -> "BWP";
             case "Brazilian Real" -> "BRL";
             case "British Pound" -> "GBP";
-            case "Bruneian Dollar" -> "BND";      // **Not Working**
+            case "Bruneian Dollar" -> "BND";
             case "Bulgarian Lev" -> "BGN";
             case "Canadian Dollar" -> "CAD";
             case "Chilean Peso" -> "CLP";
@@ -182,7 +182,7 @@ public class Helper {
             case "Swiss Franc" -> "CHF";
             case "Taiwan New Dollar" -> "TWD";
             case "Thai Baht" -> "THB";
-            case "Trinidadian Dollar" -> "TTD";   // **Not Working; different name**
+            case "Trinidadian Dollar" -> "TTD";
             case "Turkish Lira" -> "TRY";
             case "US Dollar" -> "USD";
             case "Venezuelan Bolivar" -> "VES";
