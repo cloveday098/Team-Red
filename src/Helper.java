@@ -85,10 +85,23 @@ public class Helper {
         return false;
     }
     
+    public static boolean  isAnyOnlyDecimal(String autoPrice, String loanTerm, String interestRate, String cashIncentives, String downPayment, String tradeInValue, String amtOwedTradeIn, String salesTax, String otherFees){
+        
+        if(autoPrice.matches("\\.+") || loanTerm.matches("\\.+") || interestRate.matches("\\.+") || cashIncentives.matches("\\.+") || downPayment.matches("\\.+") || tradeInValue.matches("\\.+") || amtOwedTradeIn.matches("\\.+") || salesTax.matches("\\.+") || otherFees.matches("\\.+")){
+            return true;
+        }
+        return false;
+    }
+    
     public static boolean validateAllInputs(String autoPrice, String loanTerm, String interestRate, String cashIncentives, String downPayment, String tradeInValue, String amtOwedTradeIn, String salesTax, String otherFees) {
         
         if(isInputEmpty(autoPrice, loanTerm, interestRate, cashIncentives, downPayment, tradeInValue, amtOwedTradeIn, salesTax, otherFees)){
             JOptionPane.showMessageDialog(null, "Make sure all text fields have an input!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+         if(isAnyOnlyDecimal(autoPrice, loanTerm, interestRate, cashIncentives, downPayment, tradeInValue, amtOwedTradeIn, salesTax, otherFees)){
+            JOptionPane.showMessageDialog(null, "Make sure no text fields only have '.' !", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         
