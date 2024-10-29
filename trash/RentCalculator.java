@@ -42,12 +42,6 @@ public class RentCalculator extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(23, 45, 19));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         jButton1.setBackground(new java.awt.Color(215, 87, 48));
         jButton1.setFont(new java.awt.Font("Bell MT", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -145,16 +139,12 @@ public class RentCalculator extends javax.swing.JFrame {
       
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
        public static void main(String args[]) {
     /**
      * @param args the command line arguments
      */
        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
+            //@Override
             public void run() {
                 new RentCalculator().setVisible(true);
             }
