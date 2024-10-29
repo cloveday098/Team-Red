@@ -56,7 +56,7 @@
                               <Component id="aotLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="stLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="ofLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dpLabel" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                              <Component id="dpLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -76,7 +76,7 @@
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="154" max="32767" attributes="0"/>
+                  <EmptySpace pref="131" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Component id="panelRound3" min="-2" max="-2" attributes="0"/>
@@ -221,7 +221,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Auto Price:"/>
+            <Property name="text" type="java.lang.String" value="Auto Price ($):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="ltLabel">
@@ -243,7 +243,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Interest Rate:"/>
+            <Property name="text" type="java.lang.String" value="Interest Rate (%):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="ciLabel">
@@ -254,7 +254,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cash Incentives:"/>
+            <Property name="text" type="java.lang.String" value="Cash Incentives ($):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="dpLabel">
@@ -265,7 +265,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Down Payment:"/>
+            <Property name="text" type="java.lang.String" value="Down Payment ($):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="tivLabel">
@@ -276,7 +276,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Trade-In Value:"/>
+            <Property name="text" type="java.lang.String" value="Trade-In Value ($):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="aotLabel">
@@ -287,7 +287,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Amount Owed On Trade-In:"/>
+            <Property name="text" type="java.lang.String" value="Amount Owed On Trade-In ($):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="stLabel">
@@ -298,7 +298,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Sales Tax:"/>
+            <Property name="text" type="java.lang.String" value="Sales Tax ($):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="ofLabel">
@@ -309,7 +309,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Other Fees:"/>
+            <Property name="text" type="java.lang.String" value="Other Fees ($):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="autoPriceTextField">

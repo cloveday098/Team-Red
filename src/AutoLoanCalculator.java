@@ -136,7 +136,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
 
         apLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         apLabel.setForeground(new java.awt.Color(102, 102, 102));
-        apLabel.setText("Auto Price:");
+        apLabel.setText("Auto Price ($):");
 
         ltLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ltLabel.setForeground(new java.awt.Color(102, 102, 102));
@@ -144,31 +144,31 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
 
         irLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         irLabel.setForeground(new java.awt.Color(102, 102, 102));
-        irLabel.setText("Interest Rate:");
+        irLabel.setText("Interest Rate (%):");
 
         ciLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ciLabel.setForeground(new java.awt.Color(102, 102, 102));
-        ciLabel.setText("Cash Incentives:");
+        ciLabel.setText("Cash Incentives ($):");
 
         dpLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         dpLabel.setForeground(new java.awt.Color(102, 102, 102));
-        dpLabel.setText("Down Payment:");
+        dpLabel.setText("Down Payment ($):");
 
         tivLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tivLabel.setForeground(new java.awt.Color(102, 102, 102));
-        tivLabel.setText("Trade-In Value:");
+        tivLabel.setText("Trade-In Value ($):");
 
         aotLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         aotLabel.setForeground(new java.awt.Color(102, 102, 102));
-        aotLabel.setText("Amount Owed On Trade-In:");
+        aotLabel.setText("Amount Owed On Trade-In ($):");
 
         stLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         stLabel.setForeground(new java.awt.Color(102, 102, 102));
-        stLabel.setText("Sales Tax:");
+        stLabel.setText("Sales Tax ($):");
 
         ofLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ofLabel.setForeground(new java.awt.Color(102, 102, 102));
-        ofLabel.setText("Other Fees:");
+        ofLabel.setText("Other Fees ($):");
 
         autoPriceTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         autoPriceTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -495,7 +495,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                             .addComponent(aotLabel)
                             .addComponent(stLabel)
                             .addComponent(ofLabel)
-                            .addComponent(dpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dpLabel))
                         .addGap(60, 60, 60)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(downPaymentTextField, javax.swing.GroupLayout.Alignment.LEADING)
@@ -510,7 +510,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(188, 188, 188)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
