@@ -20,12 +20,8 @@ import javax.swing.ImageIcon;
 
 // TODOS:
 /*
-    Add USD to currencies
-    Check values with online version
-    Commas and decimals
-    Dict of currency symbols
-    Option for top 10 most popular currencies
-    Fixed horizontal length and line wrapping for text boxes
+    Popular currencies
+    Flags?
 */
 
 
@@ -50,7 +46,6 @@ public class currency_calc extends javax.swing.JFrame {
         images.put("Chilean Pes", "Chile.gif");
         images.put("Hong Kong Dollar", "Hong Kong.gif");
         images.put("Hungarian Forint", "Hungary.gif");
-        
         images.put("Mexican Peso", "Mexcio.gif");
         images.put("New Zealand Dollar", "New Zealand.gif");
         images.put("Norwegian Krone", "Norway.gif");
@@ -208,8 +203,9 @@ public class currency_calc extends javax.swing.JFrame {
     }
     
     public void currencyValidate(Object oldCurr, Object newCurr, String oldAmt) {
-        if (oldCurr != "" && newCurr != "") {
+        if (oldCurr != "" && newCurr != "" && !oldAmt.equals("")) {
             Double newAmt = 0.0;
+            oldAmt = String.valueOf(Math.abs(Double.valueOf(oldAmt)));
             curr1.setText(String.valueOf(oldCurr));
             curr2.setText(String.valueOf(newCurr));
             
@@ -232,6 +228,8 @@ public class currency_calc extends javax.swing.JFrame {
                 
                 String result = Helper.getSymbol(newCurr, newAmt);
                 newCurrAmt.setText(result);
+                String initial = Helper.getSymbol(oldCurr, Double.valueOf(oldAmt));
+                oldCurrAmt.setText(initial);
                 errLabel.setText("");
             }
             catch (NumberFormatException e) {
@@ -249,7 +247,6 @@ public class currency_calc extends javax.swing.JFrame {
         else {
             errLabel.setVisible(false);
         }
-        // If all 3 are filled, Call convert()
     }
     
     public static void main(String args[]) {

@@ -89,7 +89,12 @@ public class currency_calcTest {
             {"Australian Dollar", "Trinidadian Dollar", "2500", 11160},
             {"Australian Dollar", "Turkish Lira", "2500", 56453},
             {"Australian Dollar", "US Dollar", "2500", 1652},
-            {"Australian Dollar", "Venezuelan Bolivar", "2500", 2147483647}
+            {"Australian Dollar", "Venezuelan Bolivar", "5", 13691327},
+            
+            // Checking currencies with low rates
+            {"Iranian Rial", "Euro", "2000000", 44},
+            {"Iranian Rial", "Japanese Yen", "2000000", 7277},
+            {"Israeli Shekel", "Venezuelan Bolivar", "200", 223007871},
         });
     }
     /**
@@ -108,7 +113,7 @@ public class currency_calcTest {
         System.out.println(5 + (result * expResult/result));
         assertEquals(expResult, result, result * 0.05);
     }
-
+    
     /**
      * Test of currencyValidate method, of class currency_calc.
     @Test
