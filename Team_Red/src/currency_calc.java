@@ -5,11 +5,11 @@
 
 
 import java.awt.Image;
+import java.util.Arrays;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 
@@ -31,12 +31,40 @@ public class currency_calc extends javax.swing.JFrame {
      * Creates new form currency_calc
      */
     Map<String, Double> conversionTable = Helper.webScraper();
+    Map<String, Double> populars = new HashMap<>();
+    DefaultComboBoxModel<String> popComboModel = new DefaultComboBoxModel <String>();
+    DefaultComboBoxModel<String> comboModel1 = new DefaultComboBoxModel <String>();
+    DefaultComboBoxModel<String> comboModel2 = new DefaultComboBoxModel <String>();
     Map<String, String> images = new HashMap<>();
     
     public currency_calc() {
         initComponents();
         curr1.setText("");
         curr2.setText("");
+        
+        String[] pops = {"Australian Dollar",
+                         "Brazilian Real",
+                         "Canadian Dollar",
+                         "Swiss Franc",
+                         "Chinese Yuan Renminbi",
+                         "Euro",
+                         "British Pound",
+                         "Hong Kong Dollar",
+                         "Indian Rupee",
+                         "Japanese Yen",
+                         "South Korean Won",
+                         "Mexican Peso",
+                         "Russian Ruble",
+                         "Singapore Dollar",
+                         "US Dollar",
+                         "South African Rand"
+        };
+        for (String key : conversionTable.keySet()){
+            if (Arrays.asList(pops).contains(key)) {
+                populars.put(key, conversionTable.get(key));
+                popComboModel.addElement(key);
+            }
+        }
         
         // Populate images dict
         images.put("Argentine Peso", "Argetina.gif");
@@ -65,8 +93,6 @@ public class currency_calc extends javax.swing.JFrame {
         // Adding them to the two combo boxes
         //Map<String, Double> conversionTable = Helper.webScraper();
         System.out.println("\n" + conversionTable.get("Euro"));
-        DefaultComboBoxModel<String> comboModel1 = new DefaultComboBoxModel <String>();
-        DefaultComboBoxModel<String> comboModel2 = new DefaultComboBoxModel <String>();
         for (String key : conversionTable.keySet()){
             comboModel1.addElement(key);
             comboModel2.addElement(key);
@@ -96,6 +122,7 @@ public class currency_calc extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         curr1 = new javax.swing.JLabel();
         curr2 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(550, 375));
@@ -146,7 +173,7 @@ public class currency_calc extends javax.swing.JFrame {
         newCurrAmt.setEditable(false);
         newCurrAmt.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(newCurrAmt, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 130, 49));
-        getContentPane().add(fromFlag, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 120, 70));
+        getContentPane().add(fromFlag, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 120, 70));
         getContentPane().add(toFlag, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 120, 70));
 
         jLabel1.setText("From");
@@ -162,6 +189,14 @@ public class currency_calc extends javax.swing.JFrame {
         curr2.setFont(new java.awt.Font("Arial Unicode MS", 1, 14)); // NOI18N
         curr2.setText("Currency2");
         getContentPane().add(curr2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, -1, -1));
+
+        jCheckBox1.setText("Popular currencies only");
+        jCheckBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBox1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -184,6 +219,17 @@ public class currency_calc extends javax.swing.JFrame {
         oldCurrDrop.setSelectedItem(newCurr);
         newCurrDrop.setSelectedItem(oldCurr);
     }//GEN-LAST:event_flipMouseClicked
+
+    private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
+        if (oldCurrDrop.getModel() == popComboModel) {
+            oldCurrDrop.setModel(comboModel1);
+            newCurrDrop.setModel(comboModel2);
+        }
+        else {
+            oldCurrDrop.setModel(popComboModel);
+            newCurrDrop.setModel(popComboModel);
+        }
+    }//GEN-LAST:event_jCheckBox1MouseClicked
 
     /**
      * @param oldCurr
@@ -287,6 +333,7 @@ public class currency_calc extends javax.swing.JFrame {
     private javax.swing.JLabel errLabel;
     private javax.swing.JButton flip;
     private javax.swing.JLabel fromFlag;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField newCurrAmt;
