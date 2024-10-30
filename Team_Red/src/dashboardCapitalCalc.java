@@ -24,8 +24,8 @@ public class dashboardCapitalCalc extends javax.swing.JFrame {
     CardLayout cardLayout;
     public dashboardCapitalCalc() {
         initComponents();
-       landingScreenImageLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("Banner (6).png")).getImage()));
-       Component [] components = this.getContentPane().getComponents();
+        landingScreenImageLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("Banner (6).png")).getImage()));
+        Component [] components = this.getContentPane().getComponents();
         for(Component component : components)
         {
             if(component instanceof JButton jButton)
@@ -216,7 +216,6 @@ public class dashboardCapitalCalc extends javax.swing.JFrame {
         titleLabel.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         titleLabel.setText("Financial Calculators");
 
-        landingScreenImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Banner (6).png"))); // NOI18N
         landingScreenImageLabel.setText(".");
 
         bottomTitleLabel.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
@@ -264,13 +263,12 @@ public class dashboardCapitalCalc extends javax.swing.JFrame {
             landingScreenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(landingScreenPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(landingScreenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(landingScreenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bottomTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bottomSubtitleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(landingScreenImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 872, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(landingScreenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(bottomSubtitleLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bottomeSubtittleLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(bottomSubtitleLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bottomeSubtittleLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(landingScreenImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 872, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(landingScreenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, landingScreenPanelLayout.createSequentialGroup()
