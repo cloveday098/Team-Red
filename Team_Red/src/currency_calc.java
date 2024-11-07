@@ -20,8 +20,8 @@ import javax.swing.ImageIcon;
 
 // TODOS:
 /*
-    Popular currencies
     Flags?
+    Arrow doesn't work 
 */
 
 

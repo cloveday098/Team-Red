@@ -77,7 +77,11 @@ public class dashboardNew extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     System.out.println("Loan");
-                    JOptionPane.showMessageDialog(null, "This page is under construction...", "Loan Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                    AutoLoanCalculator autoLoan = new AutoLoanCalculator();
+                    autoLoan.setSize(1084, 750);
+                    autoLoan.setResizable(false);
+                    autoLoan.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "This page is under construction...", "Loan Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
                 }        
             });
             retirementBtn.addActionListener(new ActionListener() {
@@ -91,7 +95,11 @@ public class dashboardNew extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     System.out.println("Currency");
-                    JOptionPane.showMessageDialog(null, "This page is under construction...", "Currency Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                    currency_calc currPage = new currency_calc();
+                    currPage.setSize(600, 400);
+                    currPage.setResizable(false);
+                    currPage.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "This page is under construction...", "Currency Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
                 }        
             });
             mortgageBtn.addActionListener(new ActionListener() {
