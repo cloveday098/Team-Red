@@ -5,6 +5,8 @@
 
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Dictionary;
 import java.util.HashMap;
@@ -12,6 +14,7 @@ import java.util.Hashtable;
 import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *
@@ -115,6 +118,7 @@ public class currency_calc extends javax.swing.JFrame {
         oldCurrAmt = new javax.swing.JTextField();
         errLabel = new javax.swing.JLabel();
         flip = new javax.swing.JButton();
+        quitBtn = new javax.swing.JButton();
         newCurrAmt = new javax.swing.JTextField();
         fromFlag = new javax.swing.JLabel();
         toFlag = new javax.swing.JLabel();
@@ -128,6 +132,16 @@ public class currency_calc extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(550, 375));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        quitBtn.setBackground(new java.awt.Color(0, 0, 0));
+        quitBtn.setForeground(new java.awt.Color(255, 255, 255));
+        quitBtn.setText("Quit");
+        quitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quitbtnMouseClicked(evt);
+            }
+        });
+        getContentPane().add(quitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
+        
         oldCurrDrop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         oldCurrDrop.setName(""); // NOI18N
         oldCurrDrop.addActionListener(new java.awt.event.ActionListener() {
@@ -220,6 +234,10 @@ public class currency_calc extends javax.swing.JFrame {
         newCurrDrop.setSelectedItem(oldCurr);
     }//GEN-LAST:event_flipMouseClicked
 
+    private void quitbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flipMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_flipMouseClicked
+    
     private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
         if (oldCurrDrop.getModel() == popComboModel) {
             oldCurrDrop.setModel(comboModel1);
@@ -230,7 +248,7 @@ public class currency_calc extends javax.swing.JFrame {
             newCurrDrop.setModel(popComboModel);
         }
     }//GEN-LAST:event_jCheckBox1MouseClicked
-
+    
     /**
      * @param oldCurr
      * @param newCurr
@@ -341,5 +359,6 @@ public class currency_calc extends javax.swing.JFrame {
     private javax.swing.JTextField oldCurrAmt;
     private javax.swing.JComboBox<String> oldCurrDrop;
     private javax.swing.JLabel toFlag;
+    private javax.swing.JButton quitBtn;
     // End of variables declaration//GEN-END:variables
 }
