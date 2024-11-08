@@ -6,6 +6,8 @@ import java.awt.Component;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -32,10 +34,10 @@ public class dashboardNew extends javax.swing.JPanel {
     public static void main(String[] args) {
         ImageIcon icon = null;
         try {
-            icon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/dashboard.png"))
-                    .getImage().getScaledInstance(1550, 950, Image.SCALE_SMOOTH));
-            //icon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/Banner_(6).png"))
+            //icon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/dashboard.png"))
             //        .getImage().getScaledInstance(1550, 950, Image.SCALE_SMOOTH));
+            icon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/dashboard_noLeft.png"))
+                    .getImage().getScaledInstance(1550, 950, Image.SCALE_SMOOTH));
             ImageIcon popupIcon = new ImageIcon("images/CapitalCal_Icon.png");
             Image background = icon.getImage();
             
@@ -71,6 +73,7 @@ public class dashboardNew extends javax.swing.JPanel {
             mortgageBtn.setBounds(1231, 594, 215, 97);
             mortgageBtn.setBorderPainted(false);
             mortgageBtn.setPreferredSize(new Dimension(mortgageIcon.getIconWidth(), mortgageIcon.getIconHeight()));
+            
             
             // Action Listeners for Buttons
             loanBtn.addActionListener(new ActionListener() {
@@ -110,12 +113,110 @@ public class dashboardNew extends javax.swing.JPanel {
                 }        
             });
 
+
+            // Labels for Left-Side Panel
+            JLabel aboutLabel = new JLabel("About");
+            aboutLabel.setForeground(Color.white);
+            aboutLabel.setFont(new Font("Arial", 0, 18));
+            aboutLabel.setBounds(40, 200, 200, 50);
+            
+            JLabel authorLabel = new JLabel("Author");
+            authorLabel.setForeground(Color.white);
+            authorLabel.setFont(new Font("Arial", 0, 18));
+            authorLabel.setBounds(40, 240, 200, 50);
+            
+            JLabel resourcesLabel = new JLabel("Resources");
+            resourcesLabel.setForeground(Color.white);
+            resourcesLabel.setFont(new Font("Arial", 0, 18));
+            resourcesLabel.setBounds(40, 280, 200, 50);
+            
+            
+            JLabel investLabel = new JLabel("Investment");
+            investLabel.setForeground(Color.white);
+            investLabel.setFont(new Font("Arial", 0, 18));
+            investLabel.setBounds(40, 400, 200, 50);
+            
+            JLabel mortgageLabel = new JLabel("Real Estate");
+            mortgageLabel.setForeground(Color.white);
+            mortgageLabel.setFont(new Font("Arial", 0, 18));
+            mortgageLabel.setBounds(40, 460, 200, 50);
+            
+            JLabel retireLabel = new JLabel("Retirement");
+            retireLabel.setForeground(Color.white);
+            retireLabel.setFont(new Font("Arial", 0, 18));
+            retireLabel.setBounds(40, 520, 200, 50);
+            
+            JLabel miscLabel = new JLabel("Misc. Calculators");
+            miscLabel.setForeground(Color.white);
+            miscLabel.setFont(new Font("Arial", 0, 18));
+            miscLabel.setBounds(40, 580, 200, 50);
+            
+            
+            aboutLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    System.out.println("About");
+                    JOptionPane.showMessageDialog(null, "This page is under construction...", "About Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                }
+            });
+            authorLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    System.out.println("Authors");
+                    JOptionPane.showMessageDialog(null, "This page is under construction...", "Authors Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                }
+            });
+            resourcesLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    System.out.println("Resources");
+                    JOptionPane.showMessageDialog(null, "This page is under construction...", "Resources Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                }
+            });
+            investLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    System.out.println("Investment");
+                    JOptionPane.showMessageDialog(null, "This page is under construction...", "Investment Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                }
+            });
+            mortgageLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    System.out.println("Mortgage");
+                    JOptionPane.showMessageDialog(null, "This page is under construction...", "Real Estate Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                }
+            });
+            retireLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    System.out.println("Retirement");
+                    JOptionPane.showMessageDialog(null, "This page is under construction...", "Retirement Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                }
+            });
+            miscLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    System.out.println("Misc");
+                    JOptionPane.showMessageDialog(null, "This page is under construction...", "Misc. Calculators Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                }
+            });
+            
             dashboardNew panel = new dashboardNew(background);
             panel.add(loanBtn);
             panel.add(retirementBtn);
             panel.add(currencyBtn);
             panel.add(mortgageBtn);
-
+            
+            panel.add(aboutLabel);
+            panel.add(authorLabel);
+            panel.add(resourcesLabel);
+            panel.add(investLabel);
+            panel.add(mortgageLabel);
+            panel.add(retireLabel);
+            panel.add(miscLabel);
+            
+            
             //JLabel label = new JLabel("Hello on an Image!");
             //label.setBounds(50, 50, 200, 30); // Absolute positioning
             //JButton button = new JButton("Click Me");
