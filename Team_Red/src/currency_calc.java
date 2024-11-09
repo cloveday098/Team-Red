@@ -15,6 +15,7 @@ import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -101,7 +102,14 @@ public class currency_calc extends javax.swing.JFrame {
             comboModel2.addElement(key);
         }
         oldCurrDrop.setModel(comboModel1);
-        newCurrDrop.setModel(comboModel2);   
+        newCurrDrop.setModel(comboModel2);
+        
+        /*ImageIcon currencyIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/Currency.png"))
+                    .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
+        JLabel currencyPic = new JLabel(currencyIcon);
+        currencyPic.setBounds(50, 100, 100, 100);
+        this.add(currencyPic);
+        */
     }
 
     /**
