@@ -1,33 +1,40 @@
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class calcPage4_misc extends javax.swing.JPanel {
 
     public calcPage4_misc() {
+        this.setLayout(null);
         
-    }
-    public static void main(String[] args) {
+        JLabel title4 = new JLabel("Miscellaneous Calculators");
+        title4.setForeground(Color.black);
+        title4.setFont(new Font("Arial", 0, 24));
+        title4.setBounds(350, 50, 400, 50);
+        
         try{
             // 1) Auto Loan
-            //ImageIcon currencyIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/currencyIcon.png"))
-            //        .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
+            ImageIcon loanIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/loanButtonIcon.png"))
+                    .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
             JButton autoLoanBtn = new JButton("Auto Loan");
             autoLoanBtn.setBounds(200, 200, 215, 97);
             autoLoanBtn.setBorderPainted(false);
-            //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
+            autoLoanBtn.setPreferredSize(new Dimension(loanIcon.getIconWidth(), loanIcon.getIconHeight()));
 
             // 2) Currency
             ImageIcon currencyIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/currencyIcon.png"))
                     .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
             JButton currencyBtn = new JButton("Currency", currencyIcon);
-            currencyBtn.setBounds(200, 400, 215, 97);
+            currencyBtn.setBounds(500, 200, 215, 97);
             currencyBtn.setBorderPainted(false);
             currencyBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
             
@@ -50,22 +57,30 @@ public class calcPage4_misc extends javax.swing.JPanel {
                 }        
             });
             
-            
-            calcPage4_misc panel = new calcPage4_misc();
-            panel.add(autoLoanBtn);
-            panel.add(currencyBtn);
+            this.add(title4);
+            this.add(autoLoanBtn);
+            this.add(currencyBtn);
             
             JFrame frame = new JFrame("Misc. Calculators");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(400, 300);
-            frame.add(panel);
+            frame.setSize(1000, 750);
+            frame.add(this);
             frame.setVisible(true);
         }
         catch (NullPointerException e) {
             System.out.println("Image not found! Please check the path!");
         }
-        
     }
+    
+    
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new calcPage4_misc().setVisible(true);
+            }
+        });
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

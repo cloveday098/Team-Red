@@ -22,7 +22,7 @@ public class dashboardNew extends javax.swing.JPanel {
     private Image backgroundImage;
     public dashboardNew(Image img) {
         this.backgroundImage = img;
-        setLayout(null);
+        this.setLayout(null);
     }
      @Override
     protected void paintComponent(Graphics g) {
@@ -177,28 +177,42 @@ public class dashboardNew extends javax.swing.JPanel {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     System.out.println("Investment");
-                    JOptionPane.showMessageDialog(null, "This page is under construction...", "Investment Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                    calcPage1_investment calc1 = new calcPage1_investment();
+                    calc1.setSize(1000, 750);
+                    //calc1.setResizable(false);
+                    calc1.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "This page is under construction...", "Investment Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
                 }
             });
             mortgageLabel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    System.out.println("Mortgage");
-                    JOptionPane.showMessageDialog(null, "This page is under construction...", "Real Estate Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                    System.out.println("Real-Estate");
+                    calcPage2_mortgage calc2 = new calcPage2_mortgage();
+                    calc2.setSize(1000, 750);
+                    calc2.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "This page is under construction...", "Real Estate Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
                 }
             });
             retireLabel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     System.out.println("Retirement");
-                    JOptionPane.showMessageDialog(null, "This page is under construction...", "Retirement Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                    calcPage3_retirement calc3 = new calcPage3_retirement();
+                    calc3.setSize(1000, 750);
+                    calc3.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "This page is under construction...", "Retirement Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
                 }
             });
             miscLabel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     System.out.println("Misc");
-                    JOptionPane.showMessageDialog(null, "This page is under construction...", "Misc. Calculators Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
+                    calcPage4_misc calc4 = new calcPage4_misc();
+                    calc4.setSize(1000, 750);
+                    //calc4.setResizable(false);
+                    calc4.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "This page is under construction...", "Misc. Calculators Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
                 }
             });
             
