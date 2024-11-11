@@ -73,6 +73,9 @@ public class interest2 extends javax.swing.JFrame {
         jTextField10 = new javax.swing.JTextField();
         jTextField11 = new javax.swing.JTextField();
         jTextField12 = new javax.swing.JTextField();
+        jTextField13 = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -101,6 +104,7 @@ public class interest2 extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Calculate");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -113,6 +117,7 @@ public class interest2 extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(183, 183, 183));
+        jButton2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jButton2.setText("Clear");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,18 +137,14 @@ public class interest2 extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.setEditable(false);
         jTextField2.setBackground(new java.awt.Color(199, 219, 252));
-        jTextField2.setText("0");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
 
-        jTextField3.setEditable(false);
         jTextField3.setBackground(new java.awt.Color(199, 219, 252));
-        jTextField3.setText("0");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -363,6 +364,12 @@ public class interest2 extends javax.swing.JFrame {
 
         jTextField11.setEditable(false);
 
+        jLabel24.setForeground(new java.awt.Color(66, 133, 244));
+        jLabel24.setText("(Before Interest)");
+
+        jLabel26.setForeground(new java.awt.Color(66, 133, 244));
+        jLabel26.setText("(After Interest)");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -385,14 +392,22 @@ public class interest2 extends javax.swing.JFrame {
                             .addComponent(jLabel15))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                            .addComponent(jTextField11)
-                            .addComponent(jTextField12))))
-                .addContainerGap(56, Short.MAX_VALUE))
+                            .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                            .addComponent(jTextField12)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(jLabel24)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel26)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(145, 145, 145))
+                .addGap(153, 153, 153))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,11 +422,16 @@ public class interest2 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel26))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -419,7 +439,7 @@ public class interest2 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
@@ -433,7 +453,7 @@ public class interest2 extends javax.swing.JFrame {
         jLabel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
 
         jLabel25.setBackground(new java.awt.Color(199, 219, 252));
-        jLabel25.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(66, 133, 244));
         jLabel25.setText(" ? ");
         jLabel25.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 133, 244), 4, true));
@@ -465,7 +485,7 @@ public class interest2 extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 320, Short.MAX_VALUE)
+                                .addGap(0, 319, Short.MAX_VALUE)
                                 .addComponent(jButton3))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -474,8 +494,7 @@ public class interest2 extends javax.swing.JFrame {
                         .addGap(13, 13, 13)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -487,7 +506,7 @@ public class interest2 extends javax.swing.JFrame {
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 23, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,13 +517,13 @@ public class interest2 extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel8)
                                 .addGap(34, 34, 34)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))))
+                        .addGap(54, 54, 54))))
         );
 
         pack();
@@ -533,46 +552,50 @@ public class interest2 extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {                                      
         // TODO add your handling code here:
         if (jTextField1.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Enter a value for Initial Investment.");
+                JOptionPane.showMessageDialog(null, "Enter a value for Initial Investment.");
         }
-        if (financialCalcHelper.isPos(Double.parseDouble(jTextField1.getText())) == false) {
-            JOptionPane.showMessageDialog(null, "INPUT INVALID: Initial Investment must be greater than 0. Try again!");
+        if (Helper.isValidNumber(Double.parseDouble(jTextField1.getText())) == false) {
+            JOptionPane.showMessageDialog(null, "INPUT INVALID: Initial Investment must be numeric. Try again!");
+        } else if (Double.parseDouble(jTextField1.getText()) < 0) {
+            JOptionPane.showMessageDialog(null, "INPUT INVALID: Initial Investment cannot be negative. Try again!");
         }
-        if (Integer.parseInt(jTextField2.getText()) != 0) {
-            if (jTextField2.getText().isEmpty()) {
+        if (jTextField2.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Enter a value for Annual Contribution.");
-            }
-            if (financialCalcHelper.isPos(Double.parseDouble(jTextField2.getText())) == false) {
-                JOptionPane.showMessageDialog(null, "INPUT INVALID: Annual Contribution must be greater than or equal to 0. Try again!");
-            }
+        }            
+        if (Double.parseDouble(jTextField2.getText()) != 0 & Helper.isPos(Double.parseDouble(jTextField2.getText())) == false) {
+            JOptionPane.showMessageDialog(null, "INPUT INVALID: Annual Contribution must be greater than or equal to 0. Try again!");
         }
-        if (Integer.parseInt(jTextField3.getText()) != 0) {
-            if (jTextField3.getText().isEmpty()) {
+        if (jTextField3.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Enter a value for Monthly Contribution.");
-            }
-            if (financialCalcHelper.isPos(Double.parseDouble(jTextField3.getText())) == false) {
-                JOptionPane.showMessageDialog(null, "INPUT INVALID: Monthly Contribution must be greater than or equal to 0. Try again!");
-            }
+        }            
+        if (Double.parseDouble(jTextField3.getText()) != 0 & Helper.isPos(Double.parseDouble(jTextField2.getText())) == false) {
+            JOptionPane.showMessageDialog(null, "INPUT INVALID: Monthly Contribution must be greater than or equal to 0. Try again!");
         }
         if (jTextField4.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Interest Rate.");
         }
-        if ((financialCalcHelper.isPos(Double.parseDouble(jTextField4.getText())) == false) || (Double.parseDouble(jTextField4.getText()) > 100)) {
+        if ((Helper.isValidNumber(Double.parseDouble(jTextField4.getText())) == false) || Math.abs(Double.parseDouble(jTextField4.getText())) > 100) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Interest Rate must be between 0 and 100. Try again!");
         }
         if (jTextField6.getText().isEmpty() || jTextField7.getText().isEmpty())  {
             JOptionPane.showMessageDialog(null, "Enter values for Investment Length.");        
         }
-        if ((Double.parseDouble(jTextField6.getText()) == 0) && (Double.parseDouble(jTextField7.getText()) == 0)){
+        if ((Double.parseDouble(jTextField6.getText()) == 0) && (Double.parseDouble(jTextField7.getText()) == 0)) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Investment Length cannot be 0. Try again!");                    
         }
-        if (Integer.parseInt(jTextField8.getText()) != 0) {
-            if (jTextField8.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Enter a value for Inflation Rate.");
-            }
-            if ((financialCalcHelper.isPos(Double.parseDouble(jTextField8.getText())) == false) || (Double.parseDouble(jTextField8.getText()) > 100)) {
-                JOptionPane.showMessageDialog(null, "INPUT INVALID: Inflation Rate must be between 0 and 100. Try again!");
-            }
+        else if (Helper.isValidNumber(Double.parseDouble(jTextField6.getText())) == false) {
+            
+        }
+        else if (Double.parseDouble(jTextField6.getText()) < 0 || (Double.parseDouble(jTextField7.getText()) < 0) ) {
+            JOptionPane.showMessageDialog(null, "INPUT INVALID: Investment Length must be a positive number. Try again!");
+        }
+       
+        if (jTextField8.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter a value for Inflation Rate.");
+        } else if (Helper.isValidNumber(Double.parseDouble(jTextField8.getText())) == false) {
+            JOptionPane.showMessageDialog(null, "INPUT INVALID: Inflation Rate must be between 0 and 100. Try again!");
+        } else if (Math.abs(Double.parseDouble(jTextField8.getText())) > 100) {
+            JOptionPane.showMessageDialog(null, "INPUT INVALID: Inflation Rate must be between 0 and 100. Try again!");
         }
         
         String selectedItem = (String) jComboBox1.getSelectedItem();
@@ -595,17 +618,18 @@ public class interest2 extends javax.swing.JFrame {
             timesCompounded = Math.E;
         }
         
-        double endingBal = (double) financialCalcHelper.findIntWithTax(Double.parseDouble(jTextField1.getText()), 0, Double.parseDouble(jTextField4.getText()), timesCompounded, Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()), Double.parseDouble(jTextField8.getText()), Double.parseDouble(jTextField2.getText()), Double.parseDouble(jTextField3.getText()));
+        double endingBal = (double) Helper.findIntWithTax(Double.parseDouble(jTextField1.getText()), 0, Double.parseDouble(jTextField4.getText()), timesCompounded, Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()), Double.parseDouble(jTextField8.getText()), Double.parseDouble(jTextField2.getText()), Double.parseDouble(jTextField3.getText()));
         jTextField9.setText(String.format("%.2f",endingBal));
-        double principle = Double.parseDouble(jTextField1.getText());
+        double principle = Double.parseDouble(jTextField1.getText()) + ((Double.parseDouble(jTextField2.getText()) + (12 * Double.parseDouble(jTextField3.getText()))) * (Double.parseDouble(jTextField6.getText()) + (Double.parseDouble(jTextField7.getText()) / 12)) );
         jTextField5.setText(String.format("%.2f", principle));
-        double contributions = ((Double.parseDouble(jTextField2.getText()) + 12 * (Double.parseDouble(jTextField3.getText())))) * (Double.parseDouble(jTextField6.getText()) + (12 * Double.parseDouble(jTextField7.getText())));
-        jTextField10.setText(String.format("%.2f", contributions));
         double displayInt = endingBal - principle;
         jTextField11.setText(String.format("%.2f", displayInt));
-        double inflatedVal = (double) financialCalcHelper.handleInflation(endingBal, Double.parseDouble(jTextField8.getText()), Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()));
+        double inflatedVal = (double) Helper.handleInflation(endingBal, Double.parseDouble(jTextField8.getText()), Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()));
         jTextField12.setText(String.format("%.2f", inflatedVal));
-        
+        double totalContr = (double) Helper.displayContributions(Double.parseDouble(jTextField4.getText()), timesCompounded, Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()), Double.parseDouble(jTextField2.getText()), Double.parseDouble(jTextField3.getText()));
+        jTextField13.setText(String.format("%.2f", totalContr));
+        double contrWOInterest = Helper.contributionsNoInt(Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()), Double.parseDouble(jTextField2.getText()), Double.parseDouble(jTextField3.getText()));
+        jTextField10.setText(String.format("%.2f", contrWOInterest));
     }                                     
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {                                      
@@ -705,7 +729,9 @@ public class interest2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -720,6 +746,7 @@ public class interest2 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
