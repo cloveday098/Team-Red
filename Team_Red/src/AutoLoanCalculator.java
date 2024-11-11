@@ -25,7 +25,6 @@ import javax.swing.ImageIcon;
  * @author 5678m
  */
 public class AutoLoanCalculator extends javax.swing.JFrame {
-
     /**
      * Creates new form AutoLoanCalculator
      */
