@@ -8,13 +8,17 @@
  * @author litchar
  */
 public class interestCalculator {
-
     public static double handleInflation(double finalAmt, double inflation, double years, double months) {
         double inflationRate = inflation / 100;
         double length = years + (months / 12);
         double denom = Math.pow((1 + inflationRate), length);
         double inflatedAmount = finalAmt / denom;
         return inflatedAmount;
+    public static double findCont(double initial, double interest, int years) {
+        double interestRate = interest / 100;
+        double e = Math.E;
+        double finalAmt = initial * Math.pow(e, (interestRate * years));
+        return finalAmt;
     }
     
     public static double displayContributions(double interest, double compound, double years, double months, double annualContr, double monthlyContr) {
@@ -50,6 +54,10 @@ public class interestCalculator {
     public static double findIntWithTax(double initial, double tax, double interest, double compound, double years, double months, double inflation, double annualContr, double monthlyContr) {
         double compoundRate = (double) (interest / 100);
         double totalDurationInYrs = (double) (years + (months /12));
+        if (compound == Math.E) {
+            double amt = findCont(initial, interest, years);
+            return amt;
+        }
         double taxRate = tax / 100;
         double contributionsPerYr = annualContr + (monthlyContr * 12);
         
@@ -64,7 +72,8 @@ public class interestCalculator {
                 return amt + contsAfterInt;
             }
         }
-       
+
+        // find interest on totalContributions and add to final val?????
         double contributionsInt;
         if (contributionsPerYr != 0) {
             double contrGrowth = (1 + (compoundRate / compound));
@@ -76,33 +85,34 @@ public class interestCalculator {
         } else {
             contributionsInt = 0;
         }
+
+        // tax handling below; turned out to be too complex!
         
         double totalInt = (initial) * Math.pow(1 + (compoundRate/compound), (totalDurationInYrs * compound));
         //double totalInt = (initial) * Math.pow(1 + (compoundRate/compound), (totalDurationInYrs * compound));
         double interestYrPrior = (initial) * Math.pow((1 + (compoundRate/compound)),((totalDurationInYrs - 1) * compound));
-        System.out.print("Interest for Year prior to LAST! = " + interestYrPrior + '\n');
+        //System.out.print("Interest for Year prior to LAST! = " + interestYrPrior + '\n');
         double interestForLastYr = totalInt - interestYrPrior;
-        System.out.print("Interest for Last YR After Tax = " + interestForLastYr + '\n');
+        //System.out.print("Interest for Last YR After Tax = " + interestForLastYr + '\n');
         
         double interestForFirstYr = compoundRate * initial;
-        System.out.print("Interest for first After Tax = " + interestForFirstYr + '\n');
+        //System.out.print("Interest for first After Tax = " + interestForFirstYr + '\n');
         double totalTaxBegin = taxRate * interestForFirstYr;
         double totalTaxEnd = taxRate * interestForLastYr;
-        System.out.print("Interest rate for Last year= " + totalTaxEnd + '\n');
+        //System.out.print("Interest rate for Last year= " + totalTaxEnd + '\n');
  
         
         double diff = totalTaxEnd - totalTaxBegin;
         double changeInTax = diff / totalDurationInYrs; 
-        //tax = totalTaxBegin;
+        tax = totalTaxBegin;
         
-        totalInt += contributionsInt;        
+        totalInt += contributionsInt;
         
-        System.out.print("Ending Balance: " + totalInt +"\n");
+        //System.out.print("Ending Balance: " + totalInt +"\n");
         
        //if (inflation != 0) {
             //handleInflation(totalInt, inflation);  
         // }
         return totalInt;     
     }    
-  
 }

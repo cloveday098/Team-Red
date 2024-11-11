@@ -26,7 +26,7 @@ public class HelperTest {
         int n = 0;
         Helper instance = new Helper();
         boolean expResult = false;
-        boolean result = instance.isPos(n);
+        boolean result = instance.isPos(String.valueOf(n));
         assertEquals(expResult, result);
     }
 
