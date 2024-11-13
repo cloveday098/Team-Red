@@ -542,7 +542,7 @@ public class interest2 extends javax.swing.JFrame {
         if (jTextField2.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Enter a value for Annual Contribution.");
         }            
-        if (Double.parseDouble(jTextField2.getText()) != 0 & financialCalcHelper.isPos(Double.parseDouble(jTextField2.getText())) == false) {
+        if (Double.parseDouble(jTextField2.getText()) != 0 & Helper.isPos(String.valueOf(Double.parseDouble(jTextField2.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Annual Contribution must be greater than or equal to 0. Try again!");
         }
         if (jTextField3.getText().isEmpty()) {
