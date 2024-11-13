@@ -118,8 +118,6 @@ public class Helper {
         double salesTaxNum = Double.parseDouble(salesTax);
         double otherFeesNum = Double.parseDouble(otherFees);
         
-        double testingValuesWithFees[];
-        double testingValuesNoFees[];
         
         if (isAllZeroInputs(autoPriceNum, loanTermNum, interestRateNum, cashIncentivesNum, downPaymentNum, tradeInValueNum, amtOwedTradeInNum, salesTaxNum, otherFeesNum)) {
             JOptionPane.showMessageDialog(null, "All values can not be zero.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
@@ -150,23 +148,6 @@ public class Helper {
         if(cashIncentivesNum >= autoPriceNum){
             JOptionPane.showMessageDialog(null, "Cash incentives can not be more than or equal to the auto price.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             return false;
-        }
-        
-        testingValuesWithFees = Helper.autoLoanCalculatorWithFees(autoPriceNum, loanTermNum, interestRateNum, cashIncentivesNum, downPaymentNum, tradeInValueNum, amtOwedTradeInNum, salesTaxNum, otherFeesNum);
-
-        for (double value : testingValuesWithFees) {
-            if (value < 0) {
-                JOptionPane.showMessageDialog(null, "One or more calculated values are negative. Please check your inputs!", "Calculation Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-        }
-        
-        testingValuesNoFees = Helper.autoLoanCalculatorWithoutFee(autoPriceNum, loanTermNum, interestRateNum, cashIncentivesNum, downPaymentNum, tradeInValueNum, amtOwedTradeInNum, salesTaxNum, otherFeesNum);
-        for (double value : testingValuesNoFees) {
-            if (value < 0) {
-                JOptionPane.showMessageDialog(null, "One or more calculated values are negative. Please check your inputs!", "Calculation Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
         }
         
         return true;
@@ -335,6 +316,7 @@ public class Helper {
         double interestRateNum = Double.parseDouble(interestRate);
         int loanTermNum = Integer.parseInt(loanTerm);
         
+        
         if(xNum == 0 && downPaymentNum == 0 && closingCostNum == 0 && interestRateNum == 0 && loanTermNum == 0){
             JOptionPane.showMessageDialog(null, "All inputs can not be zero!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             return false;
@@ -354,6 +336,7 @@ public class Helper {
             JOptionPane.showMessageDialog(null, "Down payment can not be greater than or equal to 100% !", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+        
         return true;
     }
     
@@ -620,7 +603,7 @@ public class Helper {
             JOptionPane.showMessageDialog(null, "Cash available should not be greater than or eqaul to home price!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        
+       
         return true;
     }
     
