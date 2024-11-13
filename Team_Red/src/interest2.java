@@ -529,32 +529,12 @@ public class interest2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         if (jTextField1.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Enter a value for Initial Investment.");
         }
-        if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField1.getText())) == false) {
+        if (Helper.isValidNumer(String.valueOf(Double.parseDouble(jTextField1.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Initial Investment must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField1.getText()) < 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Initial Investment cannot be negative. Try again!");
@@ -568,13 +548,13 @@ public class interest2 extends javax.swing.JFrame {
         if (jTextField3.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Enter a value for Monthly Contribution.");
         }            
-        if (Double.parseDouble(jTextField3.getText()) != 0 & financialCalcHelper.isPos(Double.parseDouble(jTextField2.getText())) == false) {
+        if (Double.parseDouble(jTextField3.getText()) != 0 & Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField2.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Monthly Contribution must be greater than or equal to 0. Try again!");
         }
         if (jTextField4.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Interest Rate.");
         }
-        if ((financialCalcHelper.isNumeric(Double.parseDouble(jTextField4.getText())) == false) || Math.abs(Double.parseDouble(jTextField4.getText())) > 100) {
+        if ((Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField4.getText()))) == false) || Math.abs(Double.parseDouble(jTextField4.getText())) > 100) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Interest Rate must be between 0 and 100. Try again!");
         }
         if (jTextField6.getText().isEmpty() || jTextField7.getText().isEmpty())  {
@@ -583,7 +563,7 @@ public class interest2 extends javax.swing.JFrame {
         if ((Double.parseDouble(jTextField6.getText()) == 0) && (Double.parseDouble(jTextField7.getText()) == 0)) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Investment Length cannot be 0. Try again!");                    
         }
-        else if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField6.getText())) == false) {
+        else if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField6.getText()))) == false) {
             
         }
         else if (Double.parseDouble(jTextField6.getText()) < 0 || (Double.parseDouble(jTextField7.getText()) < 0) ) {
@@ -592,7 +572,7 @@ public class interest2 extends javax.swing.JFrame {
        
         if (jTextField8.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Inflation Rate.");
-        } else if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField8.getText())) == false) {
+        } else if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField8.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Inflation Rate must be between 0 and 100. Try again!");
         } else if (Math.abs(Double.parseDouble(jTextField8.getText())) > 100) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Inflation Rate must be between 0 and 100. Try again!");
@@ -618,19 +598,17 @@ public class interest2 extends javax.swing.JFrame {
             timesCompounded = Math.E;
         }
         
-        double endingBal = (double) financialCalcHelper.findIntWithTax(Double.parseDouble(jTextField1.getText()), 0, Double.parseDouble(jTextField4.getText()), timesCompounded, Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()), Double.parseDouble(jTextField8.getText()), Double.parseDouble(jTextField2.getText()), Double.parseDouble(jTextField3.getText()));
+        double endingBal = (double) interestHelper.findIntWithTax(Double.parseDouble(jTextField1.getText()), 0, Double.parseDouble(jTextField4.getText()), timesCompounded, Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()), Double.parseDouble(jTextField8.getText()), Double.parseDouble(jTextField2.getText()), Double.parseDouble(jTextField3.getText()));
         jTextField9.setText(String.format("%.2f",endingBal));
         double principle = Double.parseDouble(jTextField1.getText()) + ((Double.parseDouble(jTextField2.getText()) + (12 * Double.parseDouble(jTextField3.getText()))) * (Double.parseDouble(jTextField6.getText()) + (Double.parseDouble(jTextField7.getText()) / 12)) );
         jTextField5.setText(String.format("%.2f", principle));
-        //double contributions = ((Double.parseDouble(jTextField2.getText()) + 12 * (Double.parseDouble(jTextField3.getText())))) * (Double.parseDouble(jTextField6.getText()) + (12 * Double.parseDouble(jTextField7.getText())));
-        //jTextField10.setText(String.format("%.2f", contributions));
         double displayInt = endingBal - principle;
         jTextField11.setText(String.format("%.2f", displayInt));
-        double inflatedVal = (double) financialCalcHelper.handleInflation(endingBal, Double.parseDouble(jTextField8.getText()), Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()));
+        double inflatedVal = (double) interestHelper.handleInflation(endingBal, Double.parseDouble(jTextField8.getText()), Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()));
         jTextField12.setText(String.format("%.2f", inflatedVal));
-        double totalContr = (double) financialCalcHelper.displayContributions(Double.parseDouble(jTextField4.getText()), timesCompounded, Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()), Double.parseDouble(jTextField2.getText()), Double.parseDouble(jTextField3.getText()));
+        double totalContr = (double) interestHelper.displayContributions(Double.parseDouble(jTextField4.getText()), timesCompounded, Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()), Double.parseDouble(jTextField2.getText()), Double.parseDouble(jTextField3.getText()));
         jTextField13.setText(String.format("%.2f", totalContr));
-        double contrWOInterest = financialCalcHelper.contributionsNoInt(Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()), Double.parseDouble(jTextField2.getText()), Double.parseDouble(jTextField3.getText()));
+        double contrWOInterest = interestHelper.contributionsNoInt(Double.parseDouble(jTextField6.getText()), Double.parseDouble(jTextField7.getText()), Double.parseDouble(jTextField2.getText()), Double.parseDouble(jTextField3.getText()));
         jTextField10.setText(String.format("%.2f", contrWOInterest));
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -646,24 +624,10 @@ public class interest2 extends javax.swing.JFrame {
         jTextField9.setText("");
     }//GEN-LAST:event_jButton2MouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        //this.dispose();
-        System.exit(1); // does this affect team jFrame?
+        this.dispose();
     }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jComboBox1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1MouseExited
 
     private void jLabel25MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseEntered
         // TODO add your handling code here:
