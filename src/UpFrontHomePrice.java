@@ -38,6 +38,8 @@ public class UpFrontHomePrice extends javax.swing.JFrame {
         resultLabel.setHorizontalAlignment(resultLabel.CENTER);
         
         panelRound3.setBackground(new Color(66,133,244,80));
+        jPanel3.setBackground(new Color(66,133,244,80));
+        jPanel4.setBackground(new Color(66,133,244,80));
         
         calculateLabel.setHorizontalAlignment(calculateLabel.CENTER);
         closeLabel.setHorizontalAlignment(closeLabel.CENTER);

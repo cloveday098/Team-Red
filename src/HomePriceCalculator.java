@@ -41,6 +41,8 @@ public class HomePriceCalculator extends javax.swing.JFrame {
         closeLabel.setHorizontalAlignment(closeLabel.CENTER);
         
         panelRound1.setBackground(new Color(66,133,244,80));
+        jPanel3.setBackground(new Color(66,133,244,80));
+        jPanel4.setBackground(new Color(66,133,244,80));
         
         homePriceTextField.setBackground(new Color(66,133,244,80));
         downPaymentTextField.setBackground(new Color(66,133,244,40));

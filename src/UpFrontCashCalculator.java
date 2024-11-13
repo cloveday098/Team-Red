@@ -38,6 +38,8 @@ public class UpFrontCashCalculator extends javax.swing.JFrame {
         closeLabel.setHorizontalAlignment(closeLabel.CENTER);
         
         panelRound3.setBackground(new Color(66,133,244,80));
+        jPanel3.setBackground(new Color(66,133,244,80));
+        jPanel4.setBackground(new Color(66,133,244,80));
         upFrontCashTextField.setBackground(new Color(66,133,244,80));
         downPaymentTextField.setBackground(new Color(66,133,244,40));
         closingCostTextField.setBackground(new Color(66,133,244,80));
