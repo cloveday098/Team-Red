@@ -587,6 +587,14 @@ public class UpFrontHomePrice extends javax.swing.JFrame {
         if(moneyPercentChoice.getSelectedIndex() == 0){
             if(closingCost.isSelected()){
                 totalMoney = Helper.upFrontHomePriceWithCloseCostPercent(homePriceNum, cashAvailableNum, closingCostNum, interestRateNum, loanTermNum);
+                for (double value : totalMoney) {
+                    if (value < 0) {
+                        JOptionPane.showMessageDialog(null, "One or more calculated values are negative. Please check your inputs!", "Calculation Error", JOptionPane.ERROR_MESSAGE);
+                        homePriceTextField.requestFocus();
+                        return;
+                    }
+                }
+                
                 double totalDownPayment = totalMoney[0];
                 double totalDownPercent = totalMoney[1];
                 double totalClosingCost = totalMoney[2];
@@ -602,6 +610,14 @@ public class UpFrontHomePrice extends javax.swing.JFrame {
                
             }else{
                 totalMoney = Helper.upFrontHomePriceWithoutCloseCostPercent(homePriceNum, cashAvailableNum, interestRateNum, loanTermNum);
+                for (double value : totalMoney) {
+                    if (value < 0) {
+                        JOptionPane.showMessageDialog(null, "One or more calculated values are negative. Please check your inputs!", "Calculation Error", JOptionPane.ERROR_MESSAGE);
+                        homePriceTextField.requestFocus();
+                        return;
+                    }
+                }
+                
                 double totalDownPayment = totalMoney[0];
                 double totalDownPercent = totalMoney[1];
                 double totalClosingCost = 0;
@@ -620,6 +636,15 @@ public class UpFrontHomePrice extends javax.swing.JFrame {
             if(closingCost.isSelected()){
                 
                 totalMoney = Helper.upFrontHomePriceWithCloseCostMoney(homePriceNum, cashAvailableNum, closingCostNum, interestRateNum, loanTermNum);
+                for (double value : totalMoney) {
+                    if (value < 0) {
+                        JOptionPane.showMessageDialog(null, "One or more calculated values are negative. Please check your inputs!", "Calculation Error", JOptionPane.ERROR_MESSAGE);
+                        homePriceTextField.requestFocus();
+                        return;
+                    }
+                }
+                
+                
                 double totalDownPayment = totalMoney[0];
                 double totalDownPercent = totalMoney[1];
                 double totalClosingCost = totalMoney[2];
@@ -635,6 +660,14 @@ public class UpFrontHomePrice extends javax.swing.JFrame {
                 
             }else{
                 totalMoney = Helper.upFrontHomePriceWithoutCloseCostMoney(homePriceNum, cashAvailableNum, interestRateNum, loanTermNum);
+                for (double value : totalMoney) {
+                    if (value < 0) {
+                        JOptionPane.showMessageDialog(null, "One or more calculated values are negative. Please check your inputs!", "Calculation Error", JOptionPane.ERROR_MESSAGE);
+                        homePriceTextField.requestFocus();
+                        return;
+                    }
+                }
+                
                 double totalDownPayment = totalMoney[0];
                 double totalDownPercent = totalMoney[1];
                 double totalClosingCost = 0;
