@@ -164,7 +164,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
 
         stLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         stLabel.setForeground(new java.awt.Color(102, 102, 102));
-        stLabel.setText("Sales Tax ($):");
+        stLabel.setText("Sales Tax (%):");
 
         ofLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ofLabel.setForeground(new java.awt.Color(102, 102, 102));
@@ -619,6 +619,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
         
         double autoPrice = Double.parseDouble(autoPriceTextField.getText());
         int loanTerm = Integer.parseInt(loanTermTextField.getText());
+        //double loanTerm = Double.parseDouble(loanTermTextField.getText());
         double interestRate = Double.parseDouble(interestRateTextField.getText());
         double cashIncentives = Double.parseDouble(cashIncentivesTextField.getText());
         double downPayment = Double.parseDouble(downPaymentTextField.getText());
@@ -630,6 +631,14 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
         double[] theMonthlyPayment;
         if(includeAllFees.isSelected()){
             theMonthlyPayment = Helper.autoLoanCalculatorWithFees(autoPrice, loanTerm, interestRate, cashIncentives, downPayment, tradeInValue, amtOwedOnTradeIn, salesTax, otherFees);
+            for (double value : theMonthlyPayment) {
+                    if (value < 0) {
+                        JOptionPane.showMessageDialog(null, "One or more calculated values are negative. Please check your inputs!", "Calculation Error", JOptionPane.ERROR_MESSAGE);
+                        autoPriceTextField.requestFocus();
+                        return;
+                    }
+                }
+            
             double realMonthlyPayment = theMonthlyPayment[0];
             double realLoanAmount = theMonthlyPayment[1];
             double realSalesTax = theMonthlyPayment[2];
@@ -650,6 +659,14 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
 
         }else{
             theMonthlyPayment = Helper.autoLoanCalculatorWithoutFee(autoPrice, loanTerm, interestRate, cashIncentives, downPayment, tradeInValue, amtOwedOnTradeIn, salesTax, otherFees);
+            for (double value : theMonthlyPayment) {
+                    if (value < 0) {
+                        JOptionPane.showMessageDialog(null, "One or more calculated values are negative. Please check your inputs!", "Calculation Error", JOptionPane.ERROR_MESSAGE);
+                        autoPriceTextField.requestFocus();
+                        return;
+                    }
+                }
+            
             double realMonthlyPayment = theMonthlyPayment[0];
             double realLoanAmount = theMonthlyPayment[1];
             double realSalesTax = theMonthlyPayment[2];
