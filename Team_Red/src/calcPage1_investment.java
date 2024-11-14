@@ -25,7 +25,7 @@ public class calcPage1_investment extends javax.swing.JPanel {
         title1.setBounds(350, 50, 400, 50);
         
         try{
-            // 1) Interest Loan
+            // 1) Interest
             //ImageIcon loanIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/loanButtonIcon.png"))
             //        .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
             JButton interestBtn = new JButton("Interest");
@@ -36,7 +36,11 @@ public class calcPage1_investment extends javax.swing.JPanel {
             interestBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    JOptionPane.showMessageDialog(null, "Interest calculator coming soon...", "Interest Calculator", JOptionPane.INFORMATION_MESSAGE);
+                    interest2 interestPage = new interest2();
+                    interestPage.setSize(600, 400);
+                    interestPage.setResizable(false);
+                    interestPage.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "Interest calculator coming soon...", "Interest Calculator", JOptionPane.INFORMATION_MESSAGE);
                 }        
             });
             

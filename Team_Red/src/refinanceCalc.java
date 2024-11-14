@@ -654,13 +654,13 @@ public class refinanceCalc extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Remaining Balance must be positive. Try again!");
         } else if (jTextField2.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Monthly Payment.");
-        } else if (Helper.isValidNumber(String(Double.parseDouble(jTextField2.getText()))) == false) {
+        } else if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField2.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Monthly Payment must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField2.getText()) <= 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Remaining Balance must be greater than 0. Try again!");
         } else if (jTextField3.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Current Loan's Interest Rate.");
-        } else if (Helper.isValidNumber(String(Double.parseDouble(jTextField3.getText()))) == false) {
+        } else if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField3.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Interest Rate must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField3.getText()) < 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Interest Rate must be positive. Try again!");
@@ -674,7 +674,7 @@ public class refinanceCalc extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: New Loan Term must be less than 1000. Try again!");       
         } else if (jTextField5.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for New Loan's Interest Rate.");
-        } else if (Helper.isValidNumber(String(Double.parseDouble(jTextField5.getText()))) == false) {
+        } else if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField5.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: New Loan's Interest Rate must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField5.getText()) < 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: New Loan's Interest Rate must be positive. Try again!");

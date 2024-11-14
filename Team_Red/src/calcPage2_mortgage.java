@@ -93,7 +93,11 @@ public class calcPage2_mortgage extends javax.swing.JPanel {
             refinanceBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    JOptionPane.showMessageDialog(null, "Refinance calculator coming soon...", "Refinance Calculator", JOptionPane.INFORMATION_MESSAGE);
+                    refinanceCalc refinPage = new refinanceCalc();
+                    refinPage.setSize(600, 400);
+                    refinPage.setResizable(false);
+                    refinPage.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "Refinance calculator coming soon...", "Refinance Calculator", JOptionPane.INFORMATION_MESSAGE);
                 }        
             });
             
