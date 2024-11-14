@@ -36,7 +36,7 @@ public class dashboardNew extends javax.swing.JPanel {
         try {
             //icon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/dashboard.png"))
             //        .getImage().getScaledInstance(1550, 950, Image.SCALE_SMOOTH));
-            icon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/dashboard_noLeft.png"))
+            icon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/dashboard_noSide.png"))
                     .getImage().getScaledInstance(1550, 950, Image.SCALE_SMOOTH));
             ImageIcon popupIcon = new ImageIcon("images/CapitalCal_Icon.png");
             Image background = icon.getImage();
@@ -49,6 +49,7 @@ public class dashboardNew extends javax.swing.JPanel {
             loanBtn.setBounds(1231, 84, 215, 87);
             loanBtn.setBorderPainted(false);
             loanBtn.setPreferredSize(new Dimension(loanIcon.getIconWidth(), loanIcon.getIconHeight()));
+            loanBtn.setVisible(false);
             
             // 2) Retirement
             ImageIcon retirementIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/RetirementIcon.png"))
@@ -57,6 +58,7 @@ public class dashboardNew extends javax.swing.JPanel {
             retirementBtn.setBounds(1231, 254, 215, 87);
             retirementBtn.setBorderPainted(false);
             retirementBtn.setPreferredSize(new Dimension(retirementIcon.getIconWidth(), retirementIcon.getIconHeight()));
+            retirementBtn.setVisible(false);
             
             // 3) Currency
             ImageIcon currencyIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/currencyIcon.png"))
@@ -65,6 +67,7 @@ public class dashboardNew extends javax.swing.JPanel {
             currencyBtn.setBounds(1231, 424, 215, 97);
             currencyBtn.setBorderPainted(false);
             currencyBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
+            currencyBtn.setVisible(false);
             
             // 4) Mortgage
             ImageIcon mortgageIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/mortgageButtonIcon.png"))
@@ -73,6 +76,7 @@ public class dashboardNew extends javax.swing.JPanel {
             mortgageBtn.setBounds(1231, 594, 215, 97);
             mortgageBtn.setBorderPainted(false);
             mortgageBtn.setPreferredSize(new Dimension(mortgageIcon.getIconWidth(), mortgageIcon.getIconHeight()));
+            mortgageBtn.setVisible(false);
             
             
             // Action Listeners for Buttons
