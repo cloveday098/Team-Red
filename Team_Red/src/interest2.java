@@ -20,6 +20,7 @@ public class interest2 extends javax.swing.JFrame {
      */
     public interest2() {
         initComponents();
+        jLabel9.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png")).getImage().getScaledInstance(100,48, Image.SCALE_SMOOTH)));
         this.getContentPane().setBackground(Color.decode("#c7dbfc"));
         jLabel23.setVisible(false);
     }
@@ -534,7 +535,7 @@ public class interest2 extends javax.swing.JFrame {
         if (jTextField1.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Enter a value for Initial Investment.");
         }
-        if (Helper.isValidNumer(String.valueOf(Double.parseDouble(jTextField1.getText()))) == false) {
+        if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField1.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Initial Investment must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField1.getText()) < 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Initial Investment cannot be negative. Try again!");
