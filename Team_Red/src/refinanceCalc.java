@@ -648,25 +648,25 @@ public class refinanceCalc extends javax.swing.JFrame {
         
         if (jTextField1.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Remaining Balance.");
-        } else if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField1.getText())) == false) {
+        } else if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField1.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Remaining Balance must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField1.getText()) < 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Remaining Balance must be positive. Try again!");
         } else if (jTextField2.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Monthly Payment.");
-        } else if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField2.getText())) == false) {
+        } else if (Helper.isValidNumber(String(Double.parseDouble(jTextField2.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Monthly Payment must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField2.getText()) <= 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Remaining Balance must be greater than 0. Try again!");
         } else if (jTextField3.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Current Loan's Interest Rate.");
-        } else if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField3.getText())) == false) {
+        } else if (Helper.isValidNumber(String(Double.parseDouble(jTextField3.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Interest Rate must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField3.getText()) < 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Interest Rate must be positive. Try again!");
         } else if (jTextField4.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for New Loan Term.");
-        } else if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField4.getText())) == false) {
+        } else if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField4.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: New Loan Term must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField4.getText()) <= 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: New Loan Term must be greater than 0. Try again!");
@@ -674,7 +674,7 @@ public class refinanceCalc extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: New Loan Term must be less than 1000. Try again!");       
         } else if (jTextField5.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for New Loan's Interest Rate.");
-        } else if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField5.getText())) == false) {
+        } else if (Helper.isValidNumber(String(Double.parseDouble(jTextField5.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: New Loan's Interest Rate must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField5.getText()) < 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: New Loan's Interest Rate must be positive. Try again!");
@@ -682,7 +682,7 @@ public class refinanceCalc extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: New Loan's Interest Rate must be less than 100. Try again!");       
         } else if (jTextField6.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Points.");
-        } else if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField6.getText())) == false) {
+        } else if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField6.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Points must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField6.getText()) < 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Points must be positive. Try again!");
@@ -690,13 +690,13 @@ public class refinanceCalc extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Points must be less than 100. Try again!");       
         } else if (jTextField7.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Costs and Fees.");
-        } else if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField7.getText())) == false) {
+        } else if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField7.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Cost and Fees must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField7.getText()) < 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Cost and Fees must be positive. Try again!");
         } else if (jTextField9.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Cash-Out Amount.");
-        } else if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField9.getText())) == false) {
+        } else if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField9.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Cash-Out Amount must be numeric. Try again!");
         
         } else {
@@ -712,7 +712,7 @@ public class refinanceCalc extends javax.swing.JFrame {
         double costs = Double.parseDouble(jTextField7.getText());
         double cashOut = Double.parseDouble(jTextField9.getText());
         
-        double monthlyAmt = financialCalcHelper.refinanceCalc((remainingBalance + cashOut), newLoanTerm, newInterestRate);
+        double monthlyAmt = interestHelper.refinanceCalc((remainingBalance + cashOut), newLoanTerm, newInterestRate);
         System.out.print("Amount Paid (w/ interest) :" + (monthlyAmt * 12 * newLoanTerm));       
         
         double diff = 100 * Math.abs(oldInterestRate - newInterestRate);
@@ -741,15 +741,15 @@ public class refinanceCalc extends javax.swing.JFrame {
         } else {
         if (jTextField14.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Original Loan Amount.");
-        } else if (financialCalcHelper.isPos(Double.parseDouble(jTextField14.getText())) == false) {
+        } else if (Helper.isPos(String.valueOf(Double.parseDouble(jTextField14.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Original Loan Amount must be a number greater than 0. Try again!");
         } else if (jTextField11.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Loan Term.");
-        } else if (financialCalcHelper.isPos(Double.parseDouble(jTextField11.getText())) == false) {
+        } else if (Helper.isPos(String.valueOf(Double.parseDouble(jTextField11.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Loan Term must be a positive number. Try again!");
         } else if (jTextField12.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Time Remaining.");
-        } else if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField12.getText())) == false) {
+        } else if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField12.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Time Remaining must be numeric. Try again!");
         } else if (Double.parseDouble(jTextField12.getText()) < 0) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Time Remaining must be positive. Try again!");
@@ -757,7 +757,7 @@ public class refinanceCalc extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Time Remaining must be less than or equal to Loan Term. Try again!");
         } else if (jTextField13.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter a value for Interest Rate.");
-        } else if (financialCalcHelper.isNumeric(Double.parseDouble(jTextField13.getText())) == false) {
+        } else if (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField13.getText()))) == false) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Interest Rate must be numeric. Try again!");
         } else if ( (Double.parseDouble(jTextField13.getText()) < 0) || (Double.parseDouble(jTextField13.getText()) > 200) ) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Interest Rate must be between 0 and 200. Try again!");
@@ -775,7 +775,7 @@ public class refinanceCalc extends javax.swing.JFrame {
         double costs = Double.parseDouble(jTextField7.getText());
         double cashOut = Double.parseDouble(jTextField9.getText());
         
-        double amtLeft = financialCalcHelper.findRemainingBal(originalLoan, loanTerm, timeRemaining , oldInterestRate);
+        double amtLeft = refinanceHelper.findRemainingBal(originalLoan, loanTerm, timeRemaining , oldInterestRate);
         
         // find interest
         //double amtAfterInterest = originalLoan * Math.pow((1 + oldInterestRate), (loanTerm - timeRemaining));
@@ -790,10 +790,10 @@ public class refinanceCalc extends javax.swing.JFrame {
         
 
         System.out.print("Amount Left :" + amtLeft);       
-        double monthlyAmt = financialCalcHelper.refinanceCalc(originalLoan, loanTerm, oldInterestRate);   // if this right, delete timeRemaining??  
+        double monthlyAmt = refinanceHelper.refinanceCalc(originalLoan, loanTerm, oldInterestRate);   // if this right, delete timeRemaining??  
 
         double diff = 100 * Math.abs(oldInterestRate - newInterestRate);
-        double newMonthlyAmt = financialCalcHelper.refinanceCalc((amtLeft + cashOut), newLoanTerm, newInterestRate);
+        double newMonthlyAmt = refinanceHelper.refinanceCalc((amtLeft + cashOut), newLoanTerm, newInterestRate);
         
         if (oldInterestRate < newInterestRate) {
             List<String> output = Arrays.asList("The APR for the new loan is", String.format("%.2f", APR), "- this is", String.valueOf(String.format("%.2f", diff) + "%"), "higher than the", String.format("%.2f", oldInterestRate), "interest rate of the current loan.");
