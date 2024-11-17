@@ -45,7 +45,10 @@ public class currency_calc extends javax.swing.JFrame {
         initComponents();
         curr1.setText("");
         curr2.setText("");
+        fromFlag.setIcon(new ImageIcon(new ImageIcon(currency_calc.class.getResource("/images/flags/America.gif"))
+                    .getImage().getScaledInstance(120, 70, Image.SCALE_SMOOTH)));
         
+        // Popular Currencies
         String[] pops = {"Australian Dollar",
                          "Brazilian Real",
                          "Canadian Dollar",
@@ -71,25 +74,63 @@ public class currency_calc extends javax.swing.JFrame {
         }
         
         // Populate images dict
-        images.put("Argentine Peso", "Argetina.gif");
+            
+            
+            
+        
+        images.put("Argentine Peso", "Argentina.gif");
         images.put("Australian Dollar", "Australia.gif");
+        images.put("Bahraini Dinar", "Bahrain.png");
+        images.put("Botswana Pula", "Botswana.png");
         images.put("Brazilian Real", "Brazil.gif");
+        images.put("British Pound", "UK.png");
+        images.put("Bruneian Dollar", "Brunei.png");
+        images.put("Bulgarian Lev", "Bulgaria.png");
         images.put("Canadian Dollar", "Canada.gif");
-        images.put("Chilean Pes", "Chile.gif");
+        images.put("Chilean Peso", "Chile.gif");
+        images.put("Chinese Yuan Renminbi", "China.png");
+        images.put("Colombian Peso", "Colombia.png");
+        images.put("Czech Koruna", "Czech.png");
+        images.put("Danish Krone", "Denmark.png");
+        images.put("Emirati Dirham", "Emirates.png");
+        images.put("Euro", "Europe.png");
         images.put("Hong Kong Dollar", "Hong Kong.gif");
         images.put("Hungarian Forint", "Hungary.gif");
-        images.put("Mexican Peso", "Mexcio.gif");
+        images.put("Icelandic Krona", "Iceland.png");
+        images.put("Indian Rupee", "India.png");
+        images.put("Indonesian Rupiah", "Indonesia.png");
+        images.put("Iranian Rial", "Iran.png");
+        images.put("Israeli Shekel", "Israel.png");
+        images.put("Japanese Yen", "Japan.png");
+        images.put("Kazakhstani Tenge", "Kazakhstan.png");
+        images.put("Kuwaiti Dinar", "Kuwait.png");
+        images.put("Libyan Dinar", "Libya.png");
+        images.put("Malaysian Ringgit", "Malaysia.png");
+        images.put("Mauritian Rupee", "Mauritius.png");
+        images.put("Mexican Peso", "Mexico.gif");
         images.put("New Zealand Dollar", "New Zealand.gif");
+        images.put("Nepalese Rupee", "Nepal.png");
         images.put("Norwegian Krone", "Norway.gif");
+        images.put("Omani Rial", "Oman.png");
+        images.put("Pakistani Rupee", "Pakistan.png");
+        images.put("Philippine Peso", "Philippines.png");
+        images.put("Polish Zloty", "Poland.png");
+        images.put("Qatari Riyal", "Qatar.png");
+        images.put("Romanian New Leu", "Romania.png");
         images.put("Russian Ruble", "Russia.gif");
-        images.put("Saudi Arabian Riyal", "Saudi Arabia .gif");
-        images.put("\"Singapore Dollar\"", "Singapore.gif");
-        images.put("South African Randt", "South Africa gif");
+        images.put("Saudi Arabian Riyal", "Saudi_arabia.gif");
+        images.put("Singapore Dollar", "Singapore.gif");
+        images.put("South African Rand", "South_africa.gif");
+        images.put("South Korean Won", "South_korea.png");
+        images.put("Sri Lankan Rupee", "Sri_lanka.png");
         images.put("Swedish Krona", "Sweden.gif");
         images.put("Swiss Franc", "Switzerland.gif");
-        
-        
+        images.put("Taiwan New Dollar", "Taiwan.png");
+        images.put("Thai Baht", "Thailand.png");
+        images.put("Trinidadian Dollar", "Trinidad.png");
+        images.put("Turkish Lira", "Turkey.png");
         images.put("US Dollar", "America.gif");
+        images.put("Venezuelan Bolivar", "Venezuela.png");
         
         errLabel.setVisible(false);
         
@@ -104,7 +145,7 @@ public class currency_calc extends javax.swing.JFrame {
         oldCurrDrop.setModel(comboModel1);
         newCurrDrop.setModel(comboModel2);
         
-        /*ImageIcon currencyIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/Currency.png"))
+        /*ImageIcon currencyIcon = new ImageIcon(new ImageIcon(currency_calc.class.getResource("/images/Currency.png"))
                     .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
         JLabel currencyPic = new JLabel(currencyIcon);
         currencyPic.setBounds(50, 100, 100, 100);
@@ -288,9 +329,6 @@ public class currency_calc extends javax.swing.JFrame {
                 }
                 // Converting to different currency with number validation
                 else if (Helper.isValidNumber(oldAmt)) {
-                    System.out.println("Good to go!");
-                    //fromFlag.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/" + images.get(String.valueOf(oldCurr)))).getImage().getScaledInstance(120,70, Image.SCALE_SMOOTH)));
-                    //toFlag.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/" + images.get(String.valueOf(newCurr)))).getImage().getScaledInstance(120,70, Image.SCALE_SMOOTH)));
                     newAmt = convert(oldCurr, newCurr, oldAmt);   
                 }
                 else {
@@ -298,10 +336,15 @@ public class currency_calc extends javax.swing.JFrame {
                 }
                 // Formatting to 5 decimal places like seen on the online calculator
                 
+                System.out.println(String.valueOf(oldCurr));
+                System.out.println(images.get(String.valueOf(oldCurr)));
+                fromFlag.setIcon(new ImageIcon(new ImageIcon(currency_calc.class.getResource("images/flags/" + images.get(String.valueOf(oldCurr)))).getImage().getScaledInstance(120,70, Image.SCALE_SMOOTH)));
+                //toFlag.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/" + images.get(String.valueOf(newCurr)))).getImage().getScaledInstance(120,70, Image.SCALE_SMOOTH)));
+                
                 String result = Helper.getSymbol(newCurr, newAmt);
                 newCurrAmt.setText(result);
                 String initial = Helper.getSymbol(oldCurr, Double.valueOf(oldAmt));
-                oldCurrAmt.setText(initial);
+                curr1.setText(initial + " " + curr1.getText());
                 errLabel.setText("");
             }
             catch (NumberFormatException e) {
