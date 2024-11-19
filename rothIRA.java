@@ -19,7 +19,9 @@ public class rothIRA extends javax.swing.JFrame {
      */
     public rothIRA() {
         initComponents();
-        
+        buttonGroup1.clearSelection();
+        maxContributionYes.setSelected(false);
+        maxContributionNo.setSelected(true);
         
         
         
@@ -349,18 +351,14 @@ public class rothIRA extends javax.swing.JFrame {
 
     private void calculateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calculateButtonMouseClicked
         // TODO add your handling code here:
-        //int currentAge = Integer.parseInt(ageInput.getText());
+      
 
         if (currentBalanceInput.getText().isEmpty() || annualContributionInput.getText().isEmpty() || rateOfReturnInput.getText().isEmpty() || ageInput.getText().isEmpty() || retirementAgeInput.getText().isEmpty() || taxRateInput.getText().isEmpty() )
             {
                 ResultLabel.setText("Please Fill Out All Fields");
-                
         } 
-        
-        
         else 
             {
-    
                 double currentBalance = Double.parseDouble(currentBalanceInput.getText());
                 double annualContribution = Double.parseDouble(annualContributionInput.getText());
                 double expectedRateOfReturn = Double.parseDouble(rateOfReturnInput.getText()) / 100;
@@ -368,13 +366,13 @@ public class rothIRA extends javax.swing.JFrame {
                 int retirementAge = Integer.parseInt(retirementAgeInput.getText());
                 double marginalTaxRate = Double.parseDouble(taxRateInput.getText()) / 100;
                 
-                if (expectedRateOfReturn >.20) {
-                    ResultLabel.setText("Rate of Return cannot exceed 20%");
+                if (expectedRateOfReturn >.20 || expectedRateOfReturn < .009) {
+                    ResultLabel.setText("Rate of Return cannot exceed 20% and be below .9%");
                     rateOfReturnInput.requestFocus();
                     return;
             }
-                if (marginalTaxRate > .37) {
-                    ResultLabel.setText("Marginal tax rate cannot exceed 37%");
+                if (marginalTaxRate > .37 || marginalTaxRate < .009) {
+                    ResultLabel.setText("Marginal tax rate cannot exceed 37% and be below .9%");
                     taxRateInput.requestFocus();
                     return;         
             }
@@ -388,14 +386,19 @@ public class rothIRA extends javax.swing.JFrame {
                     retirementAgeInput.requestFocus();
                     return;
                 }
+            if (currentAge >= retirementAge){
+                ResultLabel.setText("Current age cannot be greater than retirement age");
+                ageInput.requestFocus();
+                return;
+            }
                               
             if (maxContributionNo.isSelected()) {
                 if (currentAge <= 50 && annualContribution > 7000) {
                     ResultLabel.setText("For age 50 or under, the maximum contribution is $7,000.");
-                    return; // Exit the method to prevent further calculations
+                    return; 
                 } else if (currentAge > 50 && annualContribution > 8000) {
                     ResultLabel.setText("For age over 50, the maximum contribution is $8,000.");
-                    return; // Exit the method to prevent further calculations
+                    return; 
                 }
             }
                 
@@ -408,8 +411,6 @@ public class rothIRA extends javax.swing.JFrame {
             }
                 if (maxContributionYes.isSelected()) {
                 annualContribution = currentAge >= 50 ? 8000 : 7000; 
-              //  annualContributionInput.setText(String.valueOf(annualContribution)); 
-              //  annualContributionInput.setEnabled(true);
             }
             
 
@@ -496,24 +497,9 @@ public class rothIRA extends javax.swing.JFrame {
         
         
     }
-    /*
+ /* 
     private void maxContributionNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxContributionNoMouseClicked
         // TODO add your handling code here:
-           if (ageInput.getText().isEmpty()){
-          ageInput.setText("");
-    }
-        double annualContribution = Double.parseDouble(annualContributionInput.getText());
-        if (annualContribution == 8000){
-            annualContributionInput.setText("");
-            annualContributionInput.setEnabled(true);   
-        }
-        if (annualContribution == 7000){
-            annualContributionInput.setText("");
-            annualContributionInput.setEnabled(true);
-        }
-        else{
-      
-        }
     }//GEN-LAST:event_maxContributionNoMouseClicked
 
     /**
