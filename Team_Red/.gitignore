@@ -1,5 +1,6 @@
 # Ignore build output
 /build/
+/build/classes
 /dist/
 
 # Ignore compiled class files

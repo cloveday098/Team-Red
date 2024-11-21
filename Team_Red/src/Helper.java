@@ -96,6 +96,19 @@ public class Helper {
     
 
     // Currency Convertor
+    public static boolean isCurrValidNumber(String test) {
+    return test.matches("\\d*"); // Matches an empty string or digits only
+}
+
+    public static void validateInput(JTextField textField, KeyEvent evt) {
+        if (evt.getKeyChar() != KeyEvent.VK_BACK_SPACE && evt.getKeyChar() != KeyEvent.VK_DELETE) {
+            String currentText = textField.getText() + evt.getKeyChar();
+            if (!isCurrValidNumber(currentText)) {
+                evt.consume(); // Block invalid characters
+            }
+        }
+    }
+    
     public static Map<String, Double> webScraper() {
         String s = "success";
         String url = "http://www.x-rates.com/table/?from=USD&amount=1";
