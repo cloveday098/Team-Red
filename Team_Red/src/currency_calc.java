@@ -199,7 +199,7 @@ public class currency_calc extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setSize(new java.awt.Dimension(1084, 750));
-        getContentPane().setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().setBackground(new java.awt.Color(245, 245, 245));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         
         title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
