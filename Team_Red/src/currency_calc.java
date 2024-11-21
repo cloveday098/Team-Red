@@ -198,10 +198,12 @@ public class currency_calc extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(1084, 750));
+        getContentPane().setSize(new java.awt.Dimension(1084, 750));
+        getContentPane().setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         
         title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(66, 133, 244));
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Currency Converter");
         title.setAlignmentX(0.5F);
