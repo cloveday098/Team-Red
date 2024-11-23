@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package groupredproject;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -100,7 +99,7 @@ public class rothIRA extends javax.swing.JFrame {
 
         ResultLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/groupredproject/marginalTax.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/marginalTax.png"))); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel9.setText("Marginal Tax Rate ");

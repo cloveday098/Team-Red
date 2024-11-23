@@ -42,7 +42,7 @@ public class calcPage4_misc extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     AutoLoanCalculator autoLoan = new AutoLoanCalculator();
-                    autoLoan.setSize(1084, 750);
+                    autoLoan.setSize(1200, 800);
                     autoLoan.setResizable(false);
                     autoLoan.setVisible(true);
                 }        
@@ -51,7 +51,7 @@ public class calcPage4_misc extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     currency_calc currPage = new currency_calc();
-                    currPage.setSize(1084, 750);
+                    currPage.setSize(1200, 800);
                     currPage.setResizable(false);
                     currPage.setVisible(true);
                 }        
@@ -63,7 +63,7 @@ public class calcPage4_misc extends javax.swing.JPanel {
             
             JFrame frame = new JFrame("Misc. Calculators");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(1000, 750);
+            frame.setSize(2880, 1800);
             frame.add(this);
             frame.setVisible(true);
         }

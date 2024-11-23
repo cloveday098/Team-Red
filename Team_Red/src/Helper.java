@@ -76,8 +76,8 @@ public class Helper {
 
     // Currency Convertor
     public static boolean isCurrValidNumber(String test) {
-    return test.matches("\\d*"); // Matches an empty string or digits only
-}
+        return test.matches("\\d*"); // Matches an empty string or digits only
+    }
 
     public static void validateInput(JTextField textField, KeyEvent evt) {
         if (evt.getKeyChar() != KeyEvent.VK_BACK_SPACE && evt.getKeyChar() != KeyEvent.VK_DELETE) {
@@ -207,6 +207,7 @@ public class Helper {
     }
     
     public static boolean isValidNumber(String test){
+        test = test.replace(".", "");
         if (test.isEmpty()) {
             return false;
         }
@@ -218,6 +219,7 @@ public class Helper {
 
         for (int i = 1; i < test.length(); i++) {
             if (!Character.isDigit(test.charAt(i))) {
+                System.out.println(test.charAt(i));
                 return false;
             }
         }

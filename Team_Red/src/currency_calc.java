@@ -198,7 +198,7 @@ public class currency_calc extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(1084, 750));
+        setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         
         title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
