@@ -134,7 +134,7 @@ public class Helper {
     
     // Mapping 
     public static Locale getLocaleFromCurrency(String currencyName) {
-        String currencyCode = switch (currencyName) {   // Symbols not displaying
+        String currencyCode = switch (currencyName) {
             case "Argentine Peso" -> "ARS";
             case "Australian Dollar" -> "AUD";
             case "Bahraini Dinar" -> "BHD";
@@ -227,6 +227,45 @@ public class Helper {
         return true;
     }
     
+    // Mortgage Calculator
+    public static int intFromMonth(String month) {
+        String num = switch (month) {   // Symbols not displaying
+                case "Jan" -> "1";
+                case "Feb" -> "2";
+                case "Mar" -> "3";
+                case "Apr" -> "4";
+                case "May" -> "5";
+                case "Jun" -> "6";
+                case "Jul" -> "7";
+                case "Aug" -> "8";
+                case "Sep" -> "9";
+                case "Oct" -> "10";
+                case "Nov" -> "11";
+                case "Dec" -> "12";
+                default -> null;
+            };
+        return Integer.parseInt(num);
+    }
+    public static String monthFromInt(String n) {
+        String month = switch (n) {   // Symbols not displaying
+                case "1" -> "Jan";
+                case "2" -> "Feb";
+                case "3" -> "Mar";
+                case "4" -> "Apr";
+                case "5" -> "May";
+                case "6" -> "Jun";
+                case "7" -> "Jul";
+                case "8" -> "Aug";
+                case "9" -> "Sep";
+                case "10" -> "Oct";
+                case "11" -> "Nov";
+                case "0" -> "Dec";
+                default -> null;
+            };
+        return month;
+    }
+    
+    // Auto Loan Calculator
     public static void validateSingleInput(JTextField textField, KeyEvent evt) {
         if (evt.getKeyChar() != KeyEvent.VK_BACK_SPACE && evt.getKeyChar() != KeyEvent.VK_DELETE) {
             String currentText = textField.getText() + evt.getKeyChar();

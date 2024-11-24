@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 public class calcPage4_misc extends javax.swing.JPanel {
 
@@ -38,6 +39,18 @@ public class calcPage4_misc extends javax.swing.JPanel {
             currencyBtn.setBorderPainted(false);
             currencyBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
             
+            // X
+            JButton XBtn = new JButton();
+            XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12));
+            XBtn.setForeground(new java.awt.Color(255,51,51));
+            XBtn.setText("X");
+            XBtn.setBounds(1590, 0, 43, 43);
+            XBtn.setBorderPainted(false); 
+            //XBtn.setContentAreaFilled(false); 
+            XBtn.setFocusPainted(false);
+            XBtn.setHorizontalAlignment(SwingConstants.CENTER);
+            XBtn.setVerticalAlignment(SwingConstants.CENTER);
+            
             autoLoanBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
@@ -56,16 +69,25 @@ public class calcPage4_misc extends javax.swing.JPanel {
                     currPage.setVisible(true);
                 }        
             });
-            
+
             this.add(title4);
             this.add(autoLoanBtn);
             this.add(currencyBtn);
+            this.add(XBtn);
             
             JFrame frame = new JFrame("Misc. Calculators");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(2880, 1800);
+            frame.setSize(1650, 1800);
             frame.add(this);
             frame.setVisible(true);
+            
+            XBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {                                  
+                    frame.dispose();
+                    //System.exit(1);
+                }  
+            });
         }
         catch (NullPointerException e) {
             System.out.println("Image not found! Please check the path!");

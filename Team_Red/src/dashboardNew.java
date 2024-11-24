@@ -242,7 +242,7 @@ public class dashboardNew extends javax.swing.JPanel {
             //panel.add(label);
             //panel.add(button);
 
-            JFrame frame = new JFrame("Image Background with Components");
+            JFrame frame = new JFrame("Dashboard");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(400, 300);
             frame.add(panel);
