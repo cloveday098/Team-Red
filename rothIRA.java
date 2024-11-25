@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package groupredproject;
+package Images;
 
 
+import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
@@ -31,8 +32,9 @@ public class rothIRA extends javax.swing.JFrame {
         initComponents();
         buttonGroup1.clearSelection();
         maxContributionYes.setSelected(false);
-        maxContributionNo.setSelected(true);
-        jLabel16.setText("");
+        maxContributionNo.setSelected(true); 
+        this.getContentPane().setBackground(Color.white);
+        displayBlankGraph();
         
         
         
@@ -71,8 +73,7 @@ public class rothIRA extends javax.swing.JFrame {
      
         };
           ageInput.addKeyListener(numOnlyKeyAdapter);
-          retirementAgeInput.addKeyListener(numOnlyKeyAdapter);
-          
+          retirementAgeInput.addKeyListener(numOnlyKeyAdapter); 
           
     }
     
@@ -87,8 +88,6 @@ public class rothIRA extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        ResultLabel = new javax.swing.JLabel();
-        differenceLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         rateOfReturnInput = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -120,22 +119,16 @@ public class rothIRA extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        rothTotalResult = new javax.swing.JFormattedTextField();
-        tradIRAResult = new javax.swing.JFormattedTextField();
-        diffInResult = new javax.swing.JFormattedTextField();
-        jLabel16 = new javax.swing.JLabel();
+        diffValue = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-
-        ResultLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-
-        differenceLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Images/icon.png")).getImage());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
 
         rateOfReturnInput.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
@@ -205,7 +198,7 @@ public class rothIRA extends javax.swing.JFrame {
 
         panel1.setBackground(new java.awt.Color(62, 142, 224));
 
-        jLabel13.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel13.setBackground(new java.awt.Color(62, 142, 224));
         jLabel13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Roth IRA");
@@ -255,7 +248,7 @@ public class rothIRA extends javax.swing.JFrame {
                                         .addComponent(jLabel8)
                                         .addGap(18, 18, 18)
                                         .addComponent(taxRateInput, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(16, 16, 16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(taxRateQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,7 +267,7 @@ public class rothIRA extends javax.swing.JFrame {
                                         .addComponent(maxContributionYes)
                                         .addGap(7, 7, 7)
                                         .addComponent(maxContributionNo)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 58, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -285,13 +278,10 @@ public class rothIRA extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel3))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 189, Short.MAX_VALUE)))
                         .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -299,36 +289,36 @@ public class rothIRA extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(clearButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(calculateButton)))))
-                .addGap(0, 25, Short.MAX_VALUE))
+                                .addComponent(calculateButton))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(taxRateInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rateOfReturnInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(annualContributionInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(currentBalanceInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(taxRateQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
+                .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(taxRateInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(taxRateQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rateOfReturnInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(annualContributionInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(currentBalanceInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(maxContributionYes)
                     .addComponent(maxContributionNo)
@@ -357,6 +347,11 @@ public class rothIRA extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Capital Calc");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/groupredproject/CapitalLogo (3).png"))); // NOI18N
         jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -394,7 +389,7 @@ public class rothIRA extends javax.swing.JFrame {
             .addGroup(graphPanelLayout.createSequentialGroup()
                 .addGap(145, 145, 145)
                 .addComponent(jLabel10)
-                .addContainerGap(474, Short.MAX_VALUE))
+                .addContainerGap(447, Short.MAX_VALUE))
         );
         graphPanelLayout.setVerticalGroup(
             graphPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,6 +402,7 @@ public class rothIRA extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel4.setBackground(new java.awt.Color(62, 142, 224));
+        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(62, 142, 224), 8, true));
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setBackground(new java.awt.Color(62, 142, 224));
@@ -431,77 +427,56 @@ public class rothIRA extends javax.swing.JFrame {
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        jLabel9.setText("Roth IRA Total Amount: ");
+        jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Balance at Retirement ", null, null},
+                {"Principle", null, null},
+                {"Total Interest", null, null}
+            },
+            new String [] {
+                "", "Roth IRA", "Taxable Account"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        jLabel14.setText("Traditional IRA:");
-
-        jLabel15.setText("Difference Between:");
-
-        rothTotalResult.setEditable(false);
-        rothTotalResult.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-        rothTotalResult.setText("$");
-
-        tradIRAResult.setEditable(false);
-        tradIRAResult.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-
-        diffInResult.setEditable(false);
-        diffInResult.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-
-        jLabel16.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setShowGrid(true);
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(38, 38, 38)
-                                        .addComponent(rothTotalResult, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel15))
-                                        .addGap(64, 64, 64)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(diffInResult)
-                                            .addComponent(tradIRAResult)))))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(189, 189, 189)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 93, Short.MAX_VALUE))
-                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(diffValue, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(230, 230, 230))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(22, 22, 22))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(rothTotalResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addComponent(tradIRAResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(diffInResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(diffValue, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -509,20 +484,12 @@ public class rothIRA extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(52, 52, 52)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(differenceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(graphPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(ResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(graphPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -531,24 +498,15 @@ public class rothIRA extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(differenceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(graphPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(ResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(250, 250, 250))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(graphPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         pack();
@@ -624,31 +582,65 @@ public class rothIRA extends javax.swing.JFrame {
             }
             
 
+
                 double afterTaxContribution = annualContribution * (1 - marginalTaxRate);
                 int yearsToRetirement = retirementAge - currentAge;
 
                 double futureValue = currentBalance * Math.pow(1 + expectedRateOfReturn, yearsToRetirement) + 
-                                     afterTaxContribution * (((Math.pow(1 + expectedRateOfReturn, yearsToRetirement) - 1) / expectedRateOfReturn));
+                                     annualContribution * (((Math.pow(1 + expectedRateOfReturn, yearsToRetirement) - 1) / expectedRateOfReturn));
                 double futureValueTraditional = currentBalance * Math.pow(1 + expectedRateOfReturn, yearsToRetirement) + 
-                                                annualContribution * (((Math.pow(1 + expectedRateOfReturn, yearsToRetirement) - 1) / expectedRateOfReturn));
-
-                double futureValueTraditionalAfterTax = futureValueTraditional * (1 - 0.25);
-                double differenceInValue = futureValue - futureValueTraditionalAfterTax;
-               // differenceLabel.setText("With the given information the Roth IRA account will result in" + String.format("%.2f", differenceInValue) + "more than a traditional IRA account");
-
-                rothTotalResult.setText(String.format("%.2f", futureValue));
-                tradIRAResult.setText(String.format("%.2f", futureValueTraditional));
-                diffInResult.setText(String.format("%.2f",differenceInValue));
-               // ResultLabel.setText("Roth IRA will have a balance of: $" + String.format("%.2f", futureValue) + "Traditional IRA will have a balance of:" + String.format("%.2f", futureValueTraditionalAfterTax));
-                createGraph(currentBalance, annualContribution, expectedRateOfReturn, currentAge, retirementAge, marginalTaxRate); 
-                jLabel16.setText("Investing your money into a Roth IRA will lead to a higher post-tax account and allow you to have more financial freedom");
+                                                afterTaxContribution * (((Math.pow(1 + expectedRateOfReturn, yearsToRetirement) - 1) / expectedRateOfReturn));
+                double principle = (yearsToRetirement * annualContribution) + currentBalance;
                 
+                double interestEarnedRoth = futureValue - (currentBalance + principle);
+                double interestEarnedTraditional = futureValueTraditional - (currentBalance + principle);
+
+                double differenceInValue = futureValue - futureValueTraditional;
+            
+                diffValue.setText(String.format("$" + "%.2f", differenceInValue));
+                createGraph(currentBalance, annualContribution, expectedRateOfReturn, currentAge, retirementAge, marginalTaxRate); 
+                
+                jTable1.setValueAt(String.format("$%.2f", futureValue), 0, 1); 
+                jTable1.setValueAt(String.format("$%.2f", futureValueTraditional), 0, 2);
+                jTable1.setValueAt(String.format("$%.2f", principle), 1, 1);
+                jTable1.setValueAt(String.format("$%.2f", principle), 1, 2);
+                jTable1.setValueAt(String.format("$%.2f", interestEarnedRoth), 2, 1);
+                jTable1.setValueAt(String.format("$%.2f", interestEarnedTraditional), 2, 2);
+                diffValue.setText("Roth IRA accounts will allow you to make withdrawls tax-free");
                 
                
                 
             }
 
     }//GEN-LAST:event_calculateButtonMouseClicked
+
+    public void displayBlankGraph() {
+    XYSeries blankSeries = new XYSeries("No Data");
+    XYSeriesCollection blankDataset = new XYSeriesCollection();
+    blankDataset.addSeries(blankSeries);
+
+    JFreeChart blankChart = ChartFactory.createXYLineChart(
+            "Growth Comparison: Roth IRA vs Traditional IRA",
+            "Age",
+            "Account Balance ($)",
+            blankDataset,
+            PlotOrientation.VERTICAL,
+            true,
+            true,
+            false
+    );
+
+    ChartPanel blankChartPanel = new ChartPanel(blankChart);
+    blankChartPanel.setSize(600, 350);
+    blankChartPanel.setPreferredSize(new java.awt.Dimension(600, 350));
+    blankChartPanel.setMouseWheelEnabled(true);
+    blankChartPanel.setBackground(Color.white);
+
+    graphPanel.removeAll();
+    graphPanel.add(blankChartPanel);
+    graphPanel.revalidate();
+    graphPanel.repaint();
+}
 
       public void createGraph(double currentBalance, double annualContribution, double expectedRateOfReturn, int currentAge, int retirementAge, double marginalTaxRate) {
        
@@ -691,6 +683,9 @@ ChartPanel chartPanel = new ChartPanel(chart);
     chartPanel.setSize(600, 350); 
     chartPanel.setPreferredSize(new java.awt.Dimension(600, 350)); 
     chartPanel.setMouseWheelEnabled(true); 
+    chartPanel.setBackground(Color.white);
+    chartPanel.setDomainZoomable(false);
+    chartPanel.setRangeZoomable(false);
 
     graphPanel.removeAll(); 
     graphPanel.add(chartPanel);
@@ -704,15 +699,21 @@ ChartPanel chartPanel = new ChartPanel(chart);
         annualContributionInput.setText("");
         rateOfReturnInput.setText("");
         taxRateInput.setText("");
-        differenceLabel.setText("");
-        ResultLabel.setText("");
+  
         ageInput.setText("");
         retirementAgeInput.setText("");
         annualContributionInput.setEnabled(true);
         buttonGroup1.clearSelection();
         maxContributionYes.setSelected(false);
         maxContributionNo.setSelected(true);
-        jLabel16.setText("");
+        diffValue.setText("");
+        
+        jTable1.setValueAt("", 0, 1); 
+        jTable1.setValueAt("", 0, 2);
+        jTable1.setValueAt("", 1, 1);
+        jTable1.setValueAt("", 1, 2);
+        jTable1.setValueAt("", 2, 1);
+        jTable1.setValueAt("", 2, 2);
         error.setText("");
     }//GEN-LAST:event_clearButtonActionPerformed
 
@@ -770,13 +771,22 @@ ChartPanel chartPanel = new ChartPanel(chart);
 */
     private void taxRateQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taxRateQuestionActionPerformed
         // TODO add your handling code here:
-    new marginalTaxRate().setVisible(true);
+        new marginalTaxRate().setVisible(true);
+    
     }//GEN-LAST:event_taxRateQuestionActionPerformed
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.dispose();
+
     }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jLabel11MouseClicked
 
     /**
      * @param args the command line arguments
@@ -814,7 +824,6 @@ ChartPanel chartPanel = new ChartPanel(chart);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ResultLabel;
     private javax.swing.JLabel ageError;
     private javax.swing.JTextField ageInput;
     private javax.swing.JTextField annualContributionInput;
@@ -822,8 +831,7 @@ ChartPanel chartPanel = new ChartPanel(chart);
     private javax.swing.JButton calculateButton;
     private javax.swing.JButton clearButton;
     private javax.swing.JTextField currentBalanceInput;
-    private javax.swing.JFormattedTextField diffInResult;
-    private javax.swing.JLabel differenceLabel;
+    private javax.swing.JLabel diffValue;
     private javax.swing.JLabel error;
     private java.awt.Panel graphPanel;
     private javax.swing.JLabel jLabel1;
@@ -831,9 +839,6 @@ ChartPanel chartPanel = new ChartPanel(chart);
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -841,19 +846,18 @@ ChartPanel chartPanel = new ChartPanel(chart);
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JRadioButton maxContributionNo;
     private javax.swing.JRadioButton maxContributionYes;
     private java.awt.Panel panel1;
     private javax.swing.JTextField rateOfReturnInput;
     private javax.swing.JTextField retirementAgeInput;
-    private javax.swing.JFormattedTextField rothTotalResult;
     private javax.swing.JTextField taxRateInput;
     private java.awt.Button taxRateQuestion;
-    private javax.swing.JFormattedTextField tradIRAResult;
     // End of variables declaration//GEN-END:variables
 }
