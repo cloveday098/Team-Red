@@ -26,7 +26,7 @@ public class interest2 extends javax.swing.JFrame {
         XBtn.setFocusPainted(false);
         XBtn.setHorizontalAlignment(SwingConstants.CENTER);
         XBtn.setVerticalAlignment(SwingConstants.CENTER);
-        jLabel9.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png")).getImage().getScaledInstance(100,48, Image.SCALE_SMOOTH)));
+        jLabel9.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shrunkCalcLogo(.96).png")).getImage().getScaledInstance(100,48, Image.SCALE_SMOOTH)));
         this.getContentPane().setBackground(Color.decode("#c7dbfc"));
         jLabel23.setVisible(false);
     }
@@ -449,7 +449,7 @@ public class interest2 extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shrunkCalcLogo(.96).png"))); // NOI18N
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
         jLabel9.setMaximumSize(new java.awt.Dimension(100, 100));
         jLabel9.setMinimumSize(new java.awt.Dimension(100, 100));
