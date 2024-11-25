@@ -88,24 +88,21 @@ public class mortgagePayoffCalculator extends javax.swing.JDialog {
   calculateButton.addActionListener(new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Check if any required field is empty
         if (loanAmountInput.getText().isEmpty() || interestRateInput.getText().isEmpty() ||
             originalLoanTermInput.getText().isEmpty() || remainingTermYearInput.getText().isEmpty() ||
             remainingTermMonthInput.getText().isEmpty()) {
 
             errorLabel.setText("Please fill out all fields");
-            return;  // Exit if any field is empty
+            return; 
         }
 
         try {
-            // Parse the input values
             double loanAmount = Double.parseDouble(loanAmountInput.getText());
             double interestRate = Double.parseDouble(interestRateInput.getText());
             int originalLoanTerm = Integer.parseInt(originalLoanTermInput.getText());
             int remainingTermYears = Integer.parseInt(remainingTermYearInput.getText());
             int remainingTermMonths = Integer.parseInt(remainingTermMonthInput.getText());
 
-            // Validation for loanAmount, interestRate, originalLoanTerm, and remainingTerm
             if (loanAmount < 30000 || loanAmount > 5000000) {
                 errorLabel.setText("Loan amount must be between $30,000 and $5,000,000.");
                 return;
@@ -138,10 +135,8 @@ public class mortgagePayoffCalculator extends javax.swing.JDialog {
                 return;
             }
 
-            // If no errors, clear the error message
             errorLabel.setText("");
 
-            // Proceed based on the selected radio buttons
             if (payNormal.isSelected()) {
                 calculateNormalPayment(); 
             } else if (payBiweekly.isSelected()) {
@@ -235,22 +230,7 @@ private void calculateBiweeklyPayment() {
         resultinfoLabel.setText("Please enter valid numbers.");
     }
 }
-
-
-
-
-
-
-
-
-
-
-
  
-
-  
-
-   
 private void calculatePaybackAltogether() {
     try {
         double loanAmount = Double.parseDouble(loanAmountInput.getText()); 
@@ -284,21 +264,12 @@ private void calculatePaybackAltogether() {
         jTable1.setValueAt("0.00", 2, 2);  
         jTable1.setValueAt("0.00", 3, 2);
         jTable1.setValueAt(payoffTime, 4, 2); 
-        //resultlabel.setText("Paying your loan back altogether will result in a saving amount of: "+ String.format("$%.2f", saving));
 
     } catch (NumberFormatException ex) {
         resultinfoLabel.setText("Please enter valid numbers.");
     }
 }
 
-
-
-
-  
-
-    
-    
-    
      private void calculateWithExtraPayments() {
         try {
             double loanAmount = Double.parseDouble(loanAmountInput.getText());
@@ -363,37 +334,22 @@ private void calculatePaybackAltogether() {
         months++;
     }
 
-    // Calculate the years and months it will take to pay off the loan
     int yearsToPayoff = months / 12;
     int remainingMonths = months % 12;
 
-    // Calculate the total interest paid without the extra monthly payment (standard payment)
     double totalInterestWithoutExtra = (monthlyPayment * months) - remainingBalance;
 
-    // Calculate the total interest paid with the extra monthly payment
     double totalInterestPaidWithExtra = (totalMonthlyPayment * months) - remainingBalance;
 
-    // Calculate the interest savings due to the extra monthly payment
     double interestSavings = totalInterestWithoutExtra - totalInterestPaidWithExtra;
 
-    // Prepare the result message to display to the user
-    String resultMessage = String.format("<html>Payoff in %d years and %d months<br>" +
-                                          "Remaining balance: $%.2f.<br>By paying an extra $%.2f per month, " +
-                                          "the loan will be paid off in %d years and %d months.<br>" +
-                                          "Interest savings: $%.2f</html>",
-                                          yearsToPayoff, remainingMonths, 
-                                          remainingBalance, extraMonthly, 
-                                          yearsToPayoff, remainingMonths,
-                                          interestSavings);
-
     // Update the monthly payment including the extra amount in the table
-    jTable1.setValueAt(String.format("$%.2f", totalMonthlyPayment), 0, 2);  // New monthly payment with extra
-    jTable1.setValueAt(String.format("$%.2f", monthlyPayment), 1, 2);  // Normal monthly payment without extra
-    jTable1.setValueAt(String.format("$%.2f", adjustedBalance), 2, 2);  // Remaining balance after extra payments
-    jTable1.setValueAt(String.format("$%.2f", interestSavings), 3, 2);  // Interest savings from extra payments
+    jTable1.setValueAt(String.format("$%.2f", totalMonthlyPayment), 0, 2);  
+    jTable1.setValueAt(String.format("$%.2f", monthlyPayment), 1, 2); 
+    jTable1.setValueAt(String.format("$%.2f", adjustedBalance), 2, 2);  
+    jTable1.setValueAt(String.format("$%.2f", interestSavings), 3, 2);  
 
-    // Display the result message to the user
-    resultinfoLabel.setText(resultMessage);
+
 }
 
 
