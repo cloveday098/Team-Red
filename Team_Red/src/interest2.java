@@ -118,11 +118,6 @@ public class interest2 extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setBackground(new java.awt.Color(183, 183, 183));
         jButton2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
@@ -132,32 +127,12 @@ public class interest2 extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         jTextField1.setBackground(new java.awt.Color(199, 219, 252));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jTextField2.setBackground(new java.awt.Color(199, 219, 252));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
 
         jTextField3.setBackground(new java.awt.Color(199, 219, 252));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
 
         jTextField4.setBackground(new java.awt.Color(199, 219, 252));
 
