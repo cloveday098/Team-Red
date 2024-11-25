@@ -2,17 +2,23 @@ package Images;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import java.util.ArrayList;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -70,20 +76,20 @@ public class mortgagePayoffCalculator extends javax.swing.JDialog {
         originalLoanTermInput.addKeyListener(numOnlyKeyAdapter); 
         remainingTermYearInput.addKeyListener(numOnlyKeyAdapter); 
         remainingTermMonthInput.addKeyListener(numOnlyKeyAdapter); 
-        repayMonthInput.addKeyListener(numOnlyKeyAdapter); 
-        repayYearInput.addKeyListener(numOnlyKeyAdapter); 
-        repayOneInput.addKeyListener(numOnlyKeyAdapter); 
+       // repayMonthInput.addKeyListener(numOnlyKeyAdapter); 
+        //repayYearInput.addKeyListener(numOnlyKeyAdapter); 
+       // repayOneInput.addKeyListener(numOnlyKeyAdapter); 
         
-        repayMonthInput.setEnabled(false);
-        repayYearInput.setEnabled(false);
-        repayOneInput.setEnabled(false);
+     //   repayMonthInput.setEnabled(false);
+      //  repayYearInput.setEnabled(false);
+     //   repayOneInput.setEnabled(false);
         
    
 
         
-        addFocusListener(repayMonthInput, repayYearInput, repayOneInput);
-        addFocusListener(repayYearInput, repayMonthInput, repayOneInput);
-        addFocusListener(repayOneInput, repayMonthInput, repayYearInput);
+     //   addFocusListener(repayMonthInput, repayYearInput, repayOneInput);
+      //  addFocusListener(repayYearInput, repayMonthInput, repayOneInput);
+       // addFocusListener(repayOneInput, repayMonthInput, repayYearInput);
                      
   calculateButton.addActionListener(new ActionListener() {
     @Override
@@ -127,6 +133,10 @@ public class mortgagePayoffCalculator extends javax.swing.JDialog {
                 errorLabel.setText("Remaining term (in years) cannot be greater than the original loan term.");
                 return;
             }
+            if (remainingTermMonths > 12) {
+                errorLabel.setText("Month cannot be greater than 12.");
+                return;
+            }
 
             int totalRemainingMonths = remainingTermYears * 12 + remainingTermMonths;
 
@@ -139,32 +149,35 @@ public class mortgagePayoffCalculator extends javax.swing.JDialog {
 
             if (payNormal.isSelected()) {
                 calculateNormalPayment(); 
-            } else if (payBiweekly.isSelected()) {
-                calculateBiweeklyPayment();
-            } else if (payAltogether.isSelected()) {
+            }// else if (payBiweekly.isSelected()) {
+              //  calculateBiweeklyPayment();
+           // }
+            else if (payAltogether.isSelected()) {
+                calculateNormalPayment();
                 calculatePaybackAltogether();
-            } else if (repayWith.isSelected()) {
-                calculateWithExtraPayments();
-            }
+            }// else if (repayWith.isSelected()) {
+              //  calculateWithExtraPayments();
+           // }
 
         } catch (NumberFormatException ex) {
             errorLabel.setText("Please enter valid numbers.");
-        }
+        } 
     }
 });
-    } 
+    }  
+         
+
 private void calculateNormalPayment() {
     try {
-    
-        double loanAmount = Double.parseDouble(loanAmountInput.getText()); 
-        double annualInterestRate = Double.parseDouble(interestRateInput.getText()); 
-        int originalLoanTerm = Integer.parseInt(originalLoanTermInput.getText()); 
-        int remainingTermYears = Integer.parseInt(remainingTermYearInput.getText()); 
-        int remainingTermMonths = Integer.parseInt(remainingTermMonthInput.getText()); 
+        double loanAmount = Double.parseDouble(loanAmountInput.getText());
+        double annualInterestRate = Double.parseDouble(interestRateInput.getText());
+        int originalLoanTerm = Integer.parseInt(originalLoanTermInput.getText());
+        int remainingTermYears = Integer.parseInt(remainingTermYearInput.getText());
+        int remainingTermMonths = Integer.parseInt(remainingTermMonthInput.getText());
 
-        double monthlyInterestRate = annualInterestRate / 100 / 12; 
+        double monthlyInterestRate = annualInterestRate / 100 / 12;
         int totalPayments = originalLoanTerm * 12;
-        int remainingPayments = (remainingTermYears * 12) + remainingTermMonths; 
+        int remainingPayments = (remainingTermYears * 12) + remainingTermMonths;
 
         double monthlyPayment = (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) /
                                 (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
@@ -173,15 +186,42 @@ private void calculateNormalPayment() {
                                   (monthlyPayment * ((Math.pow(1 + monthlyInterestRate, paymentsMade(totalPayments, remainingPayments)) - 1) / monthlyInterestRate));
 
         double totalPaymentAmount = monthlyPayment * totalPayments;
-
         double remainingPaymentAmount = monthlyPayment * remainingPayments;
 
-        
-        jTable1.setValueAt(String.format("$%.2f", monthlyPayment), 0, 1); 
+        jTable1.setValueAt(String.format("$%.2f", monthlyPayment), 0, 1);
         jTable1.setValueAt(String.format("$%.2f", totalPaymentAmount), 1, 1);
-        jTable1.setValueAt(String.format("$%.2f", remainingBalance), 3, 1); 
-        jTable1.setValueAt(String.format("$%.2f", remainingPaymentAmount), 2, 1); 
+        jTable1.setValueAt(String.format("$%.2f", remainingBalance), 3, 1);
+        jTable1.setValueAt(String.format("$%.2f", remainingPaymentAmount), 2, 1);
         jTable1.setValueAt(remainingTermYears + " yrs " + remainingTermMonths + " months", 4, 1);
+
+        double balance = loanAmount;
+        double interest, principal;
+
+        String[] columnNames = {"Payment#", "Interest", "Principal", "Remaining Balance"};
+       java.util.List<String[]> amortizationData = new java.util.ArrayList<>();
+
+
+        for (int i = 1; i <= totalPayments; i++) {
+            interest = balance * monthlyInterestRate;
+            principal = monthlyPayment - interest;
+            balance -= principal;
+
+            if (balance < 0) balance = 0;
+
+            amortizationData.add(new String[]{
+                String.valueOf(i),
+                String.format("$%.2f", interest),
+                String.format("$%.2f", principal),
+                String.format("$%.2f", balance)
+            });
+
+            if (balance == 0) break;
+        }
+
+        String[][] dataArray = amortizationData.toArray(new String[0][]);
+
+        DefaultTableModel model = new DefaultTableModel(dataArray, columnNames);
+        jTable2.setModel(model);
 
     } catch (NumberFormatException ex) {
         ResultLabel.setText("Please enter valid inputs.");
@@ -191,6 +231,7 @@ private void calculateNormalPayment() {
 private int paymentsMade(int totalPayments, int remainingPayments) {
     return totalPayments - remainingPayments;
 }
+
   
 private void calculateBiweeklyPayment() {
     try {
@@ -233,43 +274,79 @@ private void calculateBiweeklyPayment() {
  
 private void calculatePaybackAltogether() {
     try {
-        double loanAmount = Double.parseDouble(loanAmountInput.getText()); 
-        double annualInterestRate = Double.parseDouble(interestRateInput.getText()); 
-        int originalLoanTerm = Integer.parseInt(originalLoanTermInput.getText()); 
-        int remainingTermYears = Integer.parseInt(remainingTermYearInput.getText()); 
-        int remainingTermMonths = Integer.parseInt(remainingTermMonthInput.getText()); 
+        double loanAmount = Double.parseDouble(loanAmountInput.getText());
+        double annualInterestRate = Double.parseDouble(interestRateInput.getText());
+        int originalLoanTerm = Integer.parseInt(originalLoanTermInput.getText());
+        int remainingTermYears = Integer.parseInt(remainingTermYearInput.getText());
+        int remainingTermMonths = Integer.parseInt(remainingTermMonthInput.getText());
 
         double monthlyInterestRate = annualInterestRate / 100 / 12;
         int totalPayments = originalLoanTerm * 12;
-        double monthlyPayment = (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) /
-                                (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
-
         int paymentsMade = (originalLoanTerm - remainingTermYears) * 12 + remainingTermMonths;
         int remainingPayments = (remainingTermYears * 12) + remainingTermMonths;
 
-        double remainingBalance = loanAmount * 
-            (Math.pow(1 + monthlyInterestRate, totalPayments) - Math.pow(1 + monthlyInterestRate, paymentsMade)) /
-            (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
+        double monthlyPayment = (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) /
+                (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
 
-        double totalPaidSoFar = monthlyPayment * paymentsMade;  
+        double remainingBalance = loanAmount *
+                (Math.pow(1 + monthlyInterestRate, totalPayments) - Math.pow(1 + monthlyInterestRate, paymentsMade)) /
+                (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
 
+        double totalPaidSoFar = monthlyPayment * paymentsMade;
         double totalPayment = totalPaidSoFar + remainingBalance;
 
-
-        double totalPaymentsAltogether = remainingBalance; 
-
+        double totalPaymentsAltogether = remainingBalance;
         String payoffTime = "0 years, 0 months"; 
-        jTable1.setValueAt(String.format("$%.2f", totalPaymentsAltogether), 0, 2); 
-        jTable1.setValueAt(String.format("$%.2f", totalPayment), 1, 2); 
-        jTable1.setValueAt("0.00", 2, 2);  
-        jTable1.setValueAt("0.00", 3, 2);
-        jTable1.setValueAt(payoffTime, 4, 2); 
+        jTable1.setValueAt(String.format("$%.2f", totalPaymentsAltogether), 0, 2);
+        jTable1.setValueAt(String.format("$%.2f", totalPayment), 1, 2);
+        jTable1.setValueAt("0.00", 2, 2); 
+        jTable1.setValueAt("0.00", 3, 2); 
+        jTable1.setValueAt(payoffTime, 4, 2);
+
+        java.util.List<String[]> amortizationData = new java.util.ArrayList<>();
+        double interest, principal;
+        int paymentNumber = 1;
+
+        for (int i = 0; i < paymentsMade; i++) {
+            interest = loanAmount * monthlyInterestRate;
+            principal = monthlyPayment - interest;
+            loanAmount -= principal;
+
+            amortizationData.add(new String[]{
+                    String.valueOf(paymentNumber), 
+                    String.format("$%.2f", interest), 
+                    String.format("$%.2f", principal), 
+                    String.format("$%.2f", loanAmount) 
+            });
+
+            paymentNumber++;
+        }
+
+        interest = remainingBalance * monthlyInterestRate;
+        principal = remainingBalance;
+        remainingBalance = 0;
+
+        amortizationData.add(new String[]{
+                String.valueOf(paymentNumber), 
+                String.format("$%.2f", interest), 
+                String.format("$%.2f", principal), 
+                String.format("$%.2f", remainingBalance) 
+        });
+
+        DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
+        tableModel.setRowCount(0); 
+        for (String[] row : amortizationData) {
+            tableModel.addRow(row);
+        }
 
     } catch (NumberFormatException ex) {
         resultinfoLabel.setText("Please enter valid numbers.");
     }
 }
 
+         
+
+/*
      private void calculateWithExtraPayments() {
         try {
             double loanAmount = Double.parseDouble(loanAmountInput.getText());
@@ -405,18 +482,14 @@ private void calculatePayoffWithYearlyExtra(double remainingBalance, double mont
  
 private void calculatePayoffWithOneTimeExtra(double remainingBalance, double monthlyInterestRate, double extraOneTime) {
     try {
-        // Assume you have some predefined values or inputs for loanAmount, originalLoanTerm, etc.
-        double loanAmount = 400000;  // Example
-        int originalLoanTerm = 30;   // Example
-        int totalPayments = originalLoanTerm * 12;  // Total number of payments for the original term
+        double loanAmount = 400000; 
+        int originalLoanTerm = 30;  
+        int totalPayments = originalLoanTerm * 12;  
 
-        // Calculate original monthly payment based on the full loan amount
         double monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalPayments));
 
-        // Adjust the loan balance based on the extra payment
         double adjustedBalance = remainingBalance - extraOneTime;
 
-        // Recalculate the remaining months and payoff time
         int months = 0;
 
         while (adjustedBalance > 0) {
@@ -424,21 +497,17 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
             adjustedBalance = adjustedBalance + interestForMonth - monthlyPayment;
             months++;
         }
-
-        // Calculate years and months for payoff
         int yearsToPayoff = months / 12;
         int remainingMonths = months % 12;
 
-        // Calculate total interest saved
-        double totalInterestWithoutExtra = (monthlyPayment * totalPayments) - loanAmount;  // Without the extra payment
-        double totalInterestPaidWithExtra = (monthlyPayment * months) - loanAmount;  // With the extra payment
+        double totalInterestWithoutExtra = (monthlyPayment * totalPayments) - loanAmount;  
+        double totalInterestPaidWithExtra = (monthlyPayment * months) - loanAmount; 
         double interestSavings = totalInterestWithoutExtra - totalInterestPaidWithExtra;
 
-        // Fill the JTable with the results
-        jTable1.setValueAt(String.format("$%.2f", monthlyPayment), 0, 2);               // Monthly payment
-        jTable1.setValueAt(String.format("$%.2f", adjustedBalance), 1, 2);              // Remaining balance
-        jTable1.setValueAt(String.format("$%.2f", interestSavings), 2, 2);               // Interest savings
-        jTable1.setValueAt(String.format("%d years, %d months", yearsToPayoff, remainingMonths), 3, 2);  // Payoff time
+        jTable1.setValueAt(String.format("$%.2f", monthlyPayment), 0, 2);             
+        jTable1.setValueAt(String.format("$%.2f", adjustedBalance), 1, 2);              
+        jTable1.setValueAt(String.format("$%.2f", interestSavings), 2, 2);               
+        jTable1.setValueAt(String.format("%d years, %d months", yearsToPayoff, remainingMonths), 3, 2); 
 
     } catch (NumberFormatException ex) {
         // Handle invalid input
@@ -446,7 +515,7 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
     }
 }
 
- 
+ */
     
     
     private void addFocusListener(JTextField mainField, JTextField disableField1, JTextField disableField2) {
@@ -509,15 +578,7 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
         jPanel1 = new javax.swing.JPanel();
         repayLabel = new javax.swing.JLabel();
         payAltogether = new javax.swing.JRadioButton();
-        payBiweekly = new javax.swing.JRadioButton();
         payNormal = new javax.swing.JRadioButton();
-        repayWith = new javax.swing.JRadioButton();
-        repayMonthInput = new javax.swing.JTextField();
-        repayYearInput = new javax.swing.JTextField();
-        repayOneInput = new javax.swing.JTextField();
-        repayMonthLabel = new javax.swing.JLabel();
-        repayYearLabel = new javax.swing.JLabel();
-        repayOneLabel = new javax.swing.JLabel();
         calculateButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         errorLabel = new javax.swing.JLabel();
@@ -534,6 +595,8 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         resultlabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Images/icon.png")).getImage());
@@ -585,42 +648,26 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
         payAltogether.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         payAltogether.setText("Payback Altogether");
 
-        buttonGroup1.add(payBiweekly);
-        payBiweekly.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        payBiweekly.setText("Biweekly");
-
         buttonGroup1.add(payNormal);
         payNormal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         payNormal.setText("Normal Repayment");
 
-        buttonGroup1.add(repayWith);
-        repayWith.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        repayWith.setText("Repayment with extra payments ");
-        repayWith.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                repayWithActionPerformed(evt);
-            }
-        });
-
-        repayMonthLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        repayMonthLabel.setText("$ per month");
-
-        repayYearLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        repayYearLabel.setText("$ per year");
-
-        repayOneLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        repayOneLabel.setText("$ one time");
-
+        calculateButton.setBackground(new java.awt.Color(62, 142, 224));
         calculateButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        calculateButton.setForeground(new java.awt.Color(255, 255, 255));
         calculateButton.setText("Calculate");
+        calculateButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(62, 142, 224), 5, true));
         calculateButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 calculateButtonMouseClicked(evt);
             }
         });
 
+        clearButton.setBackground(new java.awt.Color(62, 142, 224));
         clearButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        clearButton.setForeground(new java.awt.Color(255, 255, 255));
         clearButton.setText("Clear");
+        clearButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(62, 142, 224), 5, true));
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearButtonActionPerformed(evt);
@@ -638,78 +685,39 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(repayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(payBiweekly, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(34, 34, 34))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(payNormal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(125, 125, 125)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(repayMonthInput, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(repayMonthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(repayYearInput, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(repayOneInput, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(repayOneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(repayYearLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(repayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(payAltogether)
-                        .addGap(28, 28, 28)
-                        .addComponent(repayWith, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(calculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(88, 88, 88)))
-                .addGap(20, 20, 20))
+                        .addGap(37, 37, 37)
+                        .addComponent(payNormal)))
+                .addGap(171, 171, 171))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(104, 104, 104)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(calculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(repayLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(payAltogether)
-                                    .addComponent(repayWith))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(payBiweekly)
-                                    .addComponent(repayMonthInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(repayMonthLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(payNormal))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(repayYearInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(repayYearLabel))))
-                        .addGap(7, 7, 7)
-                        .addComponent(repayOneLabel))
-                    .addComponent(repayOneInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(clearButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(calculateButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addComponent(repayLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(payAltogether)
+                    .addComponent(payNormal))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clearButton)
+                    .addComponent(calculateButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -717,7 +725,7 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(135, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(originalLoanTermLabel)
@@ -736,20 +744,21 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
                     .addComponent(remainingLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(originalLoanTermInput, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(interestRateInput, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loanAmountInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(remainingTermYearInput, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(remainingTermMonthInput, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(loanAmountInput, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(originalLoanTermInput, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(interestRateInput, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(remainingTermYearInput, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 127, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 130, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
@@ -856,7 +865,7 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
         jPanel5.setBackground(new java.awt.Color(62, 142, 224));
 
         jLabel8.setBackground(new java.awt.Color(62, 142, 224));
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Results");
 
@@ -908,18 +917,48 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
         resultlabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         resultlabel.setText(" ");
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Payment#", "Interest", "Principal", "Remaining Balance"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+            jTable2.getColumnModel().getColumn(3).setResizable(false);
+        }
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(resultlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(resultlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -927,8 +966,10 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(resultlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(247, 247, 247))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resultlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(117, 117, 117))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -951,7 +992,7 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -963,7 +1004,7 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -992,35 +1033,31 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
         originalLoanTermInput.setText(""); 
         remainingTermYearInput.setText("");
         remainingTermMonthInput.setText(""); 
-        repayMonthInput.setText("");
-        repayYearInput.setText(""); 
-        repayOneInput.setText("");
+     //   repayMonthInput.setText("");
+      //  repayYearInput.setText(""); 
+      //  repayOneInput.setText("");
         interestRateInput.setText("");
         loanAmountInput.setText("");
         payNormal.setSelected(true);
-        repayMonthInput.setEnabled(false);
-        repayYearInput.setEnabled(false);
-        repayOneInput.setEnabled(false);
+     //   repayMonthInput.setEnabled(false);
+      //  repayYearInput.setEnabled(false);
+     //   repayOneInput.setEnabled(false);
         errorLabel.setText("");
         
         jTable1.setValueAt("", 0, 1); 
-        jTable1.setValueAt("", 0, 2);
         jTable1.setValueAt("", 1, 1);
-        jTable1.setValueAt("", 1, 2);
         jTable1.setValueAt("", 2, 1);
-        jTable1.setValueAt("", 2, 2);
         jTable1.setValueAt("", 3, 1);
+        jTable1.setValueAt("", 4, 1);
+        jTable1.setValueAt("", 0, 2);
+        jTable1.setValueAt("", 1, 2);
+        jTable1.setValueAt("", 2, 2);
         jTable1.setValueAt("", 3, 2);
+        jTable1.setValueAt("", 4, 2);
+        DefaultTableModel tableModel2 = (DefaultTableModel) jTable2.getModel();
+    tableModel2.setRowCount(0); 
         
     }//GEN-LAST:event_clearButtonActionPerformed
-
-    private void repayWithActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repayWithActionPerformed
-        // TODO add your handling code here:
-        repayMonthInput.setEnabled(true);
-        repayYearInput.setEnabled(true);
-        repayOneInput.setEnabled(true);
-        
-    }//GEN-LAST:event_repayWithActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
@@ -1101,25 +1138,19 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField loanAmountInput;
     private javax.swing.JLabel loanAmountLabel;
     private javax.swing.JTextField originalLoanTermInput;
     private javax.swing.JLabel originalLoanTermLabel;
     private javax.swing.JRadioButton payAltogether;
-    private javax.swing.JRadioButton payBiweekly;
     private javax.swing.JRadioButton payNormal;
     private javax.swing.JLabel remainingLabel;
     private javax.swing.JTextField remainingTermMonthInput;
     private javax.swing.JTextField remainingTermYearInput;
     private javax.swing.JLabel repayLabel;
-    private javax.swing.JTextField repayMonthInput;
-    private javax.swing.JLabel repayMonthLabel;
-    private javax.swing.JTextField repayOneInput;
-    private javax.swing.JLabel repayOneLabel;
-    private javax.swing.JRadioButton repayWith;
-    private javax.swing.JTextField repayYearInput;
-    private javax.swing.JLabel repayYearLabel;
     private javax.swing.JLabel resultinfoLabel;
     private javax.swing.JLabel resultlabel;
     // End of variables declaration//GEN-END:variables
