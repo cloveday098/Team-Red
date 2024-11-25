@@ -284,7 +284,6 @@ public class refinanceCalc extends javax.swing.JFrame {
         jLabel29.setText("%");
 
         jLabel30.setPreferredSize(new java.awt.Dimension(42, 17));
-        jLabel30.setSize(new java.awt.Dimension(42, 17));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -525,7 +524,11 @@ public class refinanceCalc extends javax.swing.JFrame {
                 .addGap(71, 71, 71))
         );
 
+        jButton3.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 51, 51));
         jButton3.setText("X");
+        jButton3.setBorderPainted(false);
+        jButton3.setFocusPainted(false);
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
@@ -837,7 +840,6 @@ public class refinanceCalc extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        System.exit(1);
     }//GEN-LAST:event_jButton3MouseClicked
 
     /**

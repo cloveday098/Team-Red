@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 public class calcPage3_retirement extends javax.swing.JPanel {
 
@@ -45,22 +46,45 @@ public class calcPage3_retirement extends javax.swing.JPanel {
             rothBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
 
+            JButton XBtn = new JButton();
+            XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12));
+            XBtn.setForeground(new java.awt.Color(255,51,51));
+            XBtn.setText("X");
+            XBtn.setBounds(1590, 0, 43, 43);
+            XBtn.setBorderPainted(false);
+            XBtn.setFocusPainted(false);
+            XBtn.setHorizontalAlignment(SwingConstants.CENTER);
+            XBtn.setVerticalAlignment(SwingConstants.CENTER);
+            
             rothBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    JOptionPane.showMessageDialog(null, "Roth IRA calculator coming soon...", "Roth IRA Calculator", JOptionPane.INFORMATION_MESSAGE);
+                    rothIRA rothPage = new rothIRA();
+                    rothPage.setSize(1650, 1800);
+                    rothPage.setResizable(false);
+                    rothPage.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "Roth IRA calculator coming soon...", "Roth IRA Calculator", JOptionPane.INFORMATION_MESSAGE);
                 }        
             });
             
             this.add(title1);
             this.add(retireBtn);
             this.add(rothBtn);
+            this.add(XBtn);
             
             JFrame frame = new JFrame("Retirement Calculators");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(1000, 750);
+            frame.setSize(1650, 1800);
             frame.add(this);
             frame.setVisible(true);
+            
+            XBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {                                  
+                    frame.dispose();
+                    //System.exit(1);
+                }  
+            });
         }
         catch (NullPointerException e) {
             System.out.println("Image not found! Please check the path!");

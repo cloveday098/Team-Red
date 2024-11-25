@@ -64,7 +64,7 @@ public class calcPage4_misc extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     currency_calc currPage = new currency_calc();
-                    currPage.setSize(1200, 800);
+                    currPage.setSize(1650, 1800);
                     currPage.setResizable(false);
                     currPage.setVisible(true);
                 }        
