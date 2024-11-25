@@ -1,26 +1,3 @@
-
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.NumberFormat;
-import java.util.Dictionary;
-import java.util.Hashtable;
-import java.util.Locale;
-import java.util.Currency;
-import java.util.Map;
-import java.util.TreeMap;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import org.jsoup.Jsoup;
-import java.util.Enumeration;
-import java.awt.event.KeyEvent;
-import javax.swing.JTextField;
-import javax.swing.*;
-import javax.swing.JOptionPane;
-import java.text.DecimalFormat;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -28,26 +5,28 @@ import java.text.DecimalFormat;
 
 /**
  *
- * @author loved
  * @author 5678m
  */
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import java.awt.event.KeyEvent;
+import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.JOptionPane;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.NumberFormat;
+import java.util.Hashtable;
+import java.util.Locale;
+import java.util.Currency;
+import java.util.Map;
+import java.util.TreeMap;
 
-// validate funct
-// monthlyPayment funct
-// Unit tests for both
 public class Helper {
-    public static boolean isValidNumber(String test) 
-    {
-        try {
-            float num = Float.parseFloat(test);
-        }
-        catch (NumberFormatException e) {
-            System.out.println(test + " caused " + e);
-            return false;
-        }
-        return true;
-    }
-    
     public static boolean isPos(String num) 
     {
         if (isValidNumber(num)) {
@@ -96,6 +75,19 @@ public class Helper {
     
 
     // Currency Convertor
+    public static boolean isCurrValidNumber(String test) {
+        return test.matches("\\d*"); // Matches an empty string or digits only
+    }
+
+    public static void validateInput(JTextField textField, KeyEvent evt) {
+        if (evt.getKeyChar() != KeyEvent.VK_BACK_SPACE && evt.getKeyChar() != KeyEvent.VK_DELETE) {
+            String currentText = textField.getText() + evt.getKeyChar();
+            if (!isCurrValidNumber(currentText)) {
+                evt.consume(); // Block invalid characters
+            }
+        }
+    }
+    
     public static Map<String, Double> webScraper() {
         String s = "success";
         String url = "http://www.x-rates.com/table/?from=USD&amount=1";
@@ -142,7 +134,7 @@ public class Helper {
     
     // Mapping 
     public static Locale getLocaleFromCurrency(String currencyName) {
-        String currencyCode = switch (currencyName) {   // Symbols not displaying
+        String currencyCode = switch (currencyName) {
             case "Argentine Peso" -> "ARS";
             case "Australian Dollar" -> "AUD";
             case "Bahraini Dinar" -> "BHD";
@@ -213,9 +205,9 @@ public class Helper {
         System.out.println("Couldn't find " + currencyName);
         return null;
     }
-
-    // Auto Loan Calculator
-    public static boolean isAutoValidNumber(String test){
+    
+    public static boolean isValidNumber(String test){
+        test = test.replace(".", "");
         if (test.isEmpty()) {
             return false;
         }
@@ -227,6 +219,7 @@ public class Helper {
 
         for (int i = 1; i < test.length(); i++) {
             if (!Character.isDigit(test.charAt(i))) {
+                System.out.println(test.charAt(i));
                 return false;
             }
         }
@@ -234,11 +227,50 @@ public class Helper {
         return true;
     }
     
+    // Mortgage Calculator
+    public static int intFromMonth(String month) {
+        String num = switch (month) {   // Symbols not displaying
+                case "Jan" -> "1";
+                case "Feb" -> "2";
+                case "Mar" -> "3";
+                case "Apr" -> "4";
+                case "May" -> "5";
+                case "Jun" -> "6";
+                case "Jul" -> "7";
+                case "Aug" -> "8";
+                case "Sep" -> "9";
+                case "Oct" -> "10";
+                case "Nov" -> "11";
+                case "Dec" -> "12";
+                default -> null;
+            };
+        return Integer.parseInt(num);
+    }
+    public static String monthFromInt(String n) {
+        String month = switch (n) {   // Symbols not displaying
+                case "1" -> "Jan";
+                case "2" -> "Feb";
+                case "3" -> "Mar";
+                case "4" -> "Apr";
+                case "5" -> "May";
+                case "6" -> "Jun";
+                case "7" -> "Jul";
+                case "8" -> "Aug";
+                case "9" -> "Sep";
+                case "10" -> "Oct";
+                case "11" -> "Nov";
+                case "0" -> "Dec";
+                default -> null;
+            };
+        return month;
+    }
+    
+    // Auto Loan Calculator
     public static void validateSingleInput(JTextField textField, KeyEvent evt) {
         if (evt.getKeyChar() != KeyEvent.VK_BACK_SPACE && evt.getKeyChar() != KeyEvent.VK_DELETE) {
             String currentText = textField.getText() + evt.getKeyChar();
 
-            if (!isAutoValidNumber(currentText)) {
+            if (!isValidNumber(currentText)) {
                 evt.consume();
             }
         }
@@ -278,6 +310,7 @@ public class Helper {
         return false;
     }
     
+    
     public static boolean  isAnyOnlyDecimal(String autoPrice, String loanTerm, String interestRate, String cashIncentives, String downPayment, String tradeInValue, String amtOwedTradeIn, String salesTax, String otherFees){
         
         if(autoPrice.matches("\\.+") || loanTerm.matches("\\.+") || interestRate.matches("\\.+") || cashIncentives.matches("\\.+") || downPayment.matches("\\.+") || tradeInValue.matches("\\.+") || amtOwedTradeIn.matches("\\.+") || salesTax.matches("\\.+") || otherFees.matches("\\.+")){
@@ -285,6 +318,8 @@ public class Helper {
         }
         return false;
     }
+        
+    
     
     public static boolean validateAllInputs(String autoPrice, String loanTerm, String interestRate, String cashIncentives, String downPayment, String tradeInValue, String amtOwedTradeIn, String salesTax, String otherFees) {
         
@@ -335,6 +370,11 @@ public class Helper {
             JOptionPane.showMessageDialog(null, "Down payment can not be more than or equal to the auto price.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+        if(cashIncentivesNum >= autoPriceNum){
+            JOptionPane.showMessageDialog(null, "Cash incentives can not be more than or equal to the auto price.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
         return true;
     }
     
@@ -465,6 +505,8 @@ public class Helper {
         //double totalCost = totalLoanPayments + totalUpPayment;
         
         
+        
+        
         double roundedLoanAmount = Math.round(totalLoanAmount * 100) / 100.0;
         double roundedMonthlyPayment = Math.round(monthlyPayment * 100) / 100.0;
         
@@ -477,5 +519,408 @@ public class Helper {
         
         return new double[]{roundedMonthlyPayment, roundedLoanAmount,roundedtotalSalesTax, roundedtotalUpPayment, roundedtotalLoanPayments, roundedtotalLoanInterest, roundedtotalCost};
     }
+    
+    
+    
+    
+    
+    
+    public static boolean downPaymentUpFrontValidatoin(String x, String downPayment, String closingCost, String interestRate, String loanTerm){
+        if(x.isEmpty() || downPayment.isEmpty() || closingCost.isEmpty() || interestRate.isEmpty() || loanTerm.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Make sure no text field(s) are empty!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(x.matches("\\.+") || downPayment.matches("\\.+") || closingCost.matches("\\.+") || interestRate.matches("\\.+")){
+            JOptionPane.showMessageDialog(null, "Make sure no text field(s) contain only a decimal", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        double xNum = Double.parseDouble(x);
+        double downPaymentNum = Double.parseDouble(downPayment);
+        double closingCostNum = Double.parseDouble(closingCost);
+        double interestRateNum = Double.parseDouble(interestRate);
+        int loanTermNum = Integer.parseInt(loanTerm);
+        
+        
+        if(xNum == 0 && downPaymentNum == 0 && closingCostNum == 0 && interestRateNum == 0 && loanTermNum == 0){
+            JOptionPane.showMessageDialog(null, "All inputs can not be zero!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(xNum == 0){
+            JOptionPane.showMessageDialog(null, "UpFront Cash can not be zero!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(loanTermNum == 0){
+            JOptionPane.showMessageDialog(null, "Loan term can not be zero!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(downPaymentNum >= 100){
+            JOptionPane.showMessageDialog(null, "Down payment can not be greater than or equal to 100% !", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
+    }
+    
+        
+    public static double[] upFrontCashWithClosingCostPercent(double upFrontCash, double downPayment, double closingCost, double interestRate, int loanTerm){
+        double totalPercentNum = (downPayment / 100) + (closingCost / 100); 
+        double homePriceNum = upFrontCash / totalPercentNum;
+        double downPaymentNum = homePriceNum * (downPayment / 100);
+        double closeCostNum = homePriceNum * (closingCost / 100);
+        double loanAmountNum = homePriceNum - downPaymentNum;
+        double monthlyInterestRate = (interestRate / 100) / 12;
+        int termLoanNum = loanTerm * 12;
+        double monthlyPaymentNum;
+        if (interestRate == 0) {
+            monthlyPaymentNum = loanAmountNum / (loanTerm * 12);
+        }else{
+            monthlyPaymentNum = (loanAmountNum * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -termLoanNum));
+        }
 
+        double roundedHomePriceNum = Math.round(homePriceNum * 100) / 100.0;
+        double roundedDownPaymentNum = Math.round(downPaymentNum * 100) / 100.0;
+        double roundedCloseCostNum = Math.round(closeCostNum * 100) / 100.0;
+        double roundedLoanAmountNum = Math.round(loanAmountNum * 100) / 100.0;
+        double roundedMonthlyPaymentNum = Math.round(monthlyPaymentNum * 100) / 100.0;
+
+        return new double[] {roundedHomePriceNum, roundedDownPaymentNum, roundedCloseCostNum, roundedLoanAmountNum, roundedMonthlyPaymentNum};
+    }
+    
+    public static double[] upFrontCashWithOutClosingCostPercent(double upFrontCash, double downPayment, double interestRate, int loanTerm){
+        double totalPercentNum = downPayment / 100;
+        double homePriceNum = upFrontCash / totalPercentNum;
+        double downPaymentNum = homePriceNum * (downPayment / 100);
+        double loanAmountNum = homePriceNum - downPaymentNum;
+        double monthlyInterestRate = (interestRate / 100) / 12;
+        int termLoanNum = loanTerm * 12;
+        double monthlyPaymentNum;
+        
+        if (interestRate == 0) {
+            monthlyPaymentNum = loanAmountNum / (loanTerm * 12);
+        }else{
+            monthlyPaymentNum = (loanAmountNum * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -termLoanNum));
+        }
+        
+        double roundedHomePriceNum = Math.round(homePriceNum * 100) / 100.0;
+        double roundedDownPaymentNum = Math.round(downPaymentNum * 100) / 100.0;
+        double roundedLoanAmountNum = Math.round(loanAmountNum * 100) / 100.0;
+        double roundedMonthlyPaymentNum = Math.round(monthlyPaymentNum * 100) / 100.0;
+
+        return new double[] {roundedHomePriceNum, roundedDownPaymentNum, roundedLoanAmountNum, roundedMonthlyPaymentNum};
+    }
+    
+    public static double[] upFrontCashWithClosingCostMoney(double upFrontCash, double downPayment, double closingCost, double interestRate, int loanTerm){
+        double totalPercentNum = downPayment / 100;
+        double homePriceNum = upFrontCash / totalPercentNum;
+        double downPaymentNum = homePriceNum * (downPayment / 100);
+        double closeCostNum = closingCost;
+        double loanAmountNum = homePriceNum - downPaymentNum - closeCostNum;
+        double monthlyInterestRate = (interestRate / 100) / 12;
+        int totalLoanNum = loanTerm * 12;
+        double monthlyPaymentNum;
+        
+        if (interestRate == 0) {
+            monthlyPaymentNum = loanAmountNum / (loanTerm * 12);
+        }else{
+            monthlyPaymentNum = (loanAmountNum * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalLoanNum));
+        }
+        
+        double roundedHomePriceNum = Math.round(homePriceNum * 100) / 100.0;
+        double roundedDownPaymentNum = Math.round(downPaymentNum * 100) / 100.0;
+        double roundedCloseCostNum = Math.round(closeCostNum * 100) / 100.0;
+        double roundedLoanAmountNum = Math.round(loanAmountNum * 100) / 100.0;
+        double roundedMonthlyPaymentNum = Math.round(monthlyPaymentNum * 100) / 100.0;
+        
+        return new double[] {roundedHomePriceNum, roundedDownPaymentNum, roundedCloseCostNum, roundedLoanAmountNum, roundedMonthlyPaymentNum};
+
+    }
+    
+    public static double[] upFrontCashWithOutClosingCostMoney(double upFrontCash, double downPayment, double interestRate, int loanTerm){
+        double totalPercentNum = downPayment / 100;
+        double homePriceNum = upFrontCash / totalPercentNum;
+        double downPaymentNum = homePriceNum * (downPayment / 100);
+        double loanAmountNum = homePriceNum - downPaymentNum;
+        double monthlyInterestRate = (interestRate / 100) / 12;
+        int termLoanNum = loanTerm * 12;
+        double monthlyPaymentNum;
+        
+        if (interestRate == 0) {
+            monthlyPaymentNum = loanAmountNum / (loanTerm * 12);
+        }else{
+            monthlyPaymentNum = (loanAmountNum * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -termLoanNum));
+        }
+        
+        double roundedHomePriceNum = Math.round(homePriceNum * 100) / 100.0;
+        double roundedDownPaymentNum = Math.round(downPaymentNum * 100) / 100.0;
+        double roundedLoanAmountNum = Math.round(loanAmountNum * 100) / 100.0;
+        double roundedMonthlyPaymentNum = Math.round(monthlyPaymentNum * 100) / 100.0;
+
+        return new double[] {roundedHomePriceNum, roundedDownPaymentNum, roundedLoanAmountNum, roundedMonthlyPaymentNum};
+    }
+    
+    
+    public static boolean validateHomePrice(String homePrice, String downPayment, String closingCost, String interestRate, String loanTerm){
+        if(homePrice.isEmpty() || downPayment.isEmpty() || closingCost.isEmpty() || interestRate.isEmpty() || loanTerm.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Make sure no inputs are empty!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(homePrice.matches("\\.+") || downPayment.matches("\\.+") || closingCost.matches("\\.+") || interestRate.matches("\\.+")){
+            JOptionPane.showMessageDialog(null, "Make sure no inputs contain only a decimal!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        double homePriceNum = Double.parseDouble(homePrice);
+        double downPaymentNum = Double.parseDouble(downPayment);
+        double closingCostNum = Double.parseDouble(closingCost);
+        double interestRateNum = Double.parseDouble(interestRate);
+        int loanTermNum = Integer.parseInt(loanTerm);
+        
+        if(homePriceNum == 0 && downPaymentNum == 0 && closingCostNum == 0 && interestRateNum == 0 && loanTermNum == 0){
+            JOptionPane.showMessageDialog(null, "All inputs can not be zero!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(homePriceNum == 0){
+            JOptionPane.showMessageDialog(null, "Home price can not be zero!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(loanTermNum == 0){
+            JOptionPane.showMessageDialog(null, "Loan term can not be zero!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(downPaymentNum >= 100){
+            JOptionPane.showMessageDialog(null, "Down payment can not be greater than or equal to 100% !", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public static double[] homePriceWithClosingCostPercent(double homePrice, double downPayment, double closingCost, double interestRate, int loanTerm){
+        double downPaymentNum = homePrice * (downPayment/100);
+        double closingCostNum = homePrice * (closingCost/100);
+        double cashNeededNum = downPaymentNum + closingCostNum;
+        double loanAmountNum = homePrice - downPaymentNum;
+        double monthlyInterestRate = (interestRate / 100) / 12;
+        double termLoanNum = loanTerm *12;
+        double closeDown = downPaymentNum + closingCostNum;
+        double monthlyPaymentNum;
+        
+        if(monthlyInterestRate == 0){
+            monthlyPaymentNum = loanAmountNum / termLoanNum;
+        }else{
+            monthlyPaymentNum = loanAmountNum * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termLoanNum)) / (Math.pow(1 + monthlyInterestRate, termLoanNum) - 1);
+        }
+        double roundDownPayment = Math.round(downPaymentNum * 100) / 100.0;
+        double roundClosingCost = Math.round(closingCostNum * 100) / 100.0;
+        double roundCashNeeded= Math.round(cashNeededNum * 100) / 100.0;
+        double roundCloseDown = Math.round(closeDown * 100) / 100.0;
+        double roundLoanAmount = Math.round(loanAmountNum * 100) / 100.0;
+        double roundMonthlyPayment = Math.round(monthlyPaymentNum * 100) / 100.0;
+        
+        return new double[] {roundDownPayment, roundClosingCost, roundCashNeeded, roundCloseDown, roundLoanAmount, roundMonthlyPayment};
+    }
+    
+    public static double[] homePriceWithoutClosingCostPercent(double homePrice, double downPayment, double interestRate, int loanTerm){
+        double downPaymentNum = homePrice * (downPayment/100);
+        double loanAmountNum = homePrice - downPaymentNum;
+        double monthlyInterestRate = (interestRate / 100) / 12;
+        double termLoanNum = loanTerm *12;
+        double monthlyPaymentNum;
+        
+        if(monthlyInterestRate == 0){
+            monthlyPaymentNum = loanAmountNum / termLoanNum;
+        }else{
+            monthlyPaymentNum = loanAmountNum * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termLoanNum)) / (Math.pow(1 + monthlyInterestRate, termLoanNum) - 1);
+        }
+        
+        double roundDownPayment = Math.round(downPaymentNum * 100) / 100.0;
+        double roundLoanAmount = Math.round(loanAmountNum * 100) / 100.0;
+        double roundMonthlyPayment = Math.round(monthlyPaymentNum * 100) / 100.0;
+        
+        return new double[] {roundDownPayment, roundLoanAmount, roundMonthlyPayment};
+    }
+    
+    public static double[] homePriceWithClosingCostMoney(double homePrice, double downPayment, double closingCost, double interestRate, int loanTerm){
+        double downPaymentNum = homePrice * (downPayment/100);
+        double cashNeededNum = downPaymentNum + closingCost;
+        double loanAmountNum = homePrice - downPaymentNum;
+        double monthlyInterestRate = (interestRate / 100) / 12;
+        double termLoanNum = loanTerm *12;
+        double closeDown = downPaymentNum + closingCost;
+        double monthlyPaymentNum;
+        
+        if(monthlyInterestRate == 0){
+            monthlyPaymentNum = loanAmountNum / termLoanNum;
+        }else{
+            monthlyPaymentNum = loanAmountNum * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termLoanNum)) / (Math.pow(1 + monthlyInterestRate, termLoanNum) - 1);
+        }
+        
+        double roundDownPayment = Math.round(downPaymentNum * 100) / 100.0;
+        double roundClosingCost = Math.round(closingCost * 100) / 100.0;
+        double roundCashNeeded= Math.round(cashNeededNum * 100) / 100.0;
+        double roundCloseDown = Math.round(closeDown * 100) / 100.0;
+        double roundLoanAmount = Math.round(loanAmountNum * 100) / 100.0;
+        double roundMonthlyPayment = Math.round(monthlyPaymentNum * 100) / 100.0;
+        
+        return new double[] {roundDownPayment, roundClosingCost, roundCashNeeded, roundCloseDown, roundLoanAmount, roundMonthlyPayment};
+    }
+    
+    public static double[] homePriceWithoutClosingCostMoney(double homePrice, double downPayment, double interestRate, int loanTerm){
+        double downPaymentNum = homePrice * (downPayment/100);
+        double loanAmountNum = homePrice - downPaymentNum;
+        double monthlyInterestRate = (interestRate / 100) / 12;
+        double termLoanNum = loanTerm *12;
+        double monthlyPaymentNum;
+        
+        if(monthlyInterestRate == 0){
+            monthlyPaymentNum = loanAmountNum / termLoanNum;
+        }else{
+            monthlyPaymentNum = loanAmountNum * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termLoanNum)) / (Math.pow(1 + monthlyInterestRate, termLoanNum) - 1);
+        }
+        
+        double roundDownPayment = Math.round(downPaymentNum * 100) / 100.0;
+        double roundLoanAmount = Math.round(loanAmountNum * 100) / 100.0;
+        double roundMonthlyPayment = Math.round(monthlyPaymentNum * 100) / 100.0;
+        
+        return new double[] {roundDownPayment, roundLoanAmount, roundMonthlyPayment};
+    }
+    
+    
+    public static boolean upFrontHomePriceValidation(String homePrice, String cashAvailable, String closingCost, String interestRate, String loanTerm){
+        if(homePrice.isEmpty() || cashAvailable.isEmpty() || closingCost.isEmpty() || interestRate.isEmpty() || loanTerm.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Make sure no inputs are empty!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(homePrice.matches("\\.+") || cashAvailable.matches("\\.+") || closingCost.matches("\\.+") || interestRate.matches("\\.+")){
+            JOptionPane.showMessageDialog(null, "Make sure no inputs contain only a decimal!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        double homePriceNum = Double.parseDouble(homePrice);
+        double cashAvailableNum = Double.parseDouble(cashAvailable);
+        double closingCostNum = Double.parseDouble(closingCost);
+        double interestRateNum = Double.parseDouble(interestRate);
+        int loanTermNum = Integer.parseInt(loanTerm);
+        
+        if(homePriceNum == 0 && cashAvailableNum == 0 && closingCostNum == 0 && interestRateNum == 0 && loanTermNum == 0){
+            JOptionPane.showMessageDialog(null, "All inputs can not be zero!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(homePriceNum == 0 && cashAvailableNum == 0){
+            JOptionPane.showMessageDialog(null, "Home price  and up front cash available can not be zero!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(loanTermNum == 0){
+            JOptionPane.showMessageDialog(null, "Loan term can not be zero!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(cashAvailableNum >= homePriceNum){
+            JOptionPane.showMessageDialog(null, "Cash available should not be greater than or eqaul to home price!", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+       
+        return true;
+    }
+    
+    public static double[] upFrontHomePriceWithCloseCostPercent(double homePrice, double cashAvailable, double closingCost, double interestRate, int loanTerm){
+        double closingCostNum = homePrice * (closingCost/100);
+        double downPaymentNum = cashAvailable - closingCostNum;
+        double downPaymentPercent = (downPaymentNum / homePrice) * 100;
+        double loanAmountNum = homePrice - downPaymentNum;
+        double monthlyInterestRate = (interestRate / 100) / 12;
+        double termLoanNum = loanTerm *12;
+        double monthlyPaymentNum;
+        if(monthlyInterestRate == 0){
+            monthlyPaymentNum = loanAmountNum / termLoanNum;
+        }else{   
+            monthlyPaymentNum = loanAmountNum * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termLoanNum) / (Math.pow(1 + monthlyInterestRate, termLoanNum) - 1);
+        }
+        
+        double roundDownPayment = Math.round(downPaymentNum * 100) / 100.0;
+        double roundedDownPercent = Math.round(downPaymentPercent * 100) / 100.0;
+        double roundedClosingCost = Math.round(closingCostNum * 100) / 100.0;
+        double roundedLoanAmount = Math.round(loanAmountNum * 100) / 100.0;
+        double roundedMonthlyPayment = Math.round(monthlyPaymentNum * 100) / 100.0;
+        
+        return new double[] {roundDownPayment, roundedDownPercent, roundedClosingCost, roundedLoanAmount, roundedMonthlyPayment};
+    }
+    
+    public static double[] upFrontHomePriceWithoutCloseCostPercent(double homePrice, double cashAvailable, double interestRate, int loanTerm){
+        double downPaymentNum = cashAvailable;
+        double downPaymentPercent = (downPaymentNum / homePrice) * 100;
+        double loanAmountNum = homePrice - downPaymentNum;
+        double monthlyInterestRate = (interestRate / 100) / 12;
+        double termLoanNum = loanTerm *12;
+        double monthlyPaymentNum;
+        
+        if(monthlyInterestRate == 0){
+            monthlyPaymentNum = loanAmountNum / termLoanNum;
+        }else{
+            monthlyPaymentNum = loanAmountNum * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termLoanNum) / (Math.pow(1 + monthlyInterestRate, termLoanNum) - 1);
+        }
+        double roundDownPayment = Math.round(downPaymentNum * 100) / 100.0;
+        double roundedDownPercent = Math.round(downPaymentPercent * 100) / 100.0;
+        double roundedLoanAmount = Math.round(loanAmountNum * 100) / 100.0;
+        double roundedMonthlyPayment = Math.round(monthlyPaymentNum * 100) / 100.0;
+        
+        return new double[] {roundDownPayment, roundedDownPercent, roundedLoanAmount, roundedMonthlyPayment};
+
+    }
+    
+    public static double[] upFrontHomePriceWithCloseCostMoney(double homePrice, double cashAvailable, double closingCost, double interestRate, int loanTerm){
+        double downPaymentNum = cashAvailable - closingCost;
+        double downPaymentPercent = (downPaymentNum / homePrice) * 100;
+        double loanAmountNum = homePrice - downPaymentNum;
+        double monthlyInterestRate = (interestRate / 100) / 12;
+        int termLoanNum = loanTerm * 12;
+        double monthlyPaymentNum;
+        
+        if(monthlyInterestRate == 0){
+            monthlyPaymentNum = loanAmountNum / termLoanNum;
+        }else{
+            monthlyPaymentNum = loanAmountNum * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termLoanNum) / (Math.pow(1 + monthlyInterestRate, termLoanNum) - 1);
+        }
+        
+        double roundDownPayment = Math.round(downPaymentNum * 100) / 100.0;
+        double roundedDownPercent = Math.round(downPaymentPercent * 100) / 100.0;
+        double roundedClosingCost = Math.round(closingCost * 100) / 100.0;
+        double roundedLoanAmount = Math.round(loanAmountNum * 100) / 100.0;
+        double roundedMonthlyPayment = Math.round(monthlyPaymentNum * 100) / 100.0;
+        
+        return new double[] {roundDownPayment, roundedDownPercent, roundedClosingCost, roundedLoanAmount, roundedMonthlyPayment};
+    
+    }
+    
+    
+    public static double[] upFrontHomePriceWithoutCloseCostMoney(double homePrice, double cashAvailable, double interestRate, int loanTerm){
+        double downPaymentNum = cashAvailable;
+        double downPaymentPercent = (downPaymentNum / homePrice) * 100;
+        double loanAmountNum = homePrice - downPaymentNum;
+        double monthlyInterestRate = (interestRate / 100) / 12;
+        int termLoanNum = loanTerm * 12;
+        double monthlyPaymentNum;
+        
+        if(monthlyInterestRate == 0){
+            monthlyPaymentNum = loanAmountNum / termLoanNum;
+        }else{
+            monthlyPaymentNum = loanAmountNum * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termLoanNum) / (Math.pow(1 + monthlyInterestRate, termLoanNum) - 1);
+        }
+        double roundDownPayment = Math.round(downPaymentNum * 100) / 100.0;
+        double roundedDownPercent = Math.round(downPaymentPercent * 100) / 100.0;
+        double roundedLoanAmount = Math.round(loanAmountNum * 100) / 100.0;
+        double roundedMonthlyPayment = Math.round(monthlyPaymentNum * 100) / 100.0;
+        
+        return new double[] {roundDownPayment, roundedDownPercent, roundedLoanAmount, roundedMonthlyPayment};
+
+    }
 }
