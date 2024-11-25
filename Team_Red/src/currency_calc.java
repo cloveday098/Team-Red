@@ -27,6 +27,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 /**
@@ -58,6 +59,7 @@ public class currency_calc extends javax.swing.JFrame {
     
     public currency_calc() {
         initComponents();
+        
         /*
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         this.setUndecorated(true);
@@ -184,6 +186,7 @@ public class currency_calc extends javax.swing.JFrame {
         title = new javax.swing.JLabel();
         errLabel = new javax.swing.JLabel();
         flip = new javax.swing.JButton();
+        XBtn = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
         quitBtn = new javax.swing.JButton();
         newCurrAmt = new javax.swing.JTextField();
@@ -198,7 +201,8 @@ public class currency_calc extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(1084, 750));
+        setSize(new java.awt.Dimension(1650, 1800));
+        setPreferredSize(new java.awt.Dimension(1650, 1800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         
         title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -206,6 +210,21 @@ public class currency_calc extends javax.swing.JFrame {
         title.setText("Currency Converter");
         title.setAlignmentX(0.5F);
         getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 240, 50));
+        
+        XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12));
+        XBtn.setForeground(new java.awt.Color(255,51,51));
+        XBtn.setText("X");
+        XBtn.setBounds(1590, 0, 43, 43);
+        XBtn.setBorderPainted(false);
+        XBtn.setFocusPainted(false);
+        XBtn.setHorizontalAlignment(SwingConstants.CENTER);
+        XBtn.setVerticalAlignment(SwingConstants.CENTER);
+        XBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                XbtnMouseClicked(evt);
+            }
+        });
+        getContentPane().add(XBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 0, 43, 43));
         
         clearBtn.setBackground(new java.awt.Color(0, 0, 0));
         clearBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -338,6 +357,10 @@ public class currency_calc extends javax.swing.JFrame {
         newCurrDrop.setSelectedItem(oldCurr);
     }//GEN-LAST:event_flipMouseClicked
 
+    private void XbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flipMouseClicked
+        this.dispose();
+    }
+    
     private void clearbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flipMouseClicked
         oldCurrAmt.setText("");
         newCurrAmt.setText("");
@@ -527,6 +550,7 @@ public class currency_calc extends javax.swing.JFrame {
     private javax.swing.JTextField oldCurrAmt;
     private javax.swing.JComboBox<String> oldCurrDrop;
     private javax.swing.JLabel toFlag;
+    private javax.swing.JButton XBtn;
     private javax.swing.JButton clearBtn;
     private javax.swing.JButton quitBtn;
     private javax.swing.JPanel jPanel3;

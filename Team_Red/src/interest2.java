@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -20,6 +21,11 @@ public class interest2 extends javax.swing.JFrame {
      */
     public interest2() {
         initComponents();
+        XBtn.setBounds(1590, 0, 43, 43);
+        XBtn.setBorderPainted(false);
+        XBtn.setFocusPainted(false);
+        XBtn.setHorizontalAlignment(SwingConstants.CENTER);
+        XBtn.setVerticalAlignment(SwingConstants.CENTER);
         jLabel9.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png")).getImage().getScaledInstance(100,48, Image.SCALE_SMOOTH)));
         this.getContentPane().setBackground(Color.decode("#c7dbfc"));
         jLabel23.setVisible(false);
@@ -60,7 +66,7 @@ public class interest2 extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        XBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
@@ -83,6 +89,7 @@ public class interest2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setSize(new java.awt.Dimension(1650, 1800));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
@@ -304,15 +311,14 @@ public class interest2 extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(66, 133, 244));
         jLabel8.setText(" Interest Calculator");
 
-        jButton3.setText("X");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        XBtn.setForeground(new java.awt.Color(255, 51, 51));
+        XBtn.setText("X");
+        XBtn.setBorderPainted(false);
+        XBtn.setFocusPainted(false);
+        XBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                XBtnMouseClicked(evt);
             }
         });
 
@@ -448,7 +454,6 @@ public class interest2 extends javax.swing.JFrame {
         jLabel9.setMaximumSize(new java.awt.Dimension(100, 100));
         jLabel9.setMinimumSize(new java.awt.Dimension(100, 100));
         jLabel9.setPreferredSize(new java.awt.Dimension(100, 100));
-        jLabel9.setSize(new java.awt.Dimension(150, 10));
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/interestInfo.png"))); // NOI18N
         jLabel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
@@ -487,7 +492,7 @@ public class interest2 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 319, Short.MAX_VALUE)
-                                .addComponent(jButton3))
+                                .addComponent(XBtn))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
@@ -504,7 +509,7 @@ public class interest2 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(XBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -625,10 +630,9 @@ public class interest2 extends javax.swing.JFrame {
         jTextField9.setText("");
     }//GEN-LAST:event_jButton2MouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here:
+    private void XBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XBtnMouseClicked
         this.dispose();
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_XBtnMouseClicked
 
     private void jLabel25MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseEntered
         // TODO add your handling code here:
@@ -676,9 +680,9 @@ public class interest2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton XBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

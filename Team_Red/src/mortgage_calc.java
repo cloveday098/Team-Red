@@ -3,54 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-
 /**
  *
- * @author gabby
+ * @author loved
  */
-public class Helper extends javax.swing.JFrame {
+public class mortgage_calc extends javax.swing.JFrame {
 
     /**
-     * Creates new form Helper
+     * Creates new form mortgage_calc
      */
-     public static int add(int a, int b) {
-        return a+b;
+    public mortgage_calc() {
+        initComponents();
     }
-    public static boolean isPos(double n) {
-        return n>0;
-    }
-
-    public static double monthlyPayment(double amt, double annInterestRate, int yrs) {
-        
-        String msg = "";
-        if (!isPos(yrs)) {
-            System.out.println("Nice try. We'll look at 1 year instead.");
-            yrs = 1;
-            msg += "Years must be > 0!\n";
-        }
-        if (!isPos(annInterestRate)) {
-            System.out.println("Nice try.");
-            annInterestRate = 1;
-            msg += "Annual interest rate must be > 0!\n";
-        }
-        if (!msg.equals("")) {
-            System.out.println(msg);
-            return -1;
-        } 
-        // There shouldn't be a need to validate amt > 0
-
-        double exp = Math.pow((1+annInterestRate/12), (yrs * 12));
-        // Check for values more precise than pennies ( < 0.01)
-        // There shouldn't be a need to validate amt > 0
-        System.out.println((amt * annInterestRate/1200) / (1 - 1 / (exp)));
-        return (amt * annInterestRate/1200) / (1 - 1 / (exp));
-        
-    }
-}
-
-
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,24 +58,24 @@ public class Helper extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Helper.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mortgage_calc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Helper.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mortgage_calc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Helper.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mortgage_calc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Helper.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mortgage_calc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            //    new Helper().setVisible(true);
+                new mortgage_calc().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
+}
