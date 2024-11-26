@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 /* TODOS:
     Right Side btns
@@ -40,6 +41,18 @@ public class dashboardNew extends javax.swing.JPanel {
                     .getImage().getScaledInstance(1550, 950, Image.SCALE_SMOOTH));
             ImageIcon popupIcon = new ImageIcon("images/CapitalCal_Icon.png");
             Image background = icon.getImage();
+            
+            // X Btn
+            JButton XBtn = new JButton();
+            XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12));
+            XBtn.setForeground(new java.awt.Color(255,51,51));
+            XBtn.setText("X");
+            XBtn.setBounds(1590, 0, 43, 43);
+            XBtn.setBorderPainted(false); 
+            //XBtn.setContentAreaFilled(false); 
+            XBtn.setFocusPainted(false);
+            XBtn.setHorizontalAlignment(SwingConstants.CENTER);
+            XBtn.setVerticalAlignment(SwingConstants.CENTER);
             
             //Right-Side Panel Buttons:
             // 1) Loan
@@ -182,7 +195,7 @@ public class dashboardNew extends javax.swing.JPanel {
                 public void mouseClicked(MouseEvent e) {
                     System.out.println("Investment");
                     calcPage1_investment calc1 = new calcPage1_investment();
-                    calc1.setSize(1000, 750);
+                    calc1.setSize(1650, 1800);
                     //calc1.setResizable(false);
                     calc1.setVisible(true);
                     //JOptionPane.showMessageDialog(null, "This page is under construction...", "Investment Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
@@ -193,7 +206,7 @@ public class dashboardNew extends javax.swing.JPanel {
                 public void mouseClicked(MouseEvent e) {
                     System.out.println("Real-Estate");
                     calcPage2_mortgage calc2 = new calcPage2_mortgage();
-                    calc2.setSize(1000, 750);
+                    calc2.setSize(1650, 1800);
                     calc2.setVisible(true);
                     //JOptionPane.showMessageDialog(null, "This page is under construction...", "Real Estate Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
                 }
@@ -203,7 +216,7 @@ public class dashboardNew extends javax.swing.JPanel {
                 public void mouseClicked(MouseEvent e) {
                     System.out.println("Retirement");
                     calcPage3_retirement calc3 = new calcPage3_retirement();
-                    calc3.setSize(1000, 750);
+                    calc3.setSize(1650, 1800);
                     calc3.setVisible(true);
                     //JOptionPane.showMessageDialog(null, "This page is under construction...", "Retirement Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
                 }
@@ -213,7 +226,7 @@ public class dashboardNew extends javax.swing.JPanel {
                 public void mouseClicked(MouseEvent e) {
                     System.out.println("Misc");
                     calcPage4_misc calc4 = new calcPage4_misc();
-                    calc4.setSize(1000, 750);
+                    calc4.setSize(1650, 1800);
                     //calc4.setResizable(false);
                     calc4.setVisible(true);
                     //JOptionPane.showMessageDialog(null, "This page is under construction...", "Misc. Calculators Page", JOptionPane.INFORMATION_MESSAGE, popupIcon);
@@ -233,6 +246,7 @@ public class dashboardNew extends javax.swing.JPanel {
             panel.add(mortgageLabel);
             panel.add(retireLabel);
             panel.add(miscLabel);
+            panel.add(XBtn);
             
             
             //JLabel label = new JLabel("Hello on an Image!");
@@ -244,9 +258,17 @@ public class dashboardNew extends javax.swing.JPanel {
 
             JFrame frame = new JFrame("Dashboard");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(400, 300);
+            frame.setSize(1650, 1800);
             frame.add(panel);
             frame.setVisible(true);
+            
+            XBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {                                  
+                    frame.dispose();
+                    //System.exit(1);
+                }  
+            });
         } catch (NullPointerException e) {
             System.out.println("Image not found! Please check the path: /images/Banner_(6).png");
         }
