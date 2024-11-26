@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 public class calcPage4_misc extends javax.swing.JPanel {
 
@@ -38,11 +39,23 @@ public class calcPage4_misc extends javax.swing.JPanel {
             currencyBtn.setBorderPainted(false);
             currencyBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
             
+            // X
+            JButton XBtn = new JButton();
+            XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12));
+            XBtn.setForeground(new java.awt.Color(255,51,51));
+            XBtn.setText("X");
+            XBtn.setBounds(1590, 0, 43, 43);
+            XBtn.setBorderPainted(false); 
+            //XBtn.setContentAreaFilled(false); 
+            XBtn.setFocusPainted(false);
+            XBtn.setHorizontalAlignment(SwingConstants.CENTER);
+            XBtn.setVerticalAlignment(SwingConstants.CENTER);
+            
             autoLoanBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     AutoLoanCalculator autoLoan = new AutoLoanCalculator();
-                    autoLoan.setSize(1084, 750);
+                    autoLoan.setSize(1200, 800);
                     autoLoan.setResizable(false);
                     autoLoan.setVisible(true);
                 }        
@@ -51,21 +64,30 @@ public class calcPage4_misc extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     currency_calc currPage = new currency_calc();
-                    currPage.setSize(600, 400);
+                    currPage.setSize(1650, 1800);
                     currPage.setResizable(false);
                     currPage.setVisible(true);
                 }        
             });
-            
+
             this.add(title4);
             this.add(autoLoanBtn);
             this.add(currencyBtn);
+            this.add(XBtn);
             
             JFrame frame = new JFrame("Misc. Calculators");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(1000, 750);
+            frame.setSize(1650, 1800);
             frame.add(this);
             frame.setVisible(true);
+            
+            XBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {                                  
+                    frame.dispose();
+                    //System.exit(1);
+                }  
+            });
         }
         catch (NullPointerException e) {
             System.out.println("Image not found! Please check the path!");

@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 public class calcPage1_investment extends javax.swing.JPanel {
 
@@ -25,6 +26,17 @@ public class calcPage1_investment extends javax.swing.JPanel {
         title1.setBounds(350, 50, 400, 50);
         
         try{
+            //X Btn
+            JButton XBtn = new JButton();
+            XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12));
+            XBtn.setForeground(new java.awt.Color(255,51,51));
+            XBtn.setText("X");
+            XBtn.setBounds(1590, 0, 43, 43);
+            XBtn.setBorderPainted(false);
+            XBtn.setFocusPainted(false);
+            XBtn.setHorizontalAlignment(SwingConstants.CENTER);
+            XBtn.setVerticalAlignment(SwingConstants.CENTER);
+
             // 1) Interest
             //ImageIcon loanIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/loanButtonIcon.png"))
             //        .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
@@ -37,7 +49,7 @@ public class calcPage1_investment extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     interest2 interestPage = new interest2();
-                    interestPage.setSize(600, 400);
+                    //interestPage.setSize(1650, 1800);
                     interestPage.setResizable(false);
                     interestPage.setVisible(true);
                     //JOptionPane.showMessageDialog(null, "Interest calculator coming soon...", "Interest Calculator", JOptionPane.INFORMATION_MESSAGE);
@@ -46,12 +58,21 @@ public class calcPage1_investment extends javax.swing.JPanel {
             
             this.add(title1);
             this.add(interestBtn);
+            this.add(XBtn);
             
             JFrame frame = new JFrame("Investment Calculators");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(1000, 750);
+            frame.setSize(1650, 1800);
             frame.add(this);
             frame.setVisible(true);
+            
+            XBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {                                  
+                frame.dispose();
+                //System.exit(1);
+            }  
+        });
         }
         catch (NullPointerException e) {
             System.out.println("Image not found! Please check the path!");

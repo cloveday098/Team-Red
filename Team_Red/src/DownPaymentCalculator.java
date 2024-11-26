@@ -30,6 +30,8 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
      */
     public DownPaymentCalculator() {
         initComponents();
+        downPayInfoPic.setVisible(false);
+        homePriceInfoPic.setVisible(false);
         option3Label.setText("<html>Use Both Upfront Cash<br>and Home Price.</html>");
         option3Label.setHorizontalAlignment(option3Label.CENTER);
         option2Label.setHorizontalAlignment(option2Label.CENTER);
@@ -38,9 +40,9 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
         jPanel4.setBackground(new Color(66,133,244,80));
         jPanel5.setBackground(new Color(66,133,244,80));
         
-        icon1Label.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/icon11.png")).getImage().getScaledInstance(110,100,Image.SCALE_SMOOTH)));
-        icon2Label.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/icon22.png")).getImage().getScaledInstance(110,100,Image.SCALE_SMOOTH)));
-        icon3Label.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/icon33.png")).getImage().getScaledInstance(110,100,Image.SCALE_SMOOTH)));
+        //icon1Label.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/icon11.png")).getImage().getScaledInstance(110,100,Image.SCALE_SMOOTH)));
+        //icon2Label.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/icon22.png")).getImage().getScaledInstance(110,100,Image.SCALE_SMOOTH)));
+        //icon3Label.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/icon33.png")).getImage().getScaledInstance(110,100,Image.SCALE_SMOOTH)));
 
         open1Label.setHorizontalAlignment(open1Label.CENTER);
         open2Label.setHorizontalAlignment(open2Label.CENTER);
@@ -65,6 +67,7 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
         formTitleLabel = new javax.swing.JLabel();
+        XBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         option1Label = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -82,6 +85,10 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
         open3Label = new javax.swing.JLabel();
         panelRound4 = new PanelRound();
         closeLabel = new javax.swing.JLabel();
+        downPayInfo = new javax.swing.JLabel();
+        downPayInfoPic = new javax.swing.JLabel();
+        homePriceInfo = new javax.swing.JLabel();
+        homePriceInfoPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +100,16 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
         formTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         formTitleLabel.setText("Capital Cal");
 
+        XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        XBtn.setForeground(new java.awt.Color(255, 51, 51));
+        XBtn.setText("X");
+        XBtn.setPreferredSize(new java.awt.Dimension(43, 43));
+        XBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                XBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -101,7 +118,8 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
                 .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(formTitleLabel)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(XBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,6 +128,9 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(formTitleLabel)
                 .addContainerGap(24, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(XBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(66, 133, 244));
@@ -309,53 +330,105 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        downPayInfo.setBackground(new java.awt.Color(199, 219, 252));
+        downPayInfo.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        downPayInfo.setForeground(new java.awt.Color(66, 133, 244));
+        downPayInfo.setText(" ? ");
+        downPayInfo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 133, 244), 4, true));
+        downPayInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                downPayInfoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                downPayInfoMouseExited(evt);
+            }
+        });
+
+        downPayInfoPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/downPaymentInfo.png"))); // NOI18N
+        downPayInfoPic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+
+        homePriceInfo.setBackground(new java.awt.Color(199, 219, 252));
+        homePriceInfo.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        homePriceInfo.setForeground(new java.awt.Color(66, 133, 244));
+        homePriceInfo.setText(" ? ");
+        homePriceInfo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 133, 244), 4, true));
+        homePriceInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                homePriceInfoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                homePriceInfoMouseExited(evt);
+            }
+        });
+
+        homePriceInfoPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homePriceInfo.png"))); // NOI18N
+        homePriceInfoPic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(icon1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(icon2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(207, 207, 207)
-                .addComponent(icon3Label, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(downPayInfo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(downPayInfoPic, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(panelRound4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(172, 172, 172)
                         .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68))))
+                        .addGap(68, 68, 68))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(homePriceInfo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(homePriceInfoPic, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25))))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(icon1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(icon2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(241, 241, 241)
+                .addComponent(icon3Label, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
+                .addGap(86, 86, 86)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(79, 79, 79)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(downPayInfo)
+                    .addComponent(downPayInfoPic, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(homePriceInfo)
+                    .addComponent(homePriceInfoPic, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(icon1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(icon2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -365,7 +438,7 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
                     .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -404,6 +477,26 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
         new UpFrontHomePrice().setVisible(true);
     }//GEN-LAST:event_open3LabelMouseClicked
 
+    private void XBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XBtnMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_XBtnMouseClicked
+
+    private void homePriceInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePriceInfoMouseEntered
+        homePriceInfoPic.setVisible(true);
+    }//GEN-LAST:event_homePriceInfoMouseEntered
+
+    private void homePriceInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePriceInfoMouseExited
+        homePriceInfoPic.setVisible(false);
+    }//GEN-LAST:event_homePriceInfoMouseExited
+
+    private void downPayInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downPayInfoMouseEntered
+        downPayInfoPic.setVisible(true);
+    }//GEN-LAST:event_downPayInfoMouseEntered
+
+    private void downPayInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downPayInfoMouseExited
+        downPayInfoPic.setVisible(false);
+    }//GEN-LAST:event_downPayInfoMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -440,8 +533,13 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton XBtn;
     private javax.swing.JLabel closeLabel;
+    private javax.swing.JLabel downPayInfo;
+    private javax.swing.JLabel downPayInfoPic;
     private javax.swing.JLabel formTitleLabel;
+    private javax.swing.JLabel homePriceInfo;
+    private javax.swing.JLabel homePriceInfoPic;
     private javax.swing.JLabel icon1Label;
     private javax.swing.JLabel icon2Label;
     private javax.swing.JLabel icon3Label;
