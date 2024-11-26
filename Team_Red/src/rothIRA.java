@@ -21,8 +21,7 @@ public class rothIRA extends javax.swing.JFrame {
      */
     public rothIRA() {
         initComponents();
-        
-        
+        rothInfoPic.setVisible(false);
         
         
         KeyAdapter positiveNumberKeyAdapter = new KeyAdapter() {
@@ -74,21 +73,12 @@ public class rothIRA extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         ResultLabel = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         differenceLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        rateOfReturnInput = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         maxContributionYes = new javax.swing.JRadioButton();
         maxContributionNo = new javax.swing.JRadioButton();
-        taxRateInput = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        annualContributionInput = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        currentBalanceInput = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         ageInput = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -96,33 +86,41 @@ public class rothIRA extends javax.swing.JFrame {
         calculateButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         ageError = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        taxRateInput = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        annualContributionInput = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        rateOfReturnInput = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        currentBalanceInput = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         marginalTaxImg = new javax.swing.JLabel();
+        rothInfo = new javax.swing.JLabel();
+        rothInfoPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1653, 1800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ResultLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(ResultLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 29, 564, 64));
+        ResultLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        ResultLabel.setForeground(java.awt.Color.red);
+        getContentPane().add(ResultLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 420, 564, 64));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel9.setText("Marginal Tax Rate ");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 354, 228, 58));
+        jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 228, 58));
 
-        differenceLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(differenceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(526, 99, 294, 28));
+        differenceLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        getContentPane().add(differenceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(884, 340, 560, 28));
 
-        rateOfReturnInput.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Rate of Return ");
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Max Contribution ");
 
         buttonGroup1.add(maxContributionYes);
-        maxContributionYes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        maxContributionYes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         maxContributionYes.setText("Yes");
         maxContributionYes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -136,7 +134,7 @@ public class rothIRA extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(maxContributionNo);
-        maxContributionNo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        maxContributionNo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         maxContributionNo.setText("No");
         maxContributionNo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -144,30 +142,17 @@ public class rothIRA extends javax.swing.JFrame {
             }
         });
 
-        taxRateInput.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        ageInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Marginal Tax rate");
-
-        annualContributionInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                annualContributionInputActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setText("Annual Contribution");
-
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel1.setText("Current Balance");
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Current Age");
 
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Retirement Age");
 
-        calculateButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        retirementAgeInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        calculateButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         calculateButton.setText("Calculate");
         calculateButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -175,6 +160,7 @@ public class rothIRA extends javax.swing.JFrame {
             }
         });
 
+        clearButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         clearButton.setText("Clear");
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,118 +168,134 @@ public class rothIRA extends javax.swing.JFrame {
             }
         });
 
+        ageError.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ageError.setText(" ");
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setText("Marginal Tax rate");
+
+        taxRateInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        taxRateInput.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Annual Contribution");
+
+        annualContributionInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        annualContributionInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                annualContributionInputActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("Rate of Return ");
+
+        rateOfReturnInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rateOfReturnInput.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("Current Balance");
+
+        currentBalanceInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(retirementAgeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel8))
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel8)
-                                .addGap(21, 21, 21)
                                 .addComponent(taxRateInput, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel1))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
                                 .addComponent(rateOfReturnInput, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(74, 74, 74)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(currentBalanceInput, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 36, Short.MAX_VALUE)))
-                .addGap(65, 65, 65))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addContainerGap(258, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(maxContributionYes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(maxContributionNo))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(annualContributionInput, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(currentBalanceInput, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5))
-                                .addGap(58, 58, 58))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(ageError, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(clearButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(calculateButton)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(maxContributionYes)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(maxContributionNo))
+                                    .addComponent(annualContributionInput, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addComponent(clearButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(calculateButton)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ageError, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(jLabel6)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(retirementAgeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(jLabel5)
+                                                    .addGap(41, 41, 41)
+                                                    .addComponent(ageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addContainerGap())))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(taxRateInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel1))
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rateOfReturnInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(currentBalanceInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(maxContributionYes)
-                            .addComponent(maxContributionNo))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(annualContributionInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addContainerGap(45, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(calculateButton)
-                                    .addComponent(clearButton))
-                                .addGap(19, 19, 19))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ageInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ageError))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(retirementAgeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61))))
+                    .addComponent(jLabel1)
+                    .addComponent(currentBalanceInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(annualContributionInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(ageInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(maxContributionYes)
+                    .addComponent(maxContributionNo)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6)
+                    .addComponent(retirementAgeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(rateOfReturnInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(taxRateInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(calculateButton)
+                    .addComponent(clearButton))
+                .addGap(19, 19, 19))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ageError)
+                .addGap(109, 109, 109))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 26, -1, 246));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, 270));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel10.setText("Roth IRA ");
@@ -312,9 +314,28 @@ public class rothIRA extends javax.swing.JFrame {
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1630, 0, -1, -1));
 
         marginalTaxImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/marginalTax.png"))); // NOI18N
-        marginalTaxImg.setMinimumSize(new java.awt.Dimension(885, 320));
-        marginalTaxImg.setPreferredSize(new java.awt.Dimension(885, 320));
-        getContentPane().add(marginalTaxImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 885, 320));
+        marginalTaxImg.setMaximumSize(new java.awt.Dimension(1771, 640));
+        marginalTaxImg.setPreferredSize(new java.awt.Dimension(1200, 433));
+        getContentPane().add(marginalTaxImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, -1, 430));
+
+        rothInfo.setBackground(new java.awt.Color(199, 219, 252));
+        rothInfo.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        rothInfo.setForeground(new java.awt.Color(66, 133, 244));
+        rothInfo.setText(" ? ");
+        rothInfo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 133, 244), 4, true));
+        rothInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                rothInfoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                rothInfoMouseExited(evt);
+            }
+        });
+        getContentPane().add(rothInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, -1, -1));
+
+        rothInfoPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/RothIRAInfo.png"))); // NOI18N
+        rothInfoPic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+        getContentPane().add(rothInfoPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 50, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -333,6 +354,7 @@ public class rothIRA extends javax.swing.JFrame {
 
         if (currentBalanceInput.getText().isEmpty() || annualContributionInput.getText().isEmpty() || rateOfReturnInput.getText().isEmpty() || ageInput.getText().isEmpty() || retirementAgeInput.getText().isEmpty() || taxRateInput.getText().isEmpty() )
             {
+                ResultLabel.setForeground(Color.RED);
                 ResultLabel.setText("Please Fill Out All Fields");
                 
         } 
@@ -406,7 +428,7 @@ public class rothIRA extends javax.swing.JFrame {
                 differenceLabel.setText("With the given information the Roth IRA account will result in" + String.format("%.2f", differenceInValue) + "more than a traditional IRA account");
 
 
-                ResultLabel.setText("Roth IRA will have a balance of: $" + String.format("%.2f", futureValue) + "Traditional IRA will have a balance of:" + String.format("%.2f", futureValueTraditionalAfterTax));
+                ResultLabel.setText("<html>" + "Roth IRA will have a balance of: $" + String.format("%.2f", futureValue) + "Traditional IRA will have a balance of:" + String.format("%.2f", futureValueTraditionalAfterTax) + "</html>");
                
                 
             }
@@ -500,6 +522,14 @@ public class rothIRA extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void rothInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rothInfoMouseEntered
+        rothInfoPic.setVisible(true);
+    }//GEN-LAST:event_rothInfoMouseEntered
+
+    private void rothInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rothInfoMouseExited
+        rothInfoPic.setVisible(false);
+    }//GEN-LAST:event_rothInfoMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -553,7 +583,6 @@ public class rothIRA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -562,6 +591,8 @@ public class rothIRA extends javax.swing.JFrame {
     private javax.swing.JRadioButton maxContributionYes;
     private javax.swing.JTextField rateOfReturnInput;
     private javax.swing.JTextField retirementAgeInput;
+    private javax.swing.JLabel rothInfo;
+    private javax.swing.JLabel rothInfoPic;
     private javax.swing.JTextField taxRateInput;
     // End of variables declaration//GEN-END:variables
 }

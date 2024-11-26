@@ -27,8 +27,8 @@ public class mortgageCalc extends javax.swing.JFrame {
         prct9.setVisible(false);
         prct10.setVisible(false);
     }
-
-    class Slice {
+/*
+   class Slice {
    double value;
    Color color;
    public Slice(double value, Color color) {  
@@ -60,7 +60,7 @@ class PieChart3 extends JComponent {
          curValue += slices[i].value;
       }
    }
-    
+    */
     public Double monthlyMortgage(Double p, Double r, Double n) {
         r /= 1200;
         n *= 12;
@@ -145,9 +145,10 @@ class PieChart3 extends JComponent {
         clear = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         XBtn = new javax.swing.JButton();
+        infoLabel = new javax.swing.JLabel();
+        infoPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(1650, 1800));
         setSize(new java.awt.Dimension(1650, 1800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -729,6 +730,25 @@ class PieChart3 extends JComponent {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1650, -1));
 
+        infoLabel.setBackground(new java.awt.Color(199, 219, 252));
+        infoLabel.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        infoLabel.setForeground(new java.awt.Color(66, 133, 244));
+        infoLabel.setText(" ? ");
+        infoLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 133, 244), 4, true));
+        infoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                infoLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                infoLabelMouseExited(evt);
+            }
+        });
+        getContentPane().add(infoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 110, -1, -1));
+
+        infoPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mortgageInfo.png"))); // NOI18N
+        infoPic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+        getContentPane().add(infoPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 110, 278, 104));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -893,6 +913,14 @@ class PieChart3 extends JComponent {
         }
     }//GEN-LAST:event_comboBox10ActionPerformed
 
+    private void infoLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoLabelMouseEntered
+        infoPic.setVisible(true);
+    }//GEN-LAST:event_infoLabelMouseEntered
+
+    private void infoLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoLabelMouseExited
+        infoPic.setVisible(false);
+    }//GEN-LAST:event_infoLabelMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -961,6 +989,8 @@ class PieChart3 extends JComponent {
     private javax.swing.JLabel homePriceLabel;
     private javax.swing.JLabel housePayAmt;
     private javax.swing.JLabel housePayLabel;
+    private javax.swing.JLabel infoLabel;
+    private javax.swing.JLabel infoPic;
     private javax.swing.JTextField interestAmt;
     private javax.swing.JLabel interestLabel;
     private javax.swing.JCheckBox jCheckBox1;
