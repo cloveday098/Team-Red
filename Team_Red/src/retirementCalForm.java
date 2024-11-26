@@ -93,7 +93,12 @@ public class retirementCalForm extends javax.swing.JFrame {
 
         jLabel13.setBackground(new java.awt.Color(66, 133, 244));
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
-
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
+        
         panel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -679,7 +684,14 @@ public class retirementCalForm extends javax.swing.JFrame {
         jTextField9.setText("");
         jTextField10.setText("");
         jTextField11.setText("");
-    }                                     
+    }
+    
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {                                        
+        calcPage3_retirement calc3 = new calcPage3_retirement();
+        calc3.setSize(1650, 1800);
+        calc3.setVisible(true);
+        this.dispose();
+    }    
 
     /**
      * @param args the command line arguments

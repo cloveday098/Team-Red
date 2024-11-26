@@ -1,5 +1,3 @@
-package Images;
-
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.List;
@@ -37,8 +35,8 @@ public class mortgagePayoffCalculator extends javax.swing.JDialog {
   
     
     
-    public mortgagePayoffCalculator(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public mortgagePayoffCalculator(/*java.awt.Frame parent, boolean modal*/) {
+        //super(parent, modal);
         initComponents();
         payNormal.setSelected(true);
         this.getContentPane().setBackground(Color.white);
@@ -1052,6 +1050,9 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        calcPage2_mortgage calc2 = new calcPage2_mortgage();
+        calc2.setSize(1650, 1800);
+        calc2.setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_jLabel7MouseClicked
@@ -1059,6 +1060,9 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        calcPage2_mortgage calc2 = new calcPage2_mortgage();
+        calc2.setSize(1650, 1800);
+        calc2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
@@ -1092,7 +1096,7 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                mortgagePayoffCalculator dialog = new mortgagePayoffCalculator(new javax.swing.JFrame(), true);
+                /*mortgagePayoffCalculator dialog = new mortgagePayoffCalculator(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -1100,6 +1104,8 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
                     }
                 });
                 dialog.setVisible(true);
+                */
+                new mortgagePayoffCalculator().setVisible(true);
             }
         });
     }

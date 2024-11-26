@@ -800,7 +800,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="imageLabel" min="-2" pref="94" max="-2" attributes="0"/>
+                      <Component id="imageLabel" min="-2" pref="166" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="formTitleLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -825,6 +825,9 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="imageLabel">
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imageLabelMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="formTitleLabel">
               <Properties>

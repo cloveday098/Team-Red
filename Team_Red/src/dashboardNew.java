@@ -41,18 +41,7 @@ public class dashboardNew extends javax.swing.JPanel {
                     .getImage().getScaledInstance(1550, 950, Image.SCALE_SMOOTH));
             ImageIcon popupIcon = new ImageIcon("images/CapitalCal_Icon.png");
             Image background = icon.getImage();
-            
-            // X Btn
-            JButton XBtn = new JButton();
-            XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12));
-            XBtn.setForeground(new java.awt.Color(255,51,51));
-            XBtn.setText("X");
-            XBtn.setBounds(1590, 0, 43, 43);
-            XBtn.setBorderPainted(false); 
-            //XBtn.setContentAreaFilled(false); 
-            XBtn.setFocusPainted(false);
-            XBtn.setHorizontalAlignment(SwingConstants.CENTER);
-            XBtn.setVerticalAlignment(SwingConstants.CENTER);
+           
             
             //Right-Side Panel Buttons:
             // 1) Loan
@@ -246,7 +235,6 @@ public class dashboardNew extends javax.swing.JPanel {
             panel.add(mortgageLabel);
             panel.add(retireLabel);
             panel.add(miscLabel);
-            panel.add(XBtn);
             
             
             //JLabel label = new JLabel("Hello on an Image!");
@@ -262,13 +250,6 @@ public class dashboardNew extends javax.swing.JPanel {
             frame.add(panel);
             frame.setVisible(true);
             
-            XBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {                                  
-                    frame.dispose();
-                    //System.exit(1);
-                }  
-            });
         } catch (NullPointerException e) {
             System.out.println("Image not found! Please check the path: /images/Banner_(6).png");
         }

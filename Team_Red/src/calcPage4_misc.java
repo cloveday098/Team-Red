@@ -51,25 +51,6 @@ public class calcPage4_misc extends javax.swing.JPanel {
             XBtn.setHorizontalAlignment(SwingConstants.CENTER);
             XBtn.setVerticalAlignment(SwingConstants.CENTER);
             
-            autoLoanBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                    AutoLoanCalculator autoLoan = new AutoLoanCalculator();
-                    autoLoan.setSize(1200, 800);
-                    autoLoan.setResizable(false);
-                    autoLoan.setVisible(true);
-                }        
-            });
-            currencyBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                    currency_calc currPage = new currency_calc();
-                    currPage.setSize(1650, 1800);
-                    currPage.setResizable(false);
-                    currPage.setVisible(true);
-                }        
-            });
-
             this.add(title4);
             this.add(autoLoanBtn);
             this.add(currencyBtn);
@@ -80,6 +61,27 @@ public class calcPage4_misc extends javax.swing.JPanel {
             frame.setSize(1650, 1800);
             frame.add(this);
             frame.setVisible(true);
+            
+            autoLoanBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    AutoLoanCalculator autoLoan = new AutoLoanCalculator();
+                    autoLoan.setSize(1200, 800);
+                    autoLoan.setResizable(false);
+                    autoLoan.setVisible(true);
+                    frame.dispose();
+                }        
+            });
+            currencyBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    currency_calc currPage = new currency_calc();
+                    currPage.setSize(1650, 1800);
+                    currPage.setResizable(false);
+                    currPage.setVisible(true);
+                    frame.dispose();
+                }        
+            });
             
             XBtn.addActionListener(new ActionListener() {
                 @Override

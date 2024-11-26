@@ -90,13 +90,19 @@ public class interest2 extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel9.setBackground(new java.awt.Color(66, 133, 244));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shrunkCalcLogo(.96).png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
         jLabel9.setMaximumSize(new java.awt.Dimension(100, 100));
         jLabel9.setMinimumSize(new java.awt.Dimension(100, 100));
         jLabel9.setPreferredSize(new java.awt.Dimension(100, 100));
         jLabel9.setSize(new java.awt.Dimension(150, 10));
-
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+        
+        
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -704,8 +710,14 @@ public class interest2 extends javax.swing.JFrame {
     private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {                                     
         // TODO add your handling code here:
         Helper.validateDoubleInput(jTextField8, evt);
-    }                                    
+    }
 
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {                                        
+        calcPage1_investment calc1 = new calcPage1_investment();
+        calc1.setSize(1650, 1800);
+        calc1.setVisible(true);
+        this.dispose();
+    }
     /**
      * @param args the command line arguments
      */

@@ -60,6 +60,8 @@ public class rothIRA extends javax.swing.JFrame {
         };
           ageInput.addKeyListener(numOnlyKeyAdapter);
           retirementAgeInput.addKeyListener(numOnlyKeyAdapter);
+          
+          imageLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/CapitalLogo.png")).getImage().getScaledInstance(166,80,Image.SCALE_SMOOTH)));
     }
 
     /**
@@ -95,10 +97,13 @@ public class rothIRA extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         currentBalanceInput = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
         marginalTaxImg = new javax.swing.JLabel();
         rothInfo = new javax.swing.JLabel();
         rothInfoPic = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        imageLabel = new javax.swing.JLabel();
+        formTitleLabel = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1653, 1800));
@@ -299,23 +304,10 @@ public class rothIRA extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel10.setText("Roth IRA ");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(526, 37, -1, -1));
-
-        jButton3.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 51, 51));
-        jButton3.setText("X");
-        jButton3.setBorderPainted(false);
-        jButton3.setFocusPainted(false);
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1630, 0, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
 
         marginalTaxImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/marginalTax.png"))); // NOI18N
         marginalTaxImg.setMaximumSize(new java.awt.Dimension(1771, 640));
-        marginalTaxImg.setPreferredSize(new java.awt.Dimension(1200, 433));
         getContentPane().add(marginalTaxImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, -1, 430));
 
         rothInfo.setBackground(new java.awt.Color(199, 219, 252));
@@ -331,11 +323,59 @@ public class rothIRA extends javax.swing.JFrame {
                 rothInfoMouseExited(evt);
             }
         });
-        getContentPane().add(rothInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, -1, -1));
+        getContentPane().add(rothInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, -1, -1));
 
         rothInfoPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/RothIRAInfo.png"))); // NOI18N
         rothInfoPic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
-        getContentPane().add(rothInfoPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 50, -1, -1));
+        getContentPane().add(rothInfoPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(66, 133, 244));
+
+        imageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imageLabelMouseClicked(evt);
+            }
+        });
+
+        formTitleLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        formTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        formTitleLabel.setText("Capital Cal");
+
+        jButton3.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 51, 51));
+        jButton3.setText("X");
+        jButton3.setBorderPainted(false);
+        jButton3.setFocusPainted(false);
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(formTitleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1343, Short.MAX_VALUE)
+                .addComponent(jButton3))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(formTitleLabel)
+                .addContainerGap(24, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jButton3)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1650, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -530,6 +570,13 @@ public class rothIRA extends javax.swing.JFrame {
         rothInfoPic.setVisible(false);
     }//GEN-LAST:event_rothInfoMouseExited
 
+    private void imageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMouseClicked
+        calcPage3_retirement calc3 = new calcPage3_retirement();
+        calc3.setSize(1650, 1800);
+        calc3.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_imageLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -575,6 +622,8 @@ public class rothIRA extends javax.swing.JFrame {
     private javax.swing.JButton clearButton;
     private javax.swing.JTextField currentBalanceInput;
     private javax.swing.JLabel differenceLabel;
+    private javax.swing.JLabel formTitleLabel;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -586,6 +635,7 @@ public class rothIRA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel marginalTaxImg;
     private javax.swing.JRadioButton maxContributionNo;
     private javax.swing.JRadioButton maxContributionYes;

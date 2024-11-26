@@ -49,7 +49,7 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
         open3Label.setHorizontalAlignment(open3Label.CENTER);
         closeLabel.setHorizontalAlignment(closeLabel.CENTER);
         
-        imageLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/CapitalLogo.png")).getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH)));
+        imageLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/CapitalLogo.png")).getImage().getScaledInstance(166,80,Image.SCALE_SMOOTH)));
 
     }
     
@@ -96,6 +96,12 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(66, 133, 244));
 
+        imageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imageLabelMouseClicked(evt);
+            }
+        });
+
         formTitleLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         formTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         formTitleLabel.setText("Capital Cal");
@@ -115,7 +121,7 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(formTitleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -496,6 +502,13 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
     private void downPayInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downPayInfoMouseExited
         downPayInfoPic.setVisible(false);
     }//GEN-LAST:event_downPayInfoMouseExited
+
+    private void imageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMouseClicked
+        calcPage2_mortgage calc2 = new calcPage2_mortgage();
+        calc2.setSize(1650, 1800);
+        calc2.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_imageLabelMouseClicked
 
     /**
      * @param args the command line arguments

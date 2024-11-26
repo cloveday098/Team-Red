@@ -34,7 +34,6 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
         jPanel2.setBackground(new Color(66,133,244,80));
         jPanel4.setBackground(new Color(66,133,244,80));
         panelRound1.setBackground(new Color(66,133,244,80));
-        imageLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/CapitalLogo.png")).getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH)));
         
         autoPriceTextField.setBackground(new Color(66,133,244,40));
         loanTermTextField.setBackground(new Color(66,133,244,80));
@@ -46,6 +45,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
         salesTaxTextField.setBackground(new Color(66,133,244,80));
         otherFeesTextField.setBackground(new Color(66,133,244,40));
         
+        imageLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/CapitalLogo.png")).getImage().getScaledInstance(166,80,Image.SCALE_SMOOTH)));
         quitLabel.setHorizontalAlignment(JLabel.CENTER);
         calculateLabel.setHorizontalAlignment(JLabel.CENTER);
        
@@ -455,6 +455,12 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(66, 133, 244));
 
+        imageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imageLabelMouseClicked(evt);
+            }
+        });
+
         formTitleLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         formTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         formTitleLabel.setText("Capital Cal");
@@ -475,7 +481,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(formTitleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -758,6 +764,13 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
     private void XBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XBtnMouseClicked
         this.dispose();
     }//GEN-LAST:event_XBtnMouseClicked
+
+    private void imageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMouseClicked
+        calcPage4_misc calc4 = new calcPage4_misc();
+        calc4.setSize(1650, 1800);
+        calc4.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_imageLabelMouseClicked
 
     /**
      * @param args the command line arguments

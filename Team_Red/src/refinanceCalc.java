@@ -1,8 +1,10 @@
 
 import java.awt.Color;
+import java.awt.Image;
 import javax.swing.JOptionPane;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.ImageIcon;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -47,6 +49,8 @@ public class refinanceCalc extends javax.swing.JFrame {
                 
         this.getContentPane().setBackground(Color.white);
         //this.getContentPane().setBackground(Color.decode("#c7dbfc"));
+        
+        jLabel12.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/CapitalLogo.png")).getImage().getScaledInstance(166,80,Image.SCALE_SMOOTH)));
     }
 
     /**
@@ -143,7 +147,12 @@ public class refinanceCalc extends javax.swing.JFrame {
         jLabel12.setBackground(new java.awt.Color(66, 133, 244));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
         jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
-
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refinanceInfo.png"))); // NOI18N
         jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
 
@@ -1011,7 +1020,14 @@ public class refinanceCalc extends javax.swing.JFrame {
         jTextField7.setText("");
         jTextField9.setText("");
         
-    }                                     
+    }
+    
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {                                        
+        calcPage2_mortgage calc2 = new calcPage2_mortgage();
+        calc2.setSize(1650, 1800);
+        calc2.setVisible(true);
+        this.dispose();
+    }         
 
     /**
      * @param args the command line arguments

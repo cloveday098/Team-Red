@@ -31,12 +31,6 @@ public class calcPage3_retirement extends javax.swing.JPanel {
             retireBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
 
-            retireBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                    JOptionPane.showMessageDialog(null, "Retirement calculator coming soon...", "Retirement Calculator", JOptionPane.INFORMATION_MESSAGE);
-                }        
-            });
             
             // 2) Roth IRA
             //ImageIcon loanIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/loanButtonIcon.png"))
@@ -56,17 +50,6 @@ public class calcPage3_retirement extends javax.swing.JPanel {
             XBtn.setHorizontalAlignment(SwingConstants.CENTER);
             XBtn.setVerticalAlignment(SwingConstants.CENTER);
             
-            rothBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                    rothIRA rothPage = new rothIRA();
-                    rothPage.setSize(1650, 1800);
-                    rothPage.setResizable(false);
-                    rothPage.setVisible(true);
-                    //JOptionPane.showMessageDialog(null, "Roth IRA calculator coming soon...", "Roth IRA Calculator", JOptionPane.INFORMATION_MESSAGE);
-                }        
-            });
-            
             this.add(title1);
             this.add(retireBtn);
             this.add(rothBtn);
@@ -77,6 +60,30 @@ public class calcPage3_retirement extends javax.swing.JPanel {
             frame.setSize(1650, 1800);
             frame.add(this);
             frame.setVisible(true);
+            
+            retireBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    retirementCalForm retirePage = new retirementCalForm();
+                    retirePage.setSize(847, 720);
+                    retirePage.setResizable(false);
+                    retirePage.setVisible(true);
+                    frame.dispose();
+                    //JOptionPane.showMessageDialog(null, "Retirement calculator coming soon...", "Retirement Calculator", JOptionPane.INFORMATION_MESSAGE);
+                }        
+            });
+            
+            rothBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    rothIRA rothPage = new rothIRA();
+                    rothPage.setSize(1650, 1800);
+                    rothPage.setResizable(false);
+                    rothPage.setVisible(true);
+                    frame.dispose();
+                    //JOptionPane.showMessageDialog(null, "Roth IRA calculator coming soon...", "Roth IRA Calculator", JOptionPane.INFORMATION_MESSAGE);
+                }        
+            });
             
             XBtn.addActionListener(new ActionListener() {
                 @Override

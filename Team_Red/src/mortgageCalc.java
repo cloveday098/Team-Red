@@ -155,6 +155,11 @@ class PieChart3 extends JComponent {
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
         logo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoMouseClicked(evt);
+            }
+        });
         getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 471, -1));
 
         title.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -920,6 +925,13 @@ class PieChart3 extends JComponent {
     private void infoLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoLabelMouseExited
         infoPic.setVisible(false);
     }//GEN-LAST:event_infoLabelMouseExited
+
+    private void logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoMouseClicked
+        calcPage2_mortgage calc2 = new calcPage2_mortgage();
+        calc2.setSize(1650, 1800);
+        calc2.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoMouseClicked
 
     /**
      * @param args the command line arguments
