@@ -615,18 +615,10 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
         remainingLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         remainingLabel.setText("Remaining Term ");
 
-        interestRateInput.setText("6");
-
-        originalLoanTermInput.setText("30");
-
-        remainingTermYearInput.setText("25");
-
         dollarLoan.setText("($)");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("(years)");
-
-        remainingTermMonthInput.setText("0");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("(%)");
@@ -636,8 +628,6 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("months");
-
-        loanAmountInput.setText("400000");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

@@ -92,8 +92,8 @@ public class rentCalc extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         debtInput = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        rentCalculateButton = new javax.swing.JButton();
         errorLabel = new javax.swing.JLabel();
+        rentCalculateButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -110,6 +110,7 @@ public class rentCalc extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Images/icon.png")).getImage());
 
         jPanel1.setBackground(new java.awt.Color(62, 142, 224));
 
@@ -174,8 +175,11 @@ public class rentCalc extends javax.swing.JFrame {
 
         debtInput.setText("0");
 
+        jButton1.setBackground(new java.awt.Color(62, 142, 224));
         jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Clear");
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(62, 142, 224), 5, true));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -183,17 +187,18 @@ public class rentCalc extends javax.swing.JFrame {
             }
         });
 
+        errorLabel.setForeground(new java.awt.Color(204, 0, 51));
+
+        rentCalculateButton.setBackground(new java.awt.Color(62, 142, 224));
         rentCalculateButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        rentCalculateButton.setForeground(new java.awt.Color(255, 255, 255));
         rentCalculateButton.setText("Calculate");
-        rentCalculateButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        rentCalculateButton.setEnabled(false);
+        rentCalculateButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(62, 142, 224), 5, true));
         rentCalculateButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rentCalculateButtonMouseClicked(evt);
             }
         });
-
-        errorLabel.setForeground(new java.awt.Color(204, 0, 51));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -213,26 +218,21 @@ public class rentCalc extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(incomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(yearlyMonthlyInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(debtInput, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
+                        .addComponent(incomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(yearlyMonthlyInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 21, Short.MAX_VALUE)
+                        .addGap(109, 109, 109)
+                        .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rentCalculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58))))))
+                                .addComponent(rentCalculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(debtInput, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,10 +251,10 @@ public class rentCalc extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rentCalculateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(rentCalculateButton))
                 .addGap(12, 12, 12)
                 .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(14, 14, 14))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -401,7 +401,7 @@ public class rentCalc extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 443, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 468, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -434,85 +434,6 @@ public class rentCalc extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
    
-
-    private void rentCalculateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rentCalculateButtonMouseClicked
-        // TODO add your handling code here:
-        errorLabel.setText("");
-        resultLabel.setText("");
-        
-
- String incomeText = incomeInput.getText().trim();
-
-    if (incomeText.isEmpty()) {
-        errorLabel.setText("Please fill out all fields");
-        resultLabel.setVisible(true);
-        incomeInput.requestFocus();
-        return;
-    }
-   
-
-    try {
-        double income = Double.parseDouble(incomeText);
-        double debt = Double.parseDouble(debtInput.getText());
-        String incomeType = (String) yearlyMonthlyInput.getSelectedItem();
-        
-     if ("Yearly".equals(incomeType) && income < 5000) {
-            errorLabel.setText("Yearly income cannot be less than $5,000.00");
-            incomeInput.requestFocus();
-            return;
-        }
-
-        if ("Monthly".equals(incomeType) && income < 400) {
-            errorLabel.setText("Monthly income cannot be less than $400.00");
-            incomeInput.requestFocus();
-            return;
-        }
-        if ("Yearly".equals(incomeType) && income > 5000000) {
-            errorLabel.setText("Yearly income cannot be more than $500,000.00");
-            incomeInput.requestFocus();
-            return;
-        }
-
-        if ("Monthly".equals(incomeType) && income > 30000 ) {
-            errorLabel.setText("Monthly income cannot be more than $30,000.00");
-            incomeInput.requestFocus();
-            return;
-        }
-
-   
-
-        if (debt > 50000) {
-            errorLabel.setText("Debt cannot be greater than $50,000.");
-            debtInput.requestFocus();
-            return;
-        }
-
-
-        double monthlyIncome = "Yearly".equals(incomeType) ? income / 12 : income;
-        double adjustedMonthlyIncome = monthlyIncome - debt;
-
-        int defaultPercentage = 35;
-        jSlider1.setValue(defaultPercentage);
-        double rentAtDefaultPercentage = adjustedMonthlyIncome * (defaultPercentage / 100.0);
-        double rentAtSafePercent = adjustedMonthlyIncome * (23 / 100.0);
-        resultLabel.setText("You can afford up to: " + String.format("%.2f", rentAtDefaultPercentage) + " in rent. ");
-        resultLabel2.setText("It is recommended to keep rent at: $ " + String.format("%.2f", rentAtSafePercent));
-              
-        updateSliderResults();
-        jSlider1.setVisible(true);
-        jLabel1.setVisible(true);
-        jLabel2.setVisible(true);
-        jLabel3.setVisible(true);
-        jSlider1.setEnabled(true);
-
-    } catch (NumberFormatException ex) {
-        errorLabel.setText("Please enter valid numeric values.");
-    }
-
-
-
-
-    }//GEN-LAST:event_rentCalculateButtonMouseClicked
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
         // TODO add your handling code here:
@@ -575,6 +496,86 @@ public class rentCalc extends javax.swing.JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_titleLabelMouseClicked
+
+    private void rentCalculateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rentCalculateButtonMouseClicked
+        // TODO add your handling code here:
+         errorLabel.setText("");
+        resultLabel.setText("");
+        
+
+ String incomeText = incomeInput.getText().trim();
+
+    if (incomeText.isEmpty()) {
+        errorLabel.setText("Please fill out all fields");
+        resultLabel.setVisible(true);
+        incomeInput.requestFocus();
+        return;
+    }
+   
+
+    try {
+        double income = Double.parseDouble(incomeText);
+        double debt = Double.parseDouble(debtInput.getText());
+        String incomeType = (String) yearlyMonthlyInput.getSelectedItem();
+        
+     if ("Yearly".equals(incomeType) && income < 5000) {
+            errorLabel.setText("Yearly income cannot be less than $5,000.00");
+            incomeInput.requestFocus();
+            return;
+        }
+
+        if ("Monthly".equals(incomeType) && income < 400) {
+            errorLabel.setText("Monthly income cannot be less than $400.00");
+            incomeInput.requestFocus();
+            return;
+        }
+        if ("Yearly".equals(incomeType) && income > 5000000) {
+            errorLabel.setText("Yearly income cannot be more than $500,000.00");
+            incomeInput.requestFocus();
+            return;
+        }
+
+        if ("Monthly".equals(incomeType) && income > 30000 ) {
+            errorLabel.setText("Monthly income cannot be more than $30,000.00");
+            incomeInput.requestFocus();
+            return;
+        }
+
+   
+
+        if (debt > 50000) {
+            errorLabel.setText("Debt cannot be greater than $50,000.");
+            debtInput.requestFocus();
+            return;
+        }
+
+
+        double monthlyIncome = "Yearly".equals(incomeType) ? income / 12 : income;
+        double adjustedMonthlyIncome = monthlyIncome - debt;
+
+        int defaultPercentage = 35;
+        jSlider1.setValue(defaultPercentage);
+        double rentAtDefaultPercentage = adjustedMonthlyIncome * (defaultPercentage / 100.0);
+        double rentAtSafePercent = adjustedMonthlyIncome * (23 / 100.0);
+        resultLabel.setText("You can afford up to: " + String.format("$%.2f", rentAtDefaultPercentage) + " in rent. ");
+        resultLabel2.setText("It is recommended to keep rent at: $" + String.format("%.2f", rentAtSafePercent));
+              
+        updateSliderResults();
+        jSlider1.setVisible(true);
+        jLabel1.setVisible(true);
+        jLabel2.setVisible(true);
+        jLabel3.setVisible(true);
+        jSlider1.setEnabled(true);
+
+    } catch (NumberFormatException ex) {
+        errorLabel.setText("Please enter valid numeric values.");
+    }
+
+
+
+
+    
+    }//GEN-LAST:event_rentCalculateButtonMouseClicked
 
     /**
      * @param args the command line arguments
