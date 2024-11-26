@@ -425,10 +425,10 @@ public class rothIRA extends javax.swing.JFrame {
 
                 double futureValueTraditionalAfterTax = futureValueTraditional * (1 - 0.25);
                 double differenceInValue = futureValue - futureValueTraditionalAfterTax;
-                differenceLabel.setText("With the given information the Roth IRA account will result in" + String.format("%.2f", differenceInValue) + "more than a traditional IRA account");
+                differenceLabel.setText("With the given information, the Roth IRA account can accumulate " + String.format("%.2f", differenceInValue) + "more than a traditional IRA account");
 
 
-                ResultLabel.setText("<html>" + "Roth IRA will have a balance of: $" + String.format("%.2f", futureValue) + "Traditional IRA will have a balance of:" + String.format("%.2f", futureValueTraditionalAfterTax) + "</html>");
+                ResultLabel.setText("<html>" + "Roth IRA will have a balance of: $" + String.format("%.2f", futureValue) + ". Traditional IRA will have a balance of:" + String.format("%.2f", futureValueTraditionalAfterTax) + "</html>");
                
                 
             }
