@@ -1,5 +1,3 @@
-package csc250;
-
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -91,7 +89,7 @@ public class retirementCalForm extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel13.setBackground(new java.awt.Color(66, 133, 244));
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csc250/images/shrunkCalcLogo(.96).png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
 
         panel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -318,7 +316,7 @@ public class retirementCalForm extends javax.swing.JFrame {
         jLabel31.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csc250/images/retirementInfo.png"))); // NOI18N
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/retirementInfo.png"))); // NOI18N
         jLabel31.setText("<html> In order to retire comfortably, it's important to start planning today! Use the Basic Retirement Calculator <html> below to see how much you need by retirement and how much you will have - this can help you  <html>decide when to start saving.");
         jLabel31.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
 
