@@ -10,16 +10,6 @@
  */
 public class refinanceHelper {
     
-    public static double findAPR(double P, double MP, double newLoanTerm, double costs) {
-        //cashOUt only change!!!!!!
-        double S = costs + MP * newLoanTerm * 12;
-        double APR;
-        double val = (Math.log(S) - Math.log(P)) / newLoanTerm;
-        APR = Math.pow(10, val) - 1;
-        return APR;
-        
-    }
-    
     public static double findMP(double loanAmt, double years, double interestRate) {
         double months = years * 12;
         double i = interestRate / 12;
@@ -34,8 +24,8 @@ public class refinanceHelper {
     public static double findRemainingBal(double originalLoan, double loanTerm, double timeLeft, double interestRate) {
         double timePassed = loanTerm - timeLeft;
         double i = interestRate / 12;
-        double paymentsNeeded = loanTerm * 12; // n 
-        double paymentsMade = timePassed * 12; // t
+        double paymentsNeeded = loanTerm * 12;
+        double paymentsMade = timePassed * 12;
         
         double allPaymentsRate = Math.pow((1 + i), paymentsNeeded);
         double paymentsMadeRate = Math.pow((1 + i), paymentsMade);
