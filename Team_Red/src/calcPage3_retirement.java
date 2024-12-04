@@ -1,8 +1,10 @@
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,18 +26,18 @@ public class calcPage3_retirement extends javax.swing.JPanel {
         
         try{
             // 1) Retirement
-            //ImageIcon loanIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/loanButtonIcon.png"))
-            //        .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
-            JButton retireBtn = new JButton("Retirement");
+            ImageIcon retireIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/RetirementIcon.png"))
+                    .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
+            JButton retireBtn = new JButton("Retirement", retireIcon);
             retireBtn.setBounds(200, 200, 215, 97);
             retireBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
 
             
             // 2) Roth IRA
-            //ImageIcon loanIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/loanButtonIcon.png"))
-            //        .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
-            JButton rothBtn = new JButton("Roth IRA");
+            ImageIcon rothIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/RothIcon.png"))
+                    .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
+            JButton rothBtn = new JButton("Roth IRA", rothIcon);
             rothBtn.setBounds(500, 200, 215, 97);
             rothBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
@@ -76,7 +78,7 @@ public class calcPage3_retirement extends javax.swing.JPanel {
             rothBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    rothIRA rothPage = new rothIRA();
+                    rothIRA_new rothPage = new rothIRA_new();
                     rothPage.setSize(1650, 1800);
                     rothPage.setResizable(false);
                     rothPage.setVisible(true);

@@ -90,6 +90,7 @@ public class retirementCalForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1650, 850));
 
         jLabel13.setBackground(new java.awt.Color(66, 133, 244));
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N

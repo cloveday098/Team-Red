@@ -164,7 +164,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
 
         stLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         stLabel.setForeground(new java.awt.Color(102, 102, 102));
-        stLabel.setText("Sales Tax ($):");
+        stLabel.setText("Sales Tax (%):");
 
         ofLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ofLabel.setForeground(new java.awt.Color(102, 102, 102));
