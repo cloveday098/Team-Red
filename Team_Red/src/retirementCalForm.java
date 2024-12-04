@@ -1,8 +1,10 @@
 
 
 import java.awt.Color;
+import java.awt.Font;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /*
@@ -21,6 +23,12 @@ public class retirementCalForm extends javax.swing.JFrame {
      */
     public retirementCalForm() {
         initComponents();
+        JLabel logo2 = new JLabel("Capital Calc");
+        logo2.setBackground(new java.awt.Color(66, 133, 244));
+        logo2.setForeground(Color.white);
+        logo2.setFont(new Font("Arial", 0, 36));
+        logo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+        logo2.setBounds(160, 5, 300, 87);
         this.getContentPane().setBackground(Color.white);
         jLabel1.setOpaque(true);
         jLabel22.setOpaque(true);
@@ -28,6 +36,7 @@ public class retirementCalForm extends javax.swing.JFrame {
         jLabel19.setOpaque(true);
         panel1.setVisible(false);
         jLabel31.setVisible(false);
+        jLabel13.add(logo2);
     }
 
     /**

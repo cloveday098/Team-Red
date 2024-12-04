@@ -18,18 +18,38 @@ public class calcPage3_retirement extends javax.swing.JPanel {
      */
     public calcPage3_retirement() {
         this.setLayout(null);
+        this.setBackground(Color.white);
+        javax.swing.JPanel jPanel3 = new javax.swing.JPanel();
+        jPanel3.setBackground(new java.awt.Color(66, 133, 244));
+        jPanel3.setBounds(0, 0, 1650, 100);
         
-        JLabel title1 = new JLabel("Retirement Calculators");
-        title1.setForeground(Color.black);
-        title1.setFont(new Font("Arial", 0, 24));
-        title1.setBounds(350, 50, 400, 50);
+        JLabel logo1 = new JLabel();
+        logo1.setBackground(new java.awt.Color(66, 133, 244));
+        logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png")));
+        logo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+        logo1.setBounds(0, 5, 180, 87);
+        
+        JLabel logo2 = new JLabel("Capital Calc");
+        logo2.setBackground(new java.awt.Color(66, 133, 244));
+        logo2.setForeground(Color.white);
+        logo2.setFont(new Font("Arial", 0, 36));
+        logo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+        logo2.setBounds(180, 5, 300, 87);
+        
+        JLabel title3 = new JLabel("Retirement Calculators");
+        title3.setOpaque(true);
+        title3.setBackground(new Color(66, 133, 244));
+        title3.setForeground(Color.white);
+        title3.setHorizontalAlignment(SwingConstants.CENTER);
+        title3.setFont(new Font("Arial", 1, 36));
+        title3.setBounds(530, 150, 500, 50);
         
         try{
             // 1) Retirement
             ImageIcon retireIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/RetirementIcon.png"))
                     .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
             JButton retireBtn = new JButton("Retirement", retireIcon);
-            retireBtn.setBounds(200, 200, 215, 97);
+            retireBtn.setBounds(400, 300, 215, 97);
             retireBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
 
@@ -38,7 +58,7 @@ public class calcPage3_retirement extends javax.swing.JPanel {
             ImageIcon rothIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/RothIcon.png"))
                     .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
             JButton rothBtn = new JButton("Roth IRA", rothIcon);
-            rothBtn.setBounds(500, 200, 215, 97);
+            rothBtn.setBounds(900, 300, 215, 97);
             rothBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
 
@@ -52,7 +72,10 @@ public class calcPage3_retirement extends javax.swing.JPanel {
             XBtn.setHorizontalAlignment(SwingConstants.CENTER);
             XBtn.setVerticalAlignment(SwingConstants.CENTER);
             
-            this.add(title1);
+            this.add(logo1);
+            this.add(logo2);
+            this.add(jPanel3);
+            this.add(title3);
             this.add(retireBtn);
             this.add(rothBtn);
             this.add(XBtn);
