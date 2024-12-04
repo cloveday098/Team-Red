@@ -20,8 +20,47 @@ public class mortgageCalc extends javax.swing.JFrame {
         initComponents();
         panel2.setVisible(false);
         panel3.setVisible(false);
+        prct4.setVisible(false);
+        prct6.setVisible(false);
+        prct7.setVisible(false);
+        prct8.setVisible(false);
+        prct9.setVisible(false);
+        prct10.setVisible(false);
     }
-
+/*
+   class Slice {
+   double value;
+   Color color;
+   public Slice(double value, Color color) {  
+      this.value = value;
+      this.color = color;
+   }
+}
+class PieChart3 extends JComponent {
+   Slice[] slices = { new Slice(5, Color.black), 
+   new Slice(33, Color.green),
+   new Slice(20, Color.yellow), new Slice(15, Color.red) };
+   PieChart3() {}
+   public void paint(Graphics g) {
+      drawPie((Graphics2D) g, getBounds(), slices);
+   }
+   void drawPie(Graphics2D g, Rectangle area, Slice[] slices) {
+      double total = 0.0D;
+      for (int i = 0; i < slices.length; i++) {
+         total += slices[i].value;
+      }
+      double curValue = 0.0D;
+      int startAngle = 0;
+      for (int i = 0; i < slices.length; i++) {
+         startAngle = (int) (curValue * 360 / total);
+         int arcAngle = (int) (slices[i].value * 360 / total);
+         g.setColor(slices[i].color);
+         g.fillArc(area.x, area.y, area.width, area.height, 
+         startAngle, arcAngle);
+         curValue += slices[i].value;
+      }
+   }
+    */
     public Double monthlyMortgage(Double p, Double r, Double n) {
         r /= 1200;
         n *= 12;
@@ -60,6 +99,7 @@ public class mortgageCalc extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         yr = new javax.swing.JTextField();
         month = new javax.swing.JComboBox<>();
+        comboBox4 = new javax.swing.JComboBox<>();
         panel2 = new javax.swing.JPanel();
         homeInsuranceLabel = new javax.swing.JLabel();
         hoaLabel = new javax.swing.JLabel();
@@ -82,6 +122,11 @@ public class mortgageCalc extends javax.swing.JFrame {
         prct7 = new javax.swing.JLabel();
         prct8 = new javax.swing.JLabel();
         prct10 = new javax.swing.JLabel();
+        comboBox6 = new javax.swing.JComboBox<>();
+        comboBox7 = new javax.swing.JComboBox<>();
+        comboBox8 = new javax.swing.JComboBox<>();
+        comboBox9 = new javax.swing.JComboBox<>();
+        comboBox10 = new javax.swing.JComboBox<>();
         jCheckBox1 = new javax.swing.JCheckBox();
         calc = new javax.swing.JButton();
         panel3 = new javax.swing.JPanel();
@@ -98,16 +143,23 @@ public class mortgageCalc extends javax.swing.JFrame {
         endDate = new javax.swing.JLabel();
         monthPayLabel = new javax.swing.JLabel();
         clear = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         XBtn = new javax.swing.JButton();
+        infoLabel = new javax.swing.JLabel();
+        infoPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(1650, 1800));
         setSize(new java.awt.Dimension(1650, 1800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
         logo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoMouseClicked(evt);
+            }
+        });
         getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 471, -1));
 
         title.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -198,6 +250,13 @@ public class mortgageCalc extends javax.swing.JFrame {
         month.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }));
 
+        comboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "$", "%" }));
+        comboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
@@ -210,74 +269,82 @@ public class mortgageCalc extends javax.swing.JFrame {
                     .addComponent(loanTermLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(interestLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(startDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(76, 76, 76)
+                .addComponent(comboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addComponent(dr1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(homePriceAmt, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(dr2)
-                                    .addComponent(dr4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(interestAmt, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(downPayAmt)
-                                    .addComponent(loanTermAmt, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                    .addGroup(panel1Layout.createSequentialGroup()
                         .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(yr, javax.swing.GroupLayout.PREFERRED_SIZE, 61, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addComponent(yr, javax.swing.GroupLayout.PREFERRED_SIZE, 61, Short.MAX_VALUE))
+                    .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panel1Layout.createSequentialGroup()
+                            .addComponent(dr1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(homePriceAmt))
+                        .addGroup(panel1Layout.createSequentialGroup()
+                            .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(dr2)
+                                .addComponent(dr4))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(interestAmt, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(downPayAmt)
+                                .addComponent(loanTermAmt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(loanTermYr)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addComponent(prct4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(prct4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(homePriceAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(homePriceLabel)
-                    .addComponent(dr1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(downPayAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(downPayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dr2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(homePriceAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dr1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(downPayAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dr2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(loanTermAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(loanTermLabel)
                             .addComponent(loanTermYr))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(interestAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(interestLabel)
                             .addComponent(dr4)
-                            .addComponent(prct4)))
-                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(startDateLabel)
-                    .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(yr, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(46, 46, 46))
+                            .addComponent(prct4)
+                            .addComponent(comboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(yr, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addComponent(homePriceLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(downPayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(77, 77, 77))
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addComponent(loanTermLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(interestLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(startDateLabel)
+                                .addGap(60, 60, 60))))))
         );
 
-        getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, 152));
+        getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 222, 470, 160));
 
         panel2.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -373,6 +440,41 @@ public class mortgageCalc extends javax.swing.JFrame {
         prct10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         prct10.setText("%");
 
+        comboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "$", "%" }));
+        comboBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox6ActionPerformed(evt);
+            }
+        });
+
+        comboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "$", "%" }));
+        comboBox7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox7ActionPerformed(evt);
+            }
+        });
+
+        comboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "$", "%" }));
+        comboBox8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox8ActionPerformed(evt);
+            }
+        });
+
+        comboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "$", "%" }));
+        comboBox9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox9ActionPerformed(evt);
+            }
+        });
+
+        comboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "$", "%" }));
+        comboBox10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox10ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
         panel2.setLayout(panel2Layout);
         panel2Layout.setHorizontalGroup(
@@ -385,7 +487,14 @@ public class mortgageCalc extends javax.swing.JFrame {
                     .addComponent(pmiInsuranceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(hoaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(otherLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(comboBox6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBox8, 0, 1, Short.MAX_VALUE)
+                    .addComponent(comboBox9, 0, 1, Short.MAX_VALUE)
+                    .addComponent(comboBox10, 0, 1, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(panel2Layout.createSequentialGroup()
                         .addComponent(dr10)
@@ -427,13 +536,15 @@ public class mortgageCalc extends javax.swing.JFrame {
                     .addComponent(propTaxAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(propTaxLabel)
                     .addComponent(dr6)
-                    .addComponent(prct6))
+                    .addComponent(prct6)
+                    .addComponent(comboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(homeInsuranceAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(homeInsuranceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dr7)
-                    .addComponent(prct7))
+                    .addComponent(prct7)
+                    .addComponent(comboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panel2Layout.createSequentialGroup()
@@ -441,26 +552,29 @@ public class mortgageCalc extends javax.swing.JFrame {
                             .addComponent(pmiAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pmiInsuranceLabel)
                             .addComponent(dr8)
-                            .addComponent(prct8))
+                            .addComponent(prct8)
+                            .addComponent(comboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(hoaAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(hoaLabel)
                             .addComponent(dr9)
-                            .addComponent(prct9)))
+                            .addComponent(prct9)
+                            .addComponent(comboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(otherLabel)
-                        .addComponent(dr10))
+                        .addComponent(dr10)
+                        .addComponent(comboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(otherAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(prct10)))
                 .addGap(57, 57, 57))
         );
 
-        getContentPane().add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, 152));
+        getContentPane().add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 460, 160));
 
         jCheckBox1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jCheckBox1.setText("Include Taxes & Costs");
@@ -478,7 +592,7 @@ public class mortgageCalc extends javax.swing.JFrame {
                 calcActionPerformed(evt);
             }
         });
-        getContentPane().add(calc, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 610, 168, -1));
+        getContentPane().add(calc, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 610, 168, -1));
 
         panel3.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -588,7 +702,9 @@ public class mortgageCalc extends javax.swing.JFrame {
                 clearActionPerformed(evt);
             }
         });
-        getContentPane().add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 610, 99, -1));
+        getContentPane().add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 99, -1));
+
+        jPanel1.setBackground(new java.awt.Color(66, 133, 244));
 
         XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         XBtn.setForeground(new java.awt.Color(255, 51, 51));
@@ -600,14 +716,50 @@ public class mortgageCalc extends javax.swing.JFrame {
                 XBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(XBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1600, 0, -1, -1));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(1621, Short.MAX_VALUE)
+                .addComponent(XBtn)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(XBtn)
+                .addGap(0, 77, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1650, -1));
+
+        infoLabel.setBackground(new java.awt.Color(199, 219, 252));
+        infoLabel.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        infoLabel.setForeground(new java.awt.Color(66, 133, 244));
+        infoLabel.setText(" ? ");
+        infoLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(66, 133, 244), 4, true));
+        infoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                infoLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                infoLabelMouseExited(evt);
+            }
+        });
+        getContentPane().add(infoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 110, -1, -1));
+
+        infoPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mortgageInfo.png"))); // NOI18N
+        infoPic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+        getContentPane().add(infoPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 110, 278, 104));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        panel2.setVisible(true);
+        panel2.setVisible(!panel2.isVisible());
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void calcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcActionPerformed
@@ -700,6 +852,87 @@ public class mortgageCalc extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_XBtnMouseClicked
 
+    private void comboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox4ActionPerformed
+        if (comboBox4.getSelectedItem() == "$") {
+            dr4.setVisible(true);
+            prct4.setVisible(false);
+        }
+        else {
+            dr4.setVisible(false);
+            prct4.setVisible(true);
+        }
+    }//GEN-LAST:event_comboBox4ActionPerformed
+
+    private void comboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox6ActionPerformed
+        if (comboBox6.getSelectedItem() == "$") {
+            dr6.setVisible(true);
+            prct6.setVisible(false);
+        }
+        else {
+            dr6.setVisible(false);
+            prct6.setVisible(true);
+        }
+    }//GEN-LAST:event_comboBox6ActionPerformed
+
+    private void comboBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox7ActionPerformed
+        if (comboBox7.getSelectedItem() == "$") {
+            dr7.setVisible(true);
+            prct7.setVisible(false);
+        }
+        else {
+            dr7.setVisible(false);
+            prct7.setVisible(true);
+        }
+    }//GEN-LAST:event_comboBox7ActionPerformed
+
+    private void comboBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox8ActionPerformed
+        if (comboBox8.getSelectedItem() == "$") {
+            dr8.setVisible(true);
+            prct8.setVisible(false);
+        }
+        else {
+            dr8.setVisible(false);
+            prct8.setVisible(true);
+        }
+    }//GEN-LAST:event_comboBox8ActionPerformed
+
+    private void comboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox9ActionPerformed
+        if (comboBox9.getSelectedItem() == "$") {
+            dr9.setVisible(true);
+            prct9.setVisible(false);
+        }
+        else {
+            dr9.setVisible(false);
+            prct9.setVisible(true);
+        }
+    }//GEN-LAST:event_comboBox9ActionPerformed
+
+    private void comboBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox10ActionPerformed
+        if (comboBox10.getSelectedItem() == "$") {
+            dr10.setVisible(true);
+            prct10.setVisible(false);
+        }
+        else {
+            dr10.setVisible(false);
+            prct10.setVisible(true);
+        }
+    }//GEN-LAST:event_comboBox10ActionPerformed
+
+    private void infoLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoLabelMouseEntered
+        infoPic.setVisible(true);
+    }//GEN-LAST:event_infoLabelMouseEntered
+
+    private void infoLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoLabelMouseExited
+        infoPic.setVisible(false);
+    }//GEN-LAST:event_infoLabelMouseExited
+
+    private void logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoMouseClicked
+        calcPage2_mortgage calc2 = new calcPage2_mortgage();
+        calc2.setSize(1650, 1800);
+        calc2.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -740,6 +973,12 @@ public class mortgageCalc extends javax.swing.JFrame {
     private javax.swing.JButton XBtn;
     private javax.swing.JButton calc;
     private javax.swing.JButton clear;
+    private javax.swing.JComboBox<String> comboBox10;
+    private javax.swing.JComboBox<String> comboBox4;
+    private javax.swing.JComboBox<String> comboBox6;
+    private javax.swing.JComboBox<String> comboBox7;
+    private javax.swing.JComboBox<String> comboBox8;
+    private javax.swing.JComboBox<String> comboBox9;
     private javax.swing.JTextField downPayAmt;
     private javax.swing.JLabel downPayAmt2;
     private javax.swing.JLabel downPayLabel;
@@ -762,11 +1001,14 @@ public class mortgageCalc extends javax.swing.JFrame {
     private javax.swing.JLabel homePriceLabel;
     private javax.swing.JLabel housePayAmt;
     private javax.swing.JLabel housePayLabel;
+    private javax.swing.JLabel infoLabel;
+    private javax.swing.JLabel infoPic;
     private javax.swing.JTextField interestAmt;
     private javax.swing.JLabel interestLabel;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField loanTermAmt;
     private javax.swing.JLabel loanTermLabel;
     private javax.swing.JLabel loanTermYr;

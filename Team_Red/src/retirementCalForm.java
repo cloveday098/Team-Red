@@ -3,6 +3,10 @@
 import java.awt.Color;
 import java.util.Arrays;
 import java.util.List;
+import java.awt.Font;
+import java.util.Arrays;
+import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /*
@@ -21,6 +25,12 @@ public class retirementCalForm extends javax.swing.JFrame {
      */
     public retirementCalForm() {
         initComponents();
+        JLabel logo2 = new JLabel("Capital Calc");
+        logo2.setBackground(new java.awt.Color(66, 133, 244));
+        logo2.setForeground(Color.white);
+        logo2.setFont(new Font("Arial", 0, 36));
+        logo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+        logo2.setBounds(160, 5, 300, 87);
         this.getContentPane().setBackground(Color.white);
         jLabel1.setOpaque(true);
         jLabel22.setOpaque(true);
@@ -29,6 +39,7 @@ public class retirementCalForm extends javax.swing.JFrame {
         panel1.setVisible(false);
         jLabel31.setVisible(false);
         jLabel36.setOpaque(true);
+        jLabel13.add(logo2);
     }
 
     /**
@@ -70,6 +81,7 @@ public class retirementCalForm extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
+
         jLabel1 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -99,6 +111,18 @@ public class retirementCalForm extends javax.swing.JFrame {
         jLabel13.setBackground(new java.awt.Color(66, 133, 244));
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1650, 850));
+
+        jLabel13.setBackground(new java.awt.Color(66, 133, 244));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
+      
         panel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -214,12 +238,12 @@ public class retirementCalForm extends javax.swing.JFrame {
         jLabel37.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(66, 133, 244));
         jLabel37.setText("Use the recommended values or your own!");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+
                 .addGap(80, 80, 80)
                 .addComponent(jLabel8)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -237,6 +261,7 @@ public class retirementCalForm extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
                                 .addComponent(jLabel15)))
+
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel33)
@@ -278,6 +303,10 @@ public class retirementCalForm extends javax.swing.JFrame {
                                 .addComponent(jLabel16))
                             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel8)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,9 +334,11 @@ public class retirementCalForm extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel16))
                 .addGap(23, 23, 23)
+
                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel37)
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -475,7 +506,6 @@ public class retirementCalForm extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setForeground(new java.awt.Color(66, 133, 244));
         jLabel6.setText("<html>If you're not sure about life expectancy, you can use the average rates for the United States as a guideline:\n");
-
         jLabel38.setBackground(new java.awt.Color(255, 255, 255));
         jLabel38.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(66, 133, 244));
@@ -499,11 +529,13 @@ public class retirementCalForm extends javax.swing.JFrame {
                     .addGroup(panel2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
                             .addGroup(panel2Layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+
                                 .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panel2Layout.createSequentialGroup()
                                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -528,6 +560,7 @@ public class retirementCalForm extends javax.swing.JFrame {
             .addGroup(panel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
                         .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -543,6 +576,7 @@ public class retirementCalForm extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel2Layout.createSequentialGroup()
+
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -553,10 +587,17 @@ public class retirementCalForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
+                        .addGap(13, 13, 13)
+                        .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2))
+                    .addGroup(panel2Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
                         .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-
         jLabel36.setBackground(new java.awt.Color(66, 133, 244));
         jLabel36.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
@@ -566,6 +607,7 @@ public class retirementCalForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -585,6 +627,7 @@ public class retirementCalForm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                     .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -737,11 +780,14 @@ public class retirementCalForm extends javax.swing.JFrame {
         jTextField9.setText("");
         jTextField10.setText("");
         jTextField11.setText("");
-    }                                     
-
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
-    }                                            
+    }
+    
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {                                        
+        calcPage3_retirement calc3 = new calcPage3_retirement();
+        calc3.setSize(1650, 1800);
+        calc3.setVisible(true);
+        this.dispose();
+    }    
 
     /**
      * @param args the command line arguments

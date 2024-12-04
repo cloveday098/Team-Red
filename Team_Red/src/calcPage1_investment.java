@@ -44,17 +44,6 @@ public class calcPage1_investment extends javax.swing.JPanel {
             interestBtn.setBounds(350, 200, 215, 97);
             interestBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
-
-            interestBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                    interest2 interestPage = new interest2();
-                    //interestPage.setSize(1650, 1800);
-                    interestPage.setResizable(false);
-                    interestPage.setVisible(true);
-                    //JOptionPane.showMessageDialog(null, "Interest calculator coming soon...", "Interest Calculator", JOptionPane.INFORMATION_MESSAGE);
-                }        
-            });
             
             this.add(title1);
             this.add(interestBtn);
@@ -65,6 +54,18 @@ public class calcPage1_investment extends javax.swing.JPanel {
             frame.setSize(1650, 1800);
             frame.add(this);
             frame.setVisible(true);
+            
+            interestBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    interest2 interestPage = new interest2();
+                    //interestPage.setSize(1650, 1800);
+                    interestPage.setResizable(false);
+                    interestPage.setVisible(true);
+                    frame.dispose();
+                    //JOptionPane.showMessageDialog(null, "Interest calculator coming soon...", "Interest Calculator", JOptionPane.INFORMATION_MESSAGE);
+                }        
+            });
             
             XBtn.addActionListener(new ActionListener() {
             @Override

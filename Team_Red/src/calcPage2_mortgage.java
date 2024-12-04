@@ -42,16 +42,6 @@ public class calcPage2_mortgage extends javax.swing.JPanel {
             downPayBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
 
-            downPayBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                    DownPaymentCalculator dpPage = new DownPaymentCalculator();
-                    dpPage.setSize(1650, 1800);
-                    dpPage.setResizable(false);
-                    dpPage.setVisible(true);
-                    //JOptionPane.showMessageDialog(null, "Down Payment calculator coming soon...", "Down Payment Calculator", JOptionPane.INFORMATION_MESSAGE);
-                }        
-            });
             
             // 2) House Affordability
             //ImageIcon loanIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/loanButtonIcon.png"))
@@ -75,17 +65,6 @@ public class calcPage2_mortgage extends javax.swing.JPanel {
             mortgageBtn.setBounds(200, 350, 215, 97);
             mortgageBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
-
-            mortgageBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                    mortgageCalc mortPage = new mortgageCalc();
-                    mortPage.setSize(1650, 1800);
-                    mortPage.setResizable(false);
-                    mortPage.setVisible(true);
-                    //JOptionPane.showMessageDialog(null, "Mortgage calculator coming soon...", "Mortgage Calculator", JOptionPane.INFORMATION_MESSAGE);
-                }        
-            });
             
             // 4) Mortgage Payoff
             //ImageIcon loanIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/loanButtonIcon.png"))
@@ -95,12 +74,6 @@ public class calcPage2_mortgage extends javax.swing.JPanel {
             mortPayoffBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
 
-            mortPayoffBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                    JOptionPane.showMessageDialog(null, "Mortgage Payoff calculator coming soon...", "Mortgage Payoff Calculator", JOptionPane.INFORMATION_MESSAGE);
-                }        
-            });
             
             // 5) Refinance
             //ImageIcon loanIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/loanButtonIcon.png"))
@@ -110,16 +83,6 @@ public class calcPage2_mortgage extends javax.swing.JPanel {
             refinanceBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
 
-            refinanceBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                    refinanceCalc refinPage = new refinanceCalc();
-                    refinPage.setSize(1650, 1800);
-                    refinPage.setResizable(false);
-                    refinPage.setVisible(true);
-                    //JOptionPane.showMessageDialog(null, "Refinance calculator coming soon...", "Refinance Calculator", JOptionPane.INFORMATION_MESSAGE);
-                }        
-            });
             
             // 6) Rent
             //ImageIcon loanIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/loanButtonIcon.png"))
@@ -129,17 +92,6 @@ public class calcPage2_mortgage extends javax.swing.JPanel {
             rentBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
 
-            rentBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                    // Rent Calc not recognized??
-                    rentCalc rentPage = new rentCalc();
-                    rentPage.setSize(675, 540);
-                    rentPage.setResizable(false);
-                    rentPage.setVisible(true);
-                    //JOptionPane.showMessageDialog(null, "Rent calculator coming soon...", "Rent Calculator", JOptionPane.INFORMATION_MESSAGE);
-                }        
-            });
             
             // 7) Rent vs. Buy
             //ImageIcon loanIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/loanButtonIcon.png"))
@@ -171,6 +123,67 @@ public class calcPage2_mortgage extends javax.swing.JPanel {
             frame.setSize(1650, 1800);
             frame.add(this);
             frame.setVisible(true);
+            
+            downPayBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    DownPaymentCalculator dpPage = new DownPaymentCalculator();
+                    dpPage.setSize(1109, 749);
+                    dpPage.setResizable(false);
+                    dpPage.setVisible(true);
+                    frame.dispose();
+                    //JOptionPane.showMessageDialog(null, "Down Payment calculator coming soon...", "Down Payment Calculator", JOptionPane.INFORMATION_MESSAGE);
+                }        
+            });
+            
+            mortgageBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    mortgageCalc mortPage = new mortgageCalc();
+                    mortPage.setSize(1650, 1800);
+                    mortPage.setResizable(false);
+                    mortPage.setVisible(true);
+                    frame.dispose();
+                    //JOptionPane.showMessageDialog(null, "Mortgage calculator coming soon...", "Mortgage Calculator", JOptionPane.INFORMATION_MESSAGE);
+                }        
+            });
+            
+            mortPayoffBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    mortgagePayoffCalculator mortPayPage = new mortgagePayoffCalculator();
+                    mortPayPage.setSize(1650, 1800);
+                    mortPayPage.setResizable(false);
+                    mortPayPage.setVisible(true);
+                    frame.dispose();
+                    //JOptionPane.showMessageDialog(null, "Mortgage Payoff calculator coming soon...", "Mortgage Payoff Calculator", JOptionPane.INFORMATION_MESSAGE);
+                }        
+            });
+            
+            refinanceBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    refinanceCalc refinPage = new refinanceCalc();
+                    refinPage.setSize(1650, 1800);
+                    refinPage.setResizable(false);
+                    refinPage.setVisible(true);
+                    frame.dispose();
+                    //JOptionPane.showMessageDialog(null, "Refinance calculator coming soon...", "Refinance Calculator", JOptionPane.INFORMATION_MESSAGE);
+                }        
+            });
+            
+            rentBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    // Rent Calc not recognized??
+                    rentCalc rentPage = new rentCalc();
+                    rentPage.setSize(675, 540);
+                    rentPage.setResizable(false);
+                    rentPage.setVisible(true);
+                    //frame.dispose();
+                    //JOptionPane.showMessageDialog(null, "Rent calculator coming soon...", "Rent Calculator", JOptionPane.INFORMATION_MESSAGE);
+                }        
+            });
             
             XBtn.addActionListener(new ActionListener() {
                 @Override

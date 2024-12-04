@@ -28,7 +28,10 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -59,24 +62,30 @@
                               <Component id="dpLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="downPaymentTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cashIncentivesTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="autoPriceTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="loanTermTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="interestRateTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="tradeInValueTextField" alignment="1" max="32767" attributes="0"/>
-                              <Component id="amtOwedOnTradeInTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="salesTaxTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="otherFeesTextField" alignment="0" pref="182" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="downPaymentTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cashIncentivesTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="loanTermTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="interestRateTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tradeInValueTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="amtOwedOnTradeInTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="salesTaxTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="otherFeesTextField" alignment="0" pref="182" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="autoPriceTextField" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="131" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -89,13 +98,15 @@
                           <Component id="includeAllFees" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="panelRound1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="panelRound1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -106,11 +117,22 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="41" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <EmptySpace pref="46" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
+                          <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="panelRound1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="includeAllFees" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="panelRound2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="apLabel" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="autoPriceTextField" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
@@ -140,7 +162,6 @@
                               <Component id="tivLabel" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="tradeInValueTextField" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="aotLabel" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="amtOwedOnTradeInTextField" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
@@ -150,16 +171,6 @@
                               <Component id="stLabel" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="salesTaxTextField" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="panelRound1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="includeAllFees" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="panelRound2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
@@ -298,7 +309,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Sales Tax ($):"/>
+            <Property name="text" type="java.lang.String" value="Sales Tax (%):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="ofLabel">
@@ -800,7 +811,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="imageLabel" min="-2" pref="94" max="-2" attributes="0"/>
+                      <Component id="imageLabel" min="-2" pref="166" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="formTitleLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -825,6 +836,9 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="imageLabel">
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imageLabelMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="formTitleLabel">
               <Properties>
