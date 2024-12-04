@@ -96,13 +96,12 @@ public class interest2 extends javax.swing.JFrame {
         jLabel9.setMinimumSize(new java.awt.Dimension(100, 100));
         jLabel9.setPreferredSize(new java.awt.Dimension(100, 100));
         jLabel9.setSize(new java.awt.Dimension(150, 10));
+
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel9MouseClicked(evt);
             }
         });
-        
-        
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -554,19 +553,7 @@ public class interest2 extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-    }                                           
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-    }                                           
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-    }                                           
+    }// </editor-fold>                                                                
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {                                      
         // TODO add your handling code here:
@@ -686,6 +673,31 @@ public class interest2 extends javax.swing.JFrame {
         // TODO add your handling code here:
         Helper.validateDoubleInput(jTextField2, evt);
     }                                    
+  
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField3, evt);
+    }                                    
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField4, evt);
+    }                                    
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField6, evt);
+    }                                    
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField7, evt);
+    }                                    
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField8, evt);
+    }
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {                                     
         // TODO add your handling code here:

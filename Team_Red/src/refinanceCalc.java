@@ -208,7 +208,7 @@ public class refinanceCalc extends javax.swing.JFrame {
         jLabel32.setText("years");
 
         jLabel33.setText("$");
-
+      
         jLabel34.setText("$");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -529,7 +529,7 @@ public class refinanceCalc extends javax.swing.JFrame {
         jLabel18.setForeground(new java.awt.Color(66, 133, 244));
 
         jLabel36.setText("The APR for the new loan is:");
-
+      
         jLabel37.setForeground(new java.awt.Color(66, 133, 244));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -1027,7 +1027,6 @@ public class refinanceCalc extends javax.swing.JFrame {
         calc2.setSize(1650, 1800);
         calc2.setVisible(true);
         this.dispose();
-    }         
 
     /**
      * @param args the command line arguments
