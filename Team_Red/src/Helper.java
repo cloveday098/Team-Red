@@ -1,12 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author 5678m
- */
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -265,7 +256,6 @@ public class Helper {
         return month;
     }
     
-    // Auto Loan Calculator
     public static void validateSingleInput(JTextField textField, KeyEvent evt) {
         if (evt.getKeyChar() != KeyEvent.VK_BACK_SPACE && evt.getKeyChar() != KeyEvent.VK_DELETE) {
             String currentText = textField.getText() + evt.getKeyChar();
@@ -614,27 +604,29 @@ public class Helper {
     }
     
     public static double[] upFrontCashWithClosingCostMoney(double upFrontCash, double downPayment, double closingCost, double interestRate, int loanTerm){
-        double totalPercentNum = downPayment / 100;
-        double homePriceNum = upFrontCash / totalPercentNum;
+    
+        double totalCash = upFrontCash - closingCost;
+        double totalPercentNum = downPayment / 100; 
+        double homePriceNum = totalCash / totalPercentNum;
         double downPaymentNum = homePriceNum * (downPayment / 100);
-        double closeCostNum = closingCost;
-        double loanAmountNum = homePriceNum - downPaymentNum - closeCostNum;
+        double loanAmountNum = homePriceNum - downPaymentNum;
         double monthlyInterestRate = (interestRate / 100) / 12;
         int totalLoanNum = loanTerm * 12;
         double monthlyPaymentNum;
-        
+
         if (interestRate == 0) {
             monthlyPaymentNum = loanAmountNum / (loanTerm * 12);
-        }else{
-            monthlyPaymentNum = (loanAmountNum * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalLoanNum));
+        } else {
+            monthlyPaymentNum = (loanAmountNum * monthlyInterestRate) / 
+                                 (1 - Math.pow(1 + monthlyInterestRate, -totalLoanNum));
         }
-        
+
         double roundedHomePriceNum = Math.round(homePriceNum * 100) / 100.0;
         double roundedDownPaymentNum = Math.round(downPaymentNum * 100) / 100.0;
-        double roundedCloseCostNum = Math.round(closeCostNum * 100) / 100.0;
+        double roundedCloseCostNum = Math.round(closingCost * 100) / 100.0;
         double roundedLoanAmountNum = Math.round(loanAmountNum * 100) / 100.0;
         double roundedMonthlyPaymentNum = Math.round(monthlyPaymentNum * 100) / 100.0;
-        
+
         return new double[] {roundedHomePriceNum, roundedDownPaymentNum, roundedCloseCostNum, roundedLoanAmountNum, roundedMonthlyPaymentNum};
 
     }
@@ -704,8 +696,8 @@ public class Helper {
     }
     
     public static double[] homePriceWithClosingCostPercent(double homePrice, double downPayment, double closingCost, double interestRate, int loanTerm){
-        double downPaymentNum = homePrice * (downPayment/100);
-        double closingCostNum = homePrice * (closingCost/100);
+        double downPaymentNum = homePrice * (downPayment / 100);
+        double closingCostNum = homePrice * (closingCost / 100);
         double cashNeededNum = downPaymentNum + closingCostNum;
         double loanAmountNum = homePrice - downPaymentNum;
         double monthlyInterestRate = (interestRate / 100) / 12;
@@ -923,4 +915,7 @@ public class Helper {
         return new double[] {roundDownPayment, roundedDownPercent, roundedLoanAmount, roundedMonthlyPayment};
 
     }
+    
+    
+    
 }
