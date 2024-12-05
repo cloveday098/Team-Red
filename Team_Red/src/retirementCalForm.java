@@ -25,12 +25,6 @@ public class retirementCalForm extends javax.swing.JFrame {
      */
     public retirementCalForm() {
         initComponents();
-        JLabel logo2 = new JLabel("Capital Calc");
-        logo2.setBackground(new java.awt.Color(66, 133, 244));
-        logo2.setForeground(Color.white);
-        logo2.setFont(new Font("Arial", 0, 36));
-        logo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
-        logo2.setBounds(160, 5, 300, 87);
         this.getContentPane().setBackground(Color.white);
         jLabel1.setOpaque(true);
         jLabel22.setOpaque(true);
@@ -39,7 +33,6 @@ public class retirementCalForm extends javax.swing.JFrame {
         panel1.setVisible(false);
         jLabel31.setVisible(false);
         jLabel36.setOpaque(true);
-        jLabel13.add(logo2);
     }
 
     /**
@@ -51,6 +44,7 @@ public class retirementCalForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
+        XBtn = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
@@ -113,7 +107,7 @@ public class retirementCalForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1650, 850));
+        setPreferredSize(new java.awt.Dimension(847, 720));
 
         jLabel13.setBackground(new java.awt.Color(66, 133, 244));
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
@@ -122,6 +116,21 @@ public class retirementCalForm extends javax.swing.JFrame {
                 jLabel13MouseClicked(evt);
             }
         });
+
+        XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        XBtn.setForeground(new java.awt.Color(255, 51, 51));
+        XBtn.setText("X");
+        XBtn.setBounds(790, 0, 43, 43);
+        XBtn.setBackground(java.awt.Color.white);
+        XBtn.setBorderPainted(true);
+        XBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 3 ,true));
+        XBtn.setFocusPainted(false);
+        XBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                XBtnMouseClicked(evt);
+            }
+        });
+        this.add(XBtn);
       
         panel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -206,11 +215,11 @@ public class retirementCalForm extends javax.swing.JFrame {
 
         jTextField11.setText("10");
         jTextField11.setToolTipText("");
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        /*jTextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField11ActionPerformed(evt);
             }
-        });
+        });*/
 
         jLabel14.setText("$");
 
@@ -599,9 +608,14 @@ public class retirementCalForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
         jLabel36.setBackground(new java.awt.Color(66, 133, 244));
-        jLabel36.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel36.setText("CapitalCalc");
+        jLabel36.setText("Capital Calc");
+        jLabel36.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLabel36MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -725,6 +739,10 @@ public class retirementCalForm extends javax.swing.JFrame {
         }
     }                                     
 
+    private void XBtnMouseClicked(java.awt.event.MouseEvent evt) {                                  
+        this.dispose();
+    }     
+    
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {                                     
         // TODO add your handling code here:
         Helper.validateSingleInput(jTextField1, evt);
@@ -789,6 +807,13 @@ public class retirementCalForm extends javax.swing.JFrame {
         this.dispose();
     }    
 
+    private void JLabel36MouseClicked(java.awt.event.MouseEvent evt) {                                        
+        calcPage3_retirement calc3 = new calcPage3_retirement();
+        calc3.setSize(1650, 1800);
+        calc3.setVisible(true);
+        this.dispose();
+    }    
+    
     /**
      * @param args the command line arguments
      */
@@ -827,6 +852,7 @@ public class retirementCalForm extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton XBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

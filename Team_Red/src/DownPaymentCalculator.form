@@ -190,6 +190,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Capital Cal"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="formTitleLabelMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="XBtn">
               <Properties>

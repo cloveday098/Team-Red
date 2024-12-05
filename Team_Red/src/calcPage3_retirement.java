@@ -34,7 +34,7 @@ public class calcPage3_retirement extends javax.swing.JPanel {
         logo2.setForeground(Color.white);
         logo2.setFont(new Font("Arial", 0, 36));
         logo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
-        logo2.setBounds(180, 5, 300, 87);
+        logo2.setBounds(200, 5, 300, 87);
         
         JLabel title3 = new JLabel("Retirement Calculators");
         title3.setOpaque(true);
@@ -67,7 +67,9 @@ public class calcPage3_retirement extends javax.swing.JPanel {
             XBtn.setForeground(new java.awt.Color(255,51,51));
             XBtn.setText("X");
             XBtn.setBounds(1590, 0, 43, 43);
-            XBtn.setBorderPainted(false);
+            XBtn.setBackground(java.awt.Color.white);
+            XBtn.setBorderPainted(true);
+            XBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 3 ,true));
             XBtn.setFocusPainted(false);
             XBtn.setHorizontalAlignment(SwingConstants.CENTER);
             XBtn.setVerticalAlignment(SwingConstants.CENTER);
@@ -86,11 +88,24 @@ public class calcPage3_retirement extends javax.swing.JPanel {
             frame.add(this);
             frame.setVisible(true);
             
+            logo1.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    frame.dispose();
+                }
+            });
+            logo2.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    frame.dispose();
+                }
+            });
+            
             retireBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     retirementCalForm retirePage = new retirementCalForm();
-                    retirePage.setSize(847, 720);
+                    //retirePage.setSize(847, 720);
                     retirePage.setResizable(false);
                     retirePage.setVisible(true);
                     frame.dispose();

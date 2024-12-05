@@ -36,14 +36,24 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
         panelRound1.setBackground(new Color(66,133,244,80));
         
         autoPriceTextField.setBackground(new Color(66,133,244,40));
+        autoPriceTextField.setOpaque(false);
         loanTermTextField.setBackground(new Color(66,133,244,80));
+        loanTermTextField.setOpaque(false);
         interestRateTextField.setBackground(new Color(66,133,244,40));
+        interestRateTextField.setOpaque(false);
         cashIncentivesTextField.setBackground(new Color(66,133,244,80));
+        cashIncentivesTextField.setOpaque(false);
         downPaymentTextField.setBackground(new Color(66,133,244,40));
+        downPaymentTextField.setOpaque(false);
         tradeInValueTextField.setBackground(new Color(66,133,244,80));
+        tradeInValueTextField.setOpaque(false);
         amtOwedOnTradeInTextField.setBackground(new Color(66,133,244,40));
+        amtOwedOnTradeInTextField.setOpaque(false);
         salesTaxTextField.setBackground(new Color(66,133,244,80));
+        salesTaxTextField.setOpaque(false);
         otherFeesTextField.setBackground(new Color(66,133,244,40));
+        otherFeesTextField.setOpaque(false);
+        
         
         imageLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/CapitalLogo.png")).getImage().getScaledInstance(166,80,Image.SCALE_SMOOTH)));
         quitLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -113,6 +123,8 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1135, 850));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(66, 133, 242));
 
@@ -134,41 +146,52 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 124, -1, -1));
+
         apLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         apLabel.setForeground(new java.awt.Color(102, 102, 102));
         apLabel.setText("Auto Price ($):");
+        jPanel1.add(apLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 281, -1, 38));
 
         ltLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ltLabel.setForeground(new java.awt.Color(102, 102, 102));
         ltLabel.setText("Loan Term (months):");
+        jPanel1.add(ltLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 337, -1, 38));
 
         irLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         irLabel.setForeground(new java.awt.Color(102, 102, 102));
         irLabel.setText("Interest Rate (%):");
+        jPanel1.add(irLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 393, -1, 38));
 
         ciLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ciLabel.setForeground(new java.awt.Color(102, 102, 102));
         ciLabel.setText("Cash Incentives ($):");
+        jPanel1.add(ciLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 449, -1, 38));
 
         dpLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         dpLabel.setForeground(new java.awt.Color(102, 102, 102));
         dpLabel.setText("Down Payment ($):");
+        jPanel1.add(dpLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 505, -1, 38));
 
         tivLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tivLabel.setForeground(new java.awt.Color(102, 102, 102));
         tivLabel.setText("Trade-In Value ($):");
+        jPanel1.add(tivLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 561, -1, 38));
 
         aotLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         aotLabel.setForeground(new java.awt.Color(102, 102, 102));
         aotLabel.setText("Amount Owed On Trade-In ($):");
+        jPanel1.add(aotLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 610, -1, 38));
 
         stLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         stLabel.setForeground(new java.awt.Color(102, 102, 102));
         stLabel.setText("Sales Tax (%):");
+        jPanel1.add(stLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 670, -1, 38));
 
         ofLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ofLabel.setForeground(new java.awt.Color(102, 102, 102));
         ofLabel.setText("Other Fees ($):");
+        jPanel1.add(ofLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 730, -1, 38));
 
         autoPriceTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         autoPriceTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -176,6 +199,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 autoPriceTextFieldKeyTyped(evt);
             }
         });
+        jPanel1.add(autoPriceTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 281, 182, 38));
 
         loanTermTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         loanTermTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -183,6 +207,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 loanTermTextFieldKeyTyped(evt);
             }
         });
+        jPanel1.add(loanTermTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 337, 182, 38));
 
         interestRateTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         interestRateTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -190,6 +215,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 interestRateTextFieldKeyTyped(evt);
             }
         });
+        jPanel1.add(interestRateTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 393, 182, 38));
 
         cashIncentivesTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cashIncentivesTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -197,6 +223,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 cashIncentivesTextFieldKeyTyped(evt);
             }
         });
+        jPanel1.add(cashIncentivesTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 449, 182, 38));
 
         downPaymentTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         downPaymentTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -204,6 +231,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 downPaymentTextFieldKeyTyped(evt);
             }
         });
+        jPanel1.add(downPaymentTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 505, 182, 38));
 
         tradeInValueTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tradeInValueTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -211,6 +239,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 tradeInValueTextFieldKeyTyped(evt);
             }
         });
+        jPanel1.add(tradeInValueTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 561, 182, 38));
 
         amtOwedOnTradeInTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         amtOwedOnTradeInTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -218,6 +247,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 amtOwedOnTradeInTextFieldKeyTyped(evt);
             }
         });
+        jPanel1.add(amtOwedOnTradeInTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, 182, 38));
 
         salesTaxTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         salesTaxTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -225,6 +255,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 salesTaxTextFieldKeyTyped(evt);
             }
         });
+        jPanel1.add(salesTaxTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 670, 182, 38));
 
         otherFeesTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,6 +267,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 otherFeesTextFieldKeyTyped(evt);
             }
         });
+        jPanel1.add(otherFeesTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 730, 182, 38));
 
         jPanel4.setBackground(new java.awt.Color(66, 133, 244));
 
@@ -259,6 +291,8 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(858, 124, -1, -1));
 
         panelRound1.setBackground(new java.awt.Color(66, 133, 244));
         panelRound1.setRoundButtomLeft(50);
@@ -384,6 +418,8 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 .addGap(43, 43, 43))
         );
 
+        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 250, -1, -1));
+
         panelRound2.setBackground(new java.awt.Color(66, 133, 244));
         panelRound2.setRoundButtomLeft(25);
         panelRound2.setRoundButtomRight(25);
@@ -417,8 +453,11 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(827, 626, -1, -1));
+
         includeAllFees.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         includeAllFees.setText("Include All Fees");
+        jPanel1.add(includeAllFees, new org.netbeans.lib.awtextra.AbsoluteConstraints(842, 584, -1, -1));
 
         panelRound3.setBackground(new java.awt.Color(66, 133, 244));
         panelRound3.setRoundButtomLeft(25);
@@ -453,6 +492,8 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel1.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(827, 694, -1, -1));
+
         jPanel3.setBackground(new java.awt.Color(66, 133, 244));
 
         imageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -464,12 +505,18 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
         formTitleLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         formTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         formTitleLabel.setText("Capital Cal");
+        formTitleLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formTitleLabelMouseClicked(evt);
+            }
+        });
 
         XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         XBtn.setForeground(new java.awt.Color(255, 51, 51));
         XBtn.setText("X");
-        XBtn.setBorderPainted(false);
+        XBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 3));
         XBtn.setFocusPainted(false);
+        XBtn.setPreferredSize(new java.awt.Dimension(43, 43));
         XBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 XBtnMouseClicked(evt);
@@ -485,132 +532,24 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(formTitleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(XBtn))
+                .addComponent(XBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(formTitleLabel)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(formTitleLabel))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(XBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(XBtn)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(apLabel)
-                            .addComponent(ltLabel)
-                            .addComponent(irLabel)
-                            .addComponent(ciLabel)
-                            .addComponent(tivLabel)
-                            .addComponent(aotLabel)
-                            .addComponent(stLabel)
-                            .addComponent(ofLabel)
-                            .addComponent(dpLabel))
-                        .addGap(60, 60, 60)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(downPaymentTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cashIncentivesTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(loanTermTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(interestRateTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tradeInValueTextField)
-                                .addComponent(amtOwedOnTradeInTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(salesTaxTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(otherFeesTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(autoPriceTextField)
-                                .addGap(261, 261, 261))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(141, 141, 141))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(includeAllFees)
-                        .addGap(165, 165, 165))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(27, 27, 27))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(134, 134, 134)))))
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(includeAllFees)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(apLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(autoPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ltLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(loanTermTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(irLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(interestRateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ciLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cashIncentivesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(downPaymentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tivLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tradeInValueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(aotLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(amtOwedOnTradeInTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(stLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(salesTaxTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ofLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(otherFeesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
-        );
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1135, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -622,7 +561,7 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -778,6 +717,13 @@ public class AutoLoanCalculator extends javax.swing.JFrame {
         calc4.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_imageLabelMouseClicked
+
+    private void formTitleLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formTitleLabelMouseClicked
+        calcPage4_misc calc4 = new calcPage4_misc();
+        calc4.setSize(1650, 1800);
+        calc4.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formTitleLabelMouseClicked
 
     /**
      * @param args the command line arguments

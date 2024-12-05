@@ -105,10 +105,18 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
         formTitleLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         formTitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         formTitleLabel.setText("Capital Cal");
+        formTitleLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formTitleLabelMouseClicked(evt);
+            }
+        });
 
         XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         XBtn.setForeground(new java.awt.Color(255, 51, 51));
         XBtn.setText("X");
+        XBtn.setBackground(java.awt.Color.white);
+        XBtn.setBorderPainted(true);
+        XBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 3 ,true));
         XBtn.setPreferredSize(new java.awt.Dimension(43, 43));
         XBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -509,6 +517,13 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
         calc2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_imageLabelMouseClicked
+
+    private void formTitleLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formTitleLabelMouseClicked
+        calcPage2_mortgage calc2 = new calcPage2_mortgage();
+        calc2.setSize(1650, 1800);
+        calc2.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formTitleLabelMouseClicked
 
     /**
      * @param args the command line arguments

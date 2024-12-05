@@ -654,6 +654,16 @@ public class interest2 extends javax.swing.JFrame {
         jTextField8.setText("");
     }                                     
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    }                                           
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    }                                           
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    }    
+    
     private void jLabel25MouseEntered(java.awt.event.MouseEvent evt) {                                      
         // TODO add your handling code here:
         jLabel23.setVisible(true);
@@ -674,31 +684,6 @@ public class interest2 extends javax.swing.JFrame {
         Helper.validateDoubleInput(jTextField2, evt);
     }                                    
   
-    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {                                     
-        // TODO add your handling code here:
-        Helper.validateDoubleInput(jTextField3, evt);
-    }                                    
-
-    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {                                     
-        // TODO add your handling code here:
-        Helper.validateDoubleInput(jTextField4, evt);
-    }                                    
-
-    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {                                     
-        // TODO add your handling code here:
-        Helper.validateDoubleInput(jTextField6, evt);
-    }                                    
-
-    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {                                     
-        // TODO add your handling code here:
-        Helper.validateDoubleInput(jTextField7, evt);
-    }                                    
-
-    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {                                     
-        // TODO add your handling code here:
-        Helper.validateDoubleInput(jTextField8, evt);
-    }
-
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {                                     
         // TODO add your handling code here:
         Helper.validateDoubleInput(jTextField3, evt);

@@ -215,7 +215,9 @@ public class currency_calc extends javax.swing.JFrame {
         XBtn.setForeground(new java.awt.Color(255,51,51));
         XBtn.setText("X");
         XBtn.setBounds(1590, 0, 43, 43);
-        XBtn.setBorderPainted(false);
+        XBtn.setBackground(java.awt.Color.white);
+        XBtn.setBorderPainted(true);
+        XBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 3 ,true));
         XBtn.setFocusPainted(false);
         XBtn.setHorizontalAlignment(SwingConstants.CENTER);
         XBtn.setVerticalAlignment(SwingConstants.CENTER);

@@ -67,8 +67,9 @@ public class calcPage4_misc extends javax.swing.JPanel {
             XBtn.setForeground(new java.awt.Color(255,51,51));
             XBtn.setText("X");
             XBtn.setBounds(1590, 0, 43, 43);
-            XBtn.setBorderPainted(false); 
-            //XBtn.setContentAreaFilled(false); 
+            XBtn.setBackground(java.awt.Color.white);
+            XBtn.setBorderPainted(true);
+            XBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 3 ,true));
             XBtn.setFocusPainted(false);
             XBtn.setHorizontalAlignment(SwingConstants.CENTER);
             XBtn.setVerticalAlignment(SwingConstants.CENTER);
@@ -102,7 +103,7 @@ public class calcPage4_misc extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     AutoLoanCalculator autoLoan = new AutoLoanCalculator();
-                    autoLoan.setSize(1200, 800);
+                    //autoLoan.setSize(1200, 800);
                     autoLoan.setResizable(false);
                     autoLoan.setVisible(true);
                     frame.dispose();

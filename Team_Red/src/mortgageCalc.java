@@ -1,5 +1,8 @@
 
+import java.awt.Color;
+import java.awt.Font;
 import java.text.DecimalFormat;
+import javax.swing.JLabel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -18,6 +21,20 @@ public class mortgageCalc extends javax.swing.JFrame {
     DecimalFormat df = new DecimalFormat("#.##");
     public mortgageCalc() {
         initComponents();
+        JLabel logo2 = new JLabel("Capital Calc");
+        logo2.setBackground(new java.awt.Color(66, 133, 244));
+        logo2.setForeground(Color.white);
+        logo2.setFont(new Font("Arial", 0, 36));
+        logo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+        logo2.setBounds(200, 5, 300, 87);
+        logo2.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    logo2MouseClicked(evt);
+                }
+            });
+        jPanel1.add(logo2);
+        
         panel2.setVisible(false);
         panel3.setVisible(false);
         prct4.setVisible(false);
@@ -79,7 +96,6 @@ class PieChart3 extends JComponent {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        logo = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         panel1 = new javax.swing.JPanel();
         downPayLabel = new javax.swing.JLabel();
@@ -145,27 +161,17 @@ class PieChart3 extends JComponent {
         clear = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         XBtn = new javax.swing.JButton();
+        logo = new javax.swing.JLabel();
         infoLabel = new javax.swing.JLabel();
         infoPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1650, 1800));
         setSize(new java.awt.Dimension(1650, 1800));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
-        logo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        logo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoMouseClicked(evt);
-            }
-        });
-        getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 471, -1));
 
         title.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         title.setForeground(new java.awt.Color(66, 133, 244));
         title.setText("Mortgage Calculator");
-        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, -1, -1));
 
         panel1.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -276,7 +282,7 @@ class PieChart3 extends JComponent {
                     .addGroup(panel1Layout.createSequentialGroup()
                         .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(yr, javax.swing.GroupLayout.PREFERRED_SIZE, 61, Short.MAX_VALUE))
+                        .addComponent(yr, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                     .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(panel1Layout.createSequentialGroup()
                             .addComponent(dr1)
@@ -343,8 +349,6 @@ class PieChart3 extends JComponent {
                                 .addComponent(startDateLabel)
                                 .addGap(60, 60, 60))))))
         );
-
-        getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 222, 470, 160));
 
         panel2.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -487,7 +491,7 @@ class PieChart3 extends JComponent {
                     .addComponent(pmiInsuranceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(hoaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(otherLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(comboBox6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -574,8 +578,6 @@ class PieChart3 extends JComponent {
                 .addGap(57, 57, 57))
         );
 
-        getContentPane().add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 460, 160));
-
         jCheckBox1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jCheckBox1.setText("Include Taxes & Costs");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -583,7 +585,6 @@ class PieChart3 extends JComponent {
                 jCheckBox1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, -1, -1));
 
         calc.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         calc.setText("Calculate");
@@ -592,7 +593,6 @@ class PieChart3 extends JComponent {
                 calcActionPerformed(evt);
             }
         });
-        getContentPane().add(calc, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 610, 168, -1));
 
         panel3.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -693,8 +693,6 @@ class PieChart3 extends JComponent {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 230, -1, -1));
-
         clear.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         clear.setText("Clear");
         clear.addActionListener(new java.awt.event.ActionListener() {
@@ -702,14 +700,15 @@ class PieChart3 extends JComponent {
                 clearActionPerformed(evt);
             }
         });
-        getContentPane().add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 99, -1));
 
         jPanel1.setBackground(new java.awt.Color(66, 133, 244));
 
         XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         XBtn.setForeground(new java.awt.Color(255, 51, 51));
         XBtn.setText("X");
-        XBtn.setBorderPainted(false);
+        XBtn.setBackground(java.awt.Color.white);
+        XBtn.setBorderPainted(true);
+        XBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 3 ,true));
         XBtn.setFocusPainted(false);
         XBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -717,12 +716,22 @@ class PieChart3 extends JComponent {
             }
         });
 
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
+        logo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(1621, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2212, Short.MAX_VALUE)
                 .addComponent(XBtn)
                 .addContainerGap())
         );
@@ -730,10 +739,12 @@ class PieChart3 extends JComponent {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(XBtn)
-                .addGap(0, 77, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1650, -1));
 
         infoLabel.setBackground(new java.awt.Color(199, 219, 252));
         infoLabel.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
@@ -748,11 +759,70 @@ class PieChart3 extends JComponent {
                 infoLabelMouseExited(evt);
             }
         });
-        getContentPane().add(infoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 110, -1, -1));
 
         infoPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mortgageInfo.png"))); // NOI18N
         infoPic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
-        getContentPane().add(infoPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 110, 278, 104));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox1))
+                        .addGap(360, 360, 360)
+                        .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(310, 310, 310)
+                        .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(calc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(730, 730, 730)
+                        .addComponent(title)
+                        .addGap(10, 10, 10)
+                        .addComponent(infoLabel)
+                        .addGap(27, 27, 27)
+                        .addComponent(infoPic, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(998, 998, 998))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(infoLabel)
+                            .addComponent(infoPic, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(jCheckBox1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(9, 9, 9)
+                .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(clear)
+                    .addComponent(calc)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -852,6 +922,10 @@ class PieChart3 extends JComponent {
         this.dispose();
     }//GEN-LAST:event_XBtnMouseClicked
 
+    private void logo2MouseClicked(java.awt.event.MouseEvent evt) {
+        this.dispose();
+    }
+    
     private void comboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox4ActionPerformed
         if (comboBox4.getSelectedItem() == "$") {
             dr4.setVisible(true);
