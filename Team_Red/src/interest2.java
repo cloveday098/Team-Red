@@ -20,6 +20,7 @@ public class interest2 extends javax.swing.JFrame {
      */
     public interest2() {
         initComponents();
+        this.getContentPane().setBackground(Color.decode("#c7dbfc"));
         panel1.setVisible(false);
         jLabel8.setOpaque(true);
         jLabel11.setOpaque(true);
@@ -98,6 +99,11 @@ public class interest2 extends javax.swing.JFrame {
         jLabel9.setPreferredSize(new java.awt.Dimension(100, 100));
         jLabel9.setSize(new java.awt.Dimension(150, 10));
 
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -474,7 +480,6 @@ public class interest2 extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -537,6 +542,7 @@ public class interest2 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -554,6 +560,9 @@ public class interest2 extends javax.swing.JFrame {
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(6, 6, 6)
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -572,7 +581,6 @@ public class interest2 extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
     }                                           
-
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {                                      
         // TODO add your handling code here:
         if (jTextField1.getText().isEmpty()) {
@@ -585,10 +593,12 @@ public class interest2 extends javax.swing.JFrame {
         
         else if (jTextField2.getText().isEmpty() || jTextField3.getText().isEmpty())  {
             JOptionPane.showMessageDialog(null, "Enter values for Annual and Monthly Contribution.");        
+
         }
         else if ( (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField2.getText()))) == false) || (Helper.isValidNumber(String.valueOf(Double.parseDouble(jTextField3.getText()))) == false) ) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Annual and Monthly Contribution must both be numeric. Try again!");                    
         }
+      
         else if ((Double.parseDouble(jTextField2.getText()) == 0) && (Double.parseDouble(jTextField3.getText()) == 0)) {
             JOptionPane.showMessageDialog(null, "INPUT INVALID: Annual and Monthly Contributions cannot both be 0. Try again!");                    
         }    
@@ -672,6 +682,16 @@ public class interest2 extends javax.swing.JFrame {
         jTextField8.setText("");
     }                                     
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    }                                           
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    }                                           
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    }    
+
     private void jLabel25MouseEntered(java.awt.event.MouseEvent evt) {                                      
         // TODO add your handling code here:
         jLabel23.setVisible(true);
@@ -715,8 +735,44 @@ public class interest2 extends javax.swing.JFrame {
     private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {                                     
         // TODO add your handling code here:
         Helper.validateDoubleInput(jTextField8, evt);
+    }
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField2, evt);
+    }                                    
+  
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField3, evt);
     }                                    
 
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField4, evt);
+    }                                    
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField6, evt);
+    }                                    
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField7, evt);
+    }                                    
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField8, evt);
+    }
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {                                        
+        calcPage1_investment calc1 = new calcPage1_investment();
+        calc1.setSize(1650, 1800);
+        calc1.setVisible(true);
+        this.dispose();
+    }
     /**
      * @param args the command line arguments
      */

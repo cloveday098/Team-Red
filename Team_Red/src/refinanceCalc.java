@@ -1,8 +1,12 @@
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
 import javax.swing.JOptionPane;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -20,6 +24,13 @@ public class refinanceCalc extends javax.swing.JFrame {
      */;
     public refinanceCalc() {
         initComponents();
+        JLabel logo2 = new JLabel("Capital Calc");
+        logo2.setBackground(new java.awt.Color(66, 133, 244));
+        logo2.setForeground(Color.white);
+        logo2.setFont(new Font("Arial", 0, 36));
+        logo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+        logo2.setBounds(160, 5, 300, 87);
+        jLabel12.add(logo2);
         jLabel1.setOpaque(true);
         jLabel14.setOpaque(true);
         jLabel14.setBackground(Color.decode("#c7dbfc"));
@@ -51,6 +62,8 @@ public class refinanceCalc extends javax.swing.JFrame {
                 
         this.getContentPane().setBackground(Color.white);
         //this.getContentPane().setBackground(Color.decode("#c7dbfc"));
+        
+        jLabel12.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/CapitalLogo.png")).getImage().getScaledInstance(166,80,Image.SCALE_SMOOTH)));
     }
 
     /**
@@ -153,7 +166,12 @@ public class refinanceCalc extends javax.swing.JFrame {
         jLabel12.setBackground(new java.awt.Color(66, 133, 244));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
         jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
-
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refinanceInfo.png"))); // NOI18N
         jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
 
@@ -196,7 +214,6 @@ public class refinanceCalc extends javax.swing.JFrame {
                 jTextField7KeyTyped(evt);
             }
         });
-
         jTextField9.setBackground(new java.awt.Color(199, 219, 252));
         jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -209,7 +226,6 @@ public class refinanceCalc extends javax.swing.JFrame {
         jLabel32.setText("years");
 
         jLabel33.setText("$");
-
         jLabel34.setText("$");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -372,7 +388,6 @@ public class refinanceCalc extends javax.swing.JFrame {
 
         jLabel30.setPreferredSize(new java.awt.Dimension(42, 17));
         jLabel30.setSize(new java.awt.Dimension(42, 17));
-
         jLabel40.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(66, 133, 244));
         jLabel40.setText("Remaining Amount:");
@@ -550,9 +565,7 @@ public class refinanceCalc extends javax.swing.JFrame {
         jLabel17.setText("New Monthly Payment:");
 
         jLabel18.setForeground(new java.awt.Color(66, 133, 244));
-
         jLabel36.setText("The APR for the new loan is:");
-
         jLabel37.setForeground(new java.awt.Color(66, 133, 244));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -637,7 +650,6 @@ public class refinanceCalc extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
-
         jLabel39.setBackground(new java.awt.Color(66, 133, 244));
         jLabel39.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
@@ -674,7 +686,6 @@ public class refinanceCalc extends javax.swing.JFrame {
         );
 
         jButton3.getAccessibleContext().setAccessibleName("xBtn");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -797,6 +808,7 @@ public class refinanceCalc extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {                                      
         // TODO add your handling code here:
+        jPanel5.setVisible(true);
         String selectedItem = (String) jComboBox1.getSelectedItem();
         if (selectedItem == "I know my Remaining Balance") {
         
@@ -863,7 +875,6 @@ public class refinanceCalc extends javax.swing.JFrame {
         double APR;
         if (costs == 0) {
             APR = newInterestRate;
-      
         } else {
             double var = costs / remainingBalance;
             if ( ((newInterestRate * 100) < 20 ) && (newInterestRate * 100) > 10) {
@@ -978,7 +989,7 @@ public class refinanceCalc extends javax.swing.JFrame {
         
         double newMonthlyAmt = refinanceHelper.findMP((amtLeft + cashOut), newLoanTerm, newInterestRate);
         double APR;
-        
+
         if (costs == 0) {
             APR = newInterestRate;
       
@@ -1002,6 +1013,7 @@ public class refinanceCalc extends javax.swing.JFrame {
         jLabel41.setText(String.format("%.2f", amtLeft));
         jLabel15.setVisible(false);
         jLabel17.setVisible(false);
+          
         if (oldInterestRate < APR) {
             List<String> output = Arrays.asList("This is", String.valueOf(String.format("%.2f", diff) + "%"), "higher than the");
             String joinedString = String.join(" ", output);
@@ -1048,7 +1060,6 @@ public class refinanceCalc extends javax.swing.JFrame {
         // TODO add your handling code here:
         jLabel13.setVisible(false);
     }                                   
-
     private void jTextField14KeyTyped(java.awt.event.KeyEvent evt) {                                      
         // TODO add your handling code here:
         Helper.validateDoubleInput(jTextField14, evt);
@@ -1128,6 +1139,62 @@ public class refinanceCalc extends javax.swing.JFrame {
         this.dispose();
     }                                     
 
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField3, evt);
+    }                                    
+
+    private void jTextField13KeyTyped(java.awt.event.KeyEvent evt) {                                      
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField13, evt);
+    }                                     
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField4, evt);
+    }                                    
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField5, evt);
+    }                                    
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField7, evt);
+    }                                    
+
+    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {                                     
+        // TODO add your handling code here:
+        Helper.validateDoubleInput(jTextField9, evt);
+    }                                    
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        // TODO add your handling code here:
+        // clear Current Loan
+        jTextField14.setText("");
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField11.setText("");
+        jTextField12.setText("");
+        jTextField13.setText("");
+        
+        // clear New Loan
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField7.setText("");
+        jTextField9.setText("");
+        
+    }
+    
+    
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {                                        
+        calcPage2_mortgage calc2 = new calcPage2_mortgage();
+        calc2.setSize(1650, 1800);
+        calc2.setVisible(true);
+        this.dispose();
+    }
     /**
      * @param args the command line arguments
      */
@@ -1166,7 +1233,6 @@ public class refinanceCalc extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
