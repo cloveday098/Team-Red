@@ -14,13 +14,17 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.font.TextAttribute;
 import java.io.File;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.Arrays;
+import java.util.Currency;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.swing.DefaultComboBoxModel;
@@ -28,6 +32,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import org.jsoup.Jsoup;
@@ -45,6 +50,22 @@ public class currency_calc extends javax.swing.JFrame {
     /**
      * Creates new form currency_calc
      */
+    
+    // Stopped referencing from Helper for some reason
+    // Currency Convertor
+    public static boolean isCurrValidNumber(String test) {
+        return test.matches("\\d*"); // Matches an empty string or digits only
+    }
+
+    public static void validateInput(JTextField textField, KeyEvent evt) {
+        if (evt.getKeyChar() != KeyEvent.VK_BACK_SPACE && evt.getKeyChar() != KeyEvent.VK_DELETE) {
+            String currentText = textField.getText() + evt.getKeyChar();
+            if (!isCurrValidNumber(currentText)) {
+                evt.consume(); // Block invalid characters
+            }
+        }
+    }
+    
     public static Map<String, Double> webScraper() {
         String s = "success";
         String url = "http://www.x-rates.com/table/?from=USD&amount=1";
@@ -73,6 +94,153 @@ public class currency_calc extends javax.swing.JFrame {
         }
         System.out.printf("%s", rateDict);
         return rateDict;
+    }
+    
+    // Format the amount using deciamls/commas and currency symbols
+    public static String getSymbol(Object currency, Double newAmt) {
+        // Arial Unicode MS for symbol font
+        double d = newAmt;
+        // Checking locale function;
+        //String currencyName = NumberFormat.getCurrencyInstance(getLocaleFromCurrency(String.valueOf(currency))).getCurrency().getDisplayName();
+        NumberFormat nf
+            = NumberFormat.getCurrencyInstance(getLocaleFromCurrency(String.valueOf(currency)));
+        //System.out.println("\n" + nf.getCurrency().getDisplayName() + " vs. " + currencyName);
+        System.out.println("\n" + currency + " representation of " + d
+                           + " : " + nf.format(d));
+        return nf.format(d);
+    }
+    
+    // Mapping 
+    public static Locale getLocaleFromCurrency(String currencyName) {
+        String currencyCode = switch (currencyName) {
+            case "Argentine Peso" -> "ARS";
+            case "Australian Dollar" -> "AUD";
+            case "Bahraini Dinar" -> "BHD";
+            case "Botswana Pula" -> "BWP";
+            case "Brazilian Real" -> "BRL";
+            case "British Pound" -> "GBP";
+            case "Bruneian Dollar" -> "BND";
+            case "Bulgarian Lev" -> "BGN";
+            case "Canadian Dollar" -> "CAD";
+            case "Chilean Peso" -> "CLP";
+            case "Chinese Yuan Renminbi" -> "CNY";
+            case "Colombian Peso" -> "COP";
+            case "Czech Koruna" -> "CZK";
+            case "Danish Krone" -> "DKK";
+            case "Emirati Dirham" -> "AED";
+            case "Euro" -> "EUR";
+            case "Hong Kong Dollar" -> "HKD";
+            case "Hungarian Forint" -> "HUF";
+            case "Icelandic Krona" -> "ISK";
+            case "Indian Rupee" -> "INR";
+            case "Indonesian Rupiah" -> "IDR";
+            case "Iranian Rial" -> "IRR";
+            case "Israeli Shekel" -> "ILS";
+            case "Japanese Yen" -> "JPY";
+            case "Kazakhstani Tenge" -> "KZT";
+            case "Kuwaiti Dinar" -> "KWD";
+            case "Libyan Dinar" -> "LYD";
+            case "Malaysian Ringgit" -> "MYR";
+            case "Mauritian Rupee" -> "MUR";
+            case "Mexican Peso" -> "MXN";
+            case "Nepalese Rupee" -> "NPR";
+            case "New Zealand Dollar" -> "NZD";
+            case "Norwegian Krone" -> "NOK";
+            case "Omani Rial" -> "OMR";
+            case "Pakistani Rupee" -> "PKR";
+            case "Philippine Peso" -> "PHP";
+            case "Polish Zloty" -> "PLN";
+            case "Qatari Riyal" -> "QAR";
+            case "Romanian New Leu" -> "RON";
+            case "Russian Ruble" -> "RUB";
+            case "Saudi Arabian Riyal" -> "SAR";
+            case "Singapore Dollar" -> "SGD";
+            case "South African Rand" -> "ZAR";
+            case "South Korean Won" -> "KRW";
+            case "Sri Lankan Rupee" -> "LKR";
+            case "Swedish Krona" -> "SEK";
+            case "Swiss Franc" -> "CHF";
+            case "Taiwan New Dollar" -> "TWD";
+            case "Thai Baht" -> "THB";
+            case "Trinidadian Dollar" -> "TTD";
+            case "Turkish Lira" -> "TRY";
+            case "US Dollar" -> "USD";
+            case "Venezuelan Bolivar" -> "VES";
+            
+            default -> null;
+        };
+        for (Locale locale : Locale.getAvailableLocales()) {
+            try {
+                Currency currency = Currency.getInstance(locale);
+                //System.out.println("case " + "\"" + NumberFormat.getCurrencyInstance(locale).getCurrency().getDisplayName()+ "\" -> \"" + currency + "\";");
+                //System.out.println(currency.getCurrencyCode().equals(currencyCode));
+                if (currency != null && currency.getCurrencyCode().equals(currencyCode)) {
+                    return locale;
+                }
+            } catch (Exception e) {
+            }
+        }
+        System.out.println("Couldn't find " + currencyName);
+        return null;
+    }
+    
+    public static boolean isValidNumber(String test){
+        test = test.replace(".", "");
+        if (test.isEmpty()) {
+            return false;
+        }
+
+        char firstChar = test.charAt(0);
+        if (!Character.isDigit(firstChar)) {
+            return false;
+        }
+
+        for (int i = 1; i < test.length(); i++) {
+            if (!Character.isDigit(test.charAt(i))) {
+                System.out.println(test.charAt(i));
+                return false;
+            }
+        }
+
+        return true;
+    }
+    
+    // Mortgage Calculator
+    public static int intFromMonth(String month) {
+        String num = switch (month) {   // Symbols not displaying
+                case "Jan" -> "1";
+                case "Feb" -> "2";
+                case "Mar" -> "3";
+                case "Apr" -> "4";
+                case "May" -> "5";
+                case "Jun" -> "6";
+                case "Jul" -> "7";
+                case "Aug" -> "8";
+                case "Sep" -> "9";
+                case "Oct" -> "10";
+                case "Nov" -> "11";
+                case "Dec" -> "12";
+                default -> null;
+            };
+        return Integer.parseInt(num);
+    }
+    public static String monthFromInt(String n) {
+        String month = switch (n) {   // Symbols not displaying
+                case "1" -> "Jan";
+                case "2" -> "Feb";
+                case "3" -> "Mar";
+                case "4" -> "Apr";
+                case "5" -> "May";
+                case "6" -> "Jun";
+                case "7" -> "Jul";
+                case "8" -> "Aug";
+                case "9" -> "Sep";
+                case "10" -> "Oct";
+                case "11" -> "Nov";
+                case "0" -> "Dec";
+                default -> null;
+            };
+        return month;
     }
     
     Map<String, Double> conversionTable = webScraper();
@@ -253,7 +421,7 @@ public class currency_calc extends javax.swing.JFrame {
         
         title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title = new JLabel("Currency Convertor");
+        title = new JLabel("Currency Converter");
         title.setOpaque(true);
         title.setBackground(new Color(66, 133, 244));
         title.setForeground(Color.white);
@@ -405,7 +573,7 @@ public class currency_calc extends javax.swing.JFrame {
     }//GEN-LAST:event_newCurrDropActionPerformed
 
     private void oldCurrAmtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_oldCurrAmtActionPerformed
-        Helper.validateInput(oldCurrAmt, evt);
+        validateInput(oldCurrAmt, evt);
         currencyValidate(oldCurrDrop.getSelectedItem(), newCurrDrop.getSelectedItem(), oldCurrAmt.getText());
     }//GEN-LAST:event_oldCurrAmtActionPerformed
 
@@ -509,7 +677,7 @@ public class currency_calc extends javax.swing.JFrame {
                     newAmt = Double.valueOf(oldAmt);
                 }
                 // Converting to different currency with number validation
-                else if (Helper.isValidNumber(oldAmt)) {
+                else if (isValidNumber(oldAmt)) {
                     newAmt = convert(oldCurr, newCurr, oldAmt);   
                 }
                 else {
@@ -522,7 +690,7 @@ public class currency_calc extends javax.swing.JFrame {
                 fromFlag.setIcon(new ImageIcon(new ImageIcon(currency_calc.class.getResource("images/flags/" + images.get(String.valueOf(oldCurr)))).getImage().getScaledInstance(120,80, Image.SCALE_SMOOTH)));
                 toFlag.setIcon(new ImageIcon(new ImageIcon(currency_calc.class.getResource("images/flags/" + images.get(String.valueOf(newCurr)))).getImage().getScaledInstance(120,80, Image.SCALE_SMOOTH)));
                 
-                String initial = Helper.getSymbol(oldCurr, Double.valueOf(oldAmt));
+                String initial = getSymbol(oldCurr, Double.valueOf(oldAmt));
                 curr1.setText(initial);
                 curr4.setVisible(false);
                 if (oldCurr.equals("Nepalese Rupee")) {
@@ -538,7 +706,7 @@ public class currency_calc extends javax.swing.JFrame {
                     setLabelFont(curr1);
                 }
                 
-                String result = Helper.getSymbol(newCurr, newAmt);
+                String result = getSymbol(newCurr, newAmt);
                 newCurrAmt.setText(String.valueOf((int) Math.round(newAmt)));
                 curr2.setText(result);
                 curr3.setVisible(false);
