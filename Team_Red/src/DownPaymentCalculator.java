@@ -93,6 +93,7 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1111, 900));
 
         jPanel2.setBackground(new java.awt.Color(66, 133, 244));
 
@@ -114,9 +115,8 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
         XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         XBtn.setForeground(new java.awt.Color(255, 51, 51));
         XBtn.setText("X");
-        XBtn.setBackground(java.awt.Color.white);
-        XBtn.setBorderPainted(true);
-        XBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 3 ,true));
+        XBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 3));
+        XBtn.setFocusPainted(false);
         XBtn.setPreferredSize(new java.awt.Dimension(43, 43));
         XBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -461,11 +461,11 @@ public class DownPaymentCalculator extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1109, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
         );
 
         pack();

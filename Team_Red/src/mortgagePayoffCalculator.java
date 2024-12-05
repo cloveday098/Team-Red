@@ -585,6 +585,7 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        XBtn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -597,7 +598,6 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
         jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        //setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/icon.png")).getImage());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -799,10 +799,22 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
             }
         });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CapitalLogo.png"))); // NOI18N
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
+            }
+        });
+
+        XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        XBtn.setForeground(new java.awt.Color(255, 51, 51));
+        XBtn.setText("X");
+        XBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 3));
+        XBtn.setFocusPainted(false);
+        XBtn.setPreferredSize(new java.awt.Dimension(43, 43));
+        XBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                XBtnMouseClicked(evt);
             }
         });
 
@@ -814,16 +826,23 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(XBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jLabel7)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(XBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -974,7 +993,7 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
             .addGroup(layout.createSequentialGroup()
                 .addGap(212, 212, 212)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 383, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(174, 174, 174))
             .addGroup(layout.createSequentialGroup()
@@ -1066,6 +1085,10 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void XBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XBtnMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_XBtnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1112,6 +1135,7 @@ private void calculatePayoffWithOneTimeExtra(double remainingBalance, double mon
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ResultLabel;
+    private javax.swing.JButton XBtn;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton calculateButton;
     private javax.swing.JButton clearButton;

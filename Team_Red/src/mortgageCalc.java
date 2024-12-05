@@ -166,7 +166,7 @@ class PieChart3 extends JComponent {
         infoPic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1650, 1800));
+        setPreferredSize(new java.awt.Dimension(1650, 1200));
         setSize(new java.awt.Dimension(1650, 1800));
 
         title.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -706,10 +706,9 @@ class PieChart3 extends JComponent {
         XBtn.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         XBtn.setForeground(new java.awt.Color(255, 51, 51));
         XBtn.setText("X");
-        XBtn.setBackground(java.awt.Color.white);
-        XBtn.setBorderPainted(true);
-        XBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 3 ,true));
+        XBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 3));
         XBtn.setFocusPainted(false);
+        XBtn.setPreferredSize(new java.awt.Dimension(43, 43));
         XBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 XBtnMouseClicked(evt);
@@ -731,18 +730,17 @@ class PieChart3 extends JComponent {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2212, Short.MAX_VALUE)
-                .addComponent(XBtn)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1419, Short.MAX_VALUE)
+                .addComponent(XBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(799, 799, 799))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(XBtn)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(logo)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(XBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -791,7 +789,7 @@ class PieChart3 extends JComponent {
                         .addComponent(infoLabel)
                         .addGap(27, 27, 27)
                         .addComponent(infoPic, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(998, 998, 998))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())

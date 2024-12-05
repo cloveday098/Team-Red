@@ -19,11 +19,31 @@ public class calcPage1_investment extends javax.swing.JPanel {
      */
     public calcPage1_investment() {
         this.setLayout(null);
+        this.setBackground(Color.white);
+        javax.swing.JPanel jPanel3 = new javax.swing.JPanel();
+        jPanel3.setBackground(new java.awt.Color(66, 133, 244));
+        jPanel3.setBounds(0, 0, 1650, 100);
+        
+        JLabel logo1 = new JLabel();
+        logo1.setBackground(new java.awt.Color(66, 133, 244));
+        logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png")));
+        logo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+        logo1.setBounds(0, 5, 180, 87);
+        
+        JLabel logo2 = new JLabel("Capital Calc");
+        logo2.setBackground(new java.awt.Color(66, 133, 244));
+        logo2.setForeground(Color.white);
+        logo2.setFont(new Font("Arial", 0, 36));
+        logo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
+        logo2.setBounds(200, 5, 300, 87);
         
         JLabel title1 = new JLabel("Investment Calculators");
-        title1.setForeground(Color.black);
-        title1.setFont(new Font("Arial", 0, 24));
-        title1.setBounds(350, 50, 400, 50);
+        title1.setOpaque(true);
+        title1.setBackground(new Color(66, 133, 244));
+        title1.setForeground(Color.white);
+        title1.setHorizontalAlignment(SwingConstants.CENTER);
+        title1.setFont(new Font("Arial", 1, 36));
+        title1.setBounds(530, 150, 500, 50);
         
         try{
             //X Btn
@@ -32,19 +52,24 @@ public class calcPage1_investment extends javax.swing.JPanel {
             XBtn.setForeground(new java.awt.Color(255,51,51));
             XBtn.setText("X");
             XBtn.setBounds(1590, 0, 43, 43);
-            XBtn.setBorderPainted(false);
+            XBtn.setBackground(java.awt.Color.white);
+            XBtn.setBorderPainted(true);
+            XBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 3 ,true));
             XBtn.setFocusPainted(false);
             XBtn.setHorizontalAlignment(SwingConstants.CENTER);
             XBtn.setVerticalAlignment(SwingConstants.CENTER);
 
             // 1) Interest
-            //ImageIcon loanIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/loanButtonIcon.png"))
-            //        .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
-            JButton interestBtn = new JButton("Interest");
-            interestBtn.setBounds(350, 200, 215, 97);
+            ImageIcon interestIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/interestLogo.png"))
+                    .getImage().getScaledInstance(215, 87, Image.SCALE_SMOOTH));
+            JButton interestBtn = new JButton("Interest", interestIcon);
+            interestBtn.setBounds(650, 400, 215, 97);
             interestBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
             
+            this.add(logo1);
+            this.add(logo2);
+            this.add(jPanel3);
             this.add(title1);
             this.add(interestBtn);
             this.add(XBtn);
@@ -54,6 +79,19 @@ public class calcPage1_investment extends javax.swing.JPanel {
             frame.setSize(1650, 1800);
             frame.add(this);
             frame.setVisible(true);
+            
+            logo1.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    frame.dispose();
+                }
+            });
+            logo2.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    frame.dispose();
+                }
+            });
             
             interestBtn.addActionListener(new ActionListener() {
                 @Override

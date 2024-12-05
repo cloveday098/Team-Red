@@ -51,7 +51,9 @@ public class calcPage2_mortgage extends javax.swing.JPanel {
             XBtn.setForeground(new java.awt.Color(255,51,51));
             XBtn.setText("X");
             XBtn.setBounds(1590, 0, 43, 43);
-            XBtn.setBorderPainted(false);
+            XBtn.setBackground(java.awt.Color.white);
+            XBtn.setBorderPainted(true);
+            XBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 3 ,true));
             XBtn.setFocusPainted(false);
             XBtn.setHorizontalAlignment(SwingConstants.CENTER);
             XBtn.setVerticalAlignment(SwingConstants.CENTER);
@@ -73,12 +75,6 @@ public class calcPage2_mortgage extends javax.swing.JPanel {
             houseAffordBtn.setBorderPainted(false);
             //autoLoanBtn.setPreferredSize(new Dimension(currencyIcon.getIconWidth(), currencyIcon.getIconHeight()));
 
-            houseAffordBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                    JOptionPane.showMessageDialog(null, "House Affordability calculator coming soon...", "House Affordability Calculator", JOptionPane.INFORMATION_MESSAGE);
-                }        
-            });
             
             // 3) Mortgage
             ImageIcon mortgageIcon = new ImageIcon(new ImageIcon(dashboardNew.class.getResource("/images/mortgageLogo.png"))
@@ -166,11 +162,22 @@ public class calcPage2_mortgage extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     DownPaymentCalculator dpPage = new DownPaymentCalculator();
-                    dpPage.setSize(1109, 749);
+                    //dpPage.setSize(1109, 749);
                     dpPage.setResizable(false);
                     dpPage.setVisible(true);
                     frame.dispose();
                     //JOptionPane.showMessageDialog(null, "Down Payment calculator coming soon...", "Down Payment Calculator", JOptionPane.INFORMATION_MESSAGE);
+                }        
+            });
+            
+            houseAffordBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    HouseAffordabilityCalculator houseaffPage = new HouseAffordabilityCalculator();
+                    houseaffPage.setResizable(false);
+                    houseaffPage.setVisible(true);
+                    frame.dispose();
+                    //JOptionPane.showMessageDialog(null, "House Affordability calculator coming soon...", "House Affordability Calculator", JOptionPane.INFORMATION_MESSAGE);
                 }        
             });
             
