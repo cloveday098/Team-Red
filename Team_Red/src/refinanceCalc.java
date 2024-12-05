@@ -1137,57 +1137,7 @@ public class refinanceCalc extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {                                      
         // TODO add your handling code here:
         this.dispose();
-    }                                     
-
-    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {                                     
-        // TODO add your handling code here:
-        Helper.validateDoubleInput(jTextField3, evt);
-    }                                    
-
-    private void jTextField13KeyTyped(java.awt.event.KeyEvent evt) {                                      
-        // TODO add your handling code here:
-        Helper.validateDoubleInput(jTextField13, evt);
-    }                                     
-
-    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {                                     
-        // TODO add your handling code here:
-        Helper.validateDoubleInput(jTextField4, evt);
-    }                                    
-
-    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {                                     
-        // TODO add your handling code here:
-        Helper.validateDoubleInput(jTextField5, evt);
-    }                                    
-
-    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {                                     
-        // TODO add your handling code here:
-        Helper.validateDoubleInput(jTextField7, evt);
-    }                                    
-
-    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {                                     
-        // TODO add your handling code here:
-        Helper.validateDoubleInput(jTextField9, evt);
-    }                                    
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {                                      
-        // TODO add your handling code here:
-        // clear Current Loan
-        jTextField14.setText("");
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField11.setText("");
-        jTextField12.setText("");
-        jTextField13.setText("");
-        
-        // clear New Loan
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField7.setText("");
-        jTextField9.setText("");
-        
-    }
-    
+    }                                                                     
     
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {                                        
         calcPage2_mortgage calc2 = new calcPage2_mortgage();
@@ -1233,6 +1183,7 @@ public class refinanceCalc extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
