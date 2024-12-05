@@ -1,4 +1,3 @@
-package csc250;
 
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
@@ -125,7 +124,7 @@ public class rentCalc extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csc250/images/rentInfo.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rentInfo.png"))); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -278,7 +277,7 @@ public class rentCalc extends javax.swing.JFrame {
         );
 
         jLabel12.setBackground(new java.awt.Color(66, 133, 244));
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csc250/images/CapitalLogo (3).png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CapitalLogo.png"))); // NOI18N
         jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(66, 133, 244)));
 
         jLabel10.setBackground(new java.awt.Color(66, 133, 244));
